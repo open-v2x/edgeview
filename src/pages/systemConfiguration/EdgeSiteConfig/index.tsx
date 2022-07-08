@@ -28,7 +28,7 @@ const EdgeSiteConfig: React.FC = () => {
               {t('Cloud control center connection configuration')}
             </div>
             <div className={styles.site_info_desc}>
-              {0 ? <span>Host：{'106.15.193.98'}</span> : t('Connection configuration tips')}
+              {0 ? <span>Host：{'139.196.13.9'}</span> : t('Connection configuration tips')}
             </div>
           </div>
           <UpdateSiteConfigModal info={undefined} success={() => {}} />
