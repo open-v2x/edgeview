@@ -3,7 +3,7 @@
 
 declare namespace API {
   type Result = {
-    msg: string;
+    detail: string;
   };
 
   type PageResult<T> = Result & {
@@ -11,36 +11,24 @@ declare namespace API {
   };
 
   type ListResult<T> = Result & {
-    data: {
-      data: T[];
-      total: number;
-    };
+    data: T[];
+    total: number;
   };
 
   type LoginParams = {
     username: string;
     password: string;
-    // methods: ['password'];
-    // password: {
-    //   account: string;
-    //   password: string;
-    // };
   };
+
   type LoginResult = {
     access_token: string;
     token_type: string;
   };
 
-  // type RefreshParams = {
-  //   methods: ['token'];
-  //   token: string;
-  // };
-
   type CurrentUser = {
     id?: number;
     is_active?: boolean;
     username?: string;
-    avatar?: string;
   };
 
   type PageParams = {
@@ -311,4 +299,19 @@ declare namespace Event {
   type RSMDetails = RSMListItem & {
     id: number;
   };
+}
+
+declare namespace System {
+  type UpdateEdgeNameParams = {
+    name: string;
+  };
+  type UpdateEdgeConfigParams = {
+    mqtt_config: {
+      host: string;
+      port: number;
+      username: string;
+      password: string;
+    };
+  };
+  type SystemConfig = UpdateEdgeNameParams & UpdateEdgeConfigParams;
 }

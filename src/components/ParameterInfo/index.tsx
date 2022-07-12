@@ -26,7 +26,7 @@ const ParameterInfo: React.FC<{ parameterInfo: Config.ParameterInfo | undefined 
       key: 'upFilters',
       label: t('Filter Rules'),
       span: 24,
-      render: (upFilters: string) => JSON.stringify(upFilters),
+      render: (upFilters: string) => upFilters && JSON.stringify(upFilters),
       unit: '',
     },
   ];

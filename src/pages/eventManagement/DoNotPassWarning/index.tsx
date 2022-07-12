@@ -16,7 +16,7 @@ const RoadSideCoordination: React.FC = () => {
     },
     {
       title: t('Message Number'),
-      dataIndex: 'msgCnt',
+      dataIndex: 'msgID',
       search: false,
     },
     {
@@ -26,28 +26,29 @@ const RoadSideCoordination: React.FC = () => {
     },
     {
       title: t('Longitude'),
-      dataIndex: 'lon',
+      dataIndex: ['refPos', 'lon'],
       search: false,
     },
     {
       title: t('Latitude'),
-      dataIndex: 'lat',
+      dataIndex: ['refPos', 'lat'],
       search: false,
     },
     {
       title: t('Target ID'),
-      dataIndex: 'vehId',
+      dataIndex: 'vehID',
       search: false,
     },
     {
       title: t('Driving Behavior'),
-      dataIndex: 'suggestion',
+      dataIndex: ['driveSuggestion', 'suggestion'],
       valueType: 'select',
       valueEnum: statusOptionFormat(DriveBehaviorTypeOptions),
+      search: false,
     },
     {
       title: t('Lifecycle'),
-      dataIndex: 'lifeTime',
+      dataIndex: ['driveSuggestion', 'lifeTime'],
       search: false,
     },
     {
