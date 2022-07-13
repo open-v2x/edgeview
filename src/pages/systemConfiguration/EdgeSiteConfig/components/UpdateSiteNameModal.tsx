@@ -26,7 +26,7 @@ const UpdateSiteNameModal: React.FC<CreateModalProps & { name: string }> = ({
     <Modal
       title={t('Modify edge site name')}
       trigger={
-        <Button type="primary" style={{ width: '94px' }}>
+        <Button id="siteName" type="primary" style={{ width: '94px' }}>
           {t('Modify')}
         </Button>
       }

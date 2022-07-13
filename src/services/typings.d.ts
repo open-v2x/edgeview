@@ -59,7 +59,7 @@ declare namespace Device {
     rsuModelId?: number; // RSU 型号
     desc?: string; // 描述
     rsuIP?: string; // RSU IP
-    available?: boolean; // RSU 状态
+    enabled?: boolean; // RSU 状态
   };
   type DeviceListItem = DeviceItem & {
     id: number;
@@ -70,7 +70,7 @@ declare namespace Device {
     areaName: string; // 安装位置-区
     onlineStatus: boolean; // 设备在线状态
     rsuStatus: boolean; // RSU 状态
-    available?: boolean; // RSU 启禁用状态
+    enabled?: boolean; // RSU 启禁用状态
     createTime: string; // 创建时间
     countryCode: string; // 安装位置-国
     provinceCode: string; // 安装位置-省

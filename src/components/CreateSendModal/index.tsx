@@ -43,6 +43,7 @@ const CreateSendModal: React.FC<CreateSendModalProps> = ({ type, id, success }) 
       title={type === 'map' ? t('Add the issued RSU') : t('Copy configuration')}
       trigger={
         <Button
+          id="sendRSU"
           icon={type === 'map' ? <PlusOutlined /> : ''}
           type={type === 'map' ? 'primary' : 'link'}
         >

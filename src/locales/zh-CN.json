@@ -368,5 +368,6 @@
   "Please enter username": "请输入用户名",
   "Please enter password": "请输入密码",
   "Please enter the relevant information of the MQTT server": "请输入 MQTT 服务器的相关信息",
-  "Edge Site Name": "边缘站点名称"
+  "Edge Site Name": "边缘站点名称",
+  "Please select the query information time interval": "请选择查询信息时间区间"
 }

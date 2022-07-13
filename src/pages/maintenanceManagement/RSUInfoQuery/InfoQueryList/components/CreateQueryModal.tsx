@@ -35,9 +35,13 @@ const CreateQueryModal: React.FC<CreateModalProps> = ({ success }) => {
       children: [
         {
           type: 'select',
+          required: true,
           name: 'timeType',
           label: t('Query Information Time Interval'),
           valueEnum: statusOptionFormat(QueryIntervalOptions),
+          rules: [
+            { required: true, message: t('Please select the query information time interval') },
+          ],
         },
       ],
     },

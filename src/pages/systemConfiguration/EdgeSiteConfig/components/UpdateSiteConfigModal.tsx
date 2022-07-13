@@ -65,7 +65,7 @@ const UpdateSiteConfigModal: React.FC<UpdateSiteConfigProps> = ({ info = {}, suc
     <Modal
       title={t('Cloud control center connection configuration')}
       trigger={
-        <Button type="primary" style={{ width: '94px' }}>
+        <Button id="siteConfig" type="primary" style={{ width: '94px' }}>
           {t('Configure')}
         </Button>
       }
