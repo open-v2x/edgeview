@@ -8,13 +8,10 @@ export async function deviceList({
   if (countryName?.length) {
     params.areaCode = countryName.pop();
   }
-  return request<API.ListResult<Device.DeviceListItem> & API.PageResult<Device.DeviceListItem[]>>(
-    `/v1/rsus`,
-    {
-      method: 'GET',
-      params,
-    },
-  );
+  return request<API.ListResult<Device.DeviceListItem>>(`/v1/rsus`, {
+    method: 'GET',
+    params,
+  });
 }
 
 // 未注册 RSU 设备列表
@@ -34,7 +31,7 @@ export async function countries() {
 
 // 添加 RSU 设备
 export async function createDevice(data: Device.CreateDeviceParams) {
-  return request<API.PageResult<string>>(`/v1/rsus`, {
+  return request<Device.DeviceListItem>(`/v1/rsus`, {
     method: 'POST',
     data,
   });
@@ -42,30 +39,22 @@ export async function createDevice(data: Device.CreateDeviceParams) {
 
 // RSU 设备详情
 export async function deviceInfo(id: number) {
-  return request<API.PageResult<Device.DeviceListItem>>(`/v1/rsus/${id}`, {
+  return request<Device.DeviceListItem>(`/v1/rsus/${id}`, {
     method: 'GET',
   });
 }
 
 // 编辑 RSU 设备
 export async function updateDevice(id: number, data: Device.CreateDeviceParams) {
-  return request<API.PageResult<string>>(`/v1/rsus/${id}`, {
+  return request<Device.DeviceListItem>(`/v1/rsus/${id}`, {
     method: 'PATCH',
-    data,
-  });
-}
-
-// 启用禁用 RSU 设备
-export async function updateDeviceStatus(id: number, data: { type: 'status'; status: boolean }) {
-  return request<API.PageResult<string>>(`/v1/rsus/${id}`, {
-    method: 'PUT',
     data,
   });
 }
 
 // 删除 RSU 设备
 export async function deleteDevice(id: number) {
-  return request<API.PageResult<string>>(`/v1/rsus/${id}`, {
+  return request(`/v1/rsus/${id}`, {
     method: 'DELETE',
   });
 }

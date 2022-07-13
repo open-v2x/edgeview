@@ -10,7 +10,7 @@ import { deviceList } from '@/services/device/device';
 import Country from '@/components/Country';
 
 const fetchDeviceList = async () => {
-  const { data } = await deviceList({ type: 'all' });
+  const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
   return data.map(({ id, rsuName }: Device.DeviceListItem) => ({ label: rsuName, value: id }));
 };
 

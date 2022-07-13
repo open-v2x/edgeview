@@ -125,7 +125,7 @@ const CreateMapConfigModal: React.FC<CreateModalProps> = ({ editId, success }) =
         values.areaCode = province!.pop()!;
         values.data = mapData;
         if (editId) {
-          await updateMapConfig(editId, { type: 'info', map: values });
+          await updateMapConfig(editId, values);
         } else {
           await createMapConfig(values);
         }

@@ -73,9 +73,9 @@ const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
         DeviceOnlineStatusOptions[`${onlineStatus}`],
     },
     {
-      key: 'rsuStatus',
+      key: 'available',
       label: t('Device Status'),
-      render: ({ rsuStatus }: Device.DeviceListItem) => DeviceStatusOptions[`${rsuStatus}`],
+      render: ({ available }: Device.DeviceListItem) => DeviceStatusOptions[`${available}`],
     },
   ];
   return (

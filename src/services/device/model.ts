@@ -10,7 +10,7 @@ export async function modelList(params: API.PageParams) {
 
 // 添加 RSU 型号
 export async function createModel(body: Device.ModelListItem) {
-  return request<API.PageResult<string>>(`/v1/rsu_models`, {
+  return request<Device.ModelListItem>(`/v1/rsu_models`, {
     method: 'POST',
     data: body,
   });
@@ -18,14 +18,14 @@ export async function createModel(body: Device.ModelListItem) {
 
 // RSU 型号详情
 export async function modelInfo(id: number) {
-  return request<API.PageResult<Device.ModelListItem>>(`/v1/rsu_models/${id}`, {
+  return request<Device.ModelListItem>(`/v1/rsu_models/${id}`, {
     method: 'GET',
   });
 }
 
 // 编辑 RSU 型号
 export async function updateModel(id: number, body: Device.ModelListItem) {
-  return request<API.PageResult<string>>(`/v1/rsu_models/${id}`, {
+  return request<Device.ModelListItem>(`/v1/rsu_models/${id}`, {
     method: 'PUT',
     data: body,
   });
@@ -33,7 +33,7 @@ export async function updateModel(id: number, body: Device.ModelListItem) {
 
 // 删除 RSU 型号
 export async function deleteModel(id: number) {
-  return request<API.PageResult<string>>(`/v1/rsu_models/${id}`, {
+  return request(`/v1/rsu_models/${id}`, {
     method: 'DELETE',
   });
 }

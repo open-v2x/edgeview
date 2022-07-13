@@ -245,16 +245,19 @@ const InfoQueryDetails: React.FC<RouterMatchTypes> = ({
     history.goBack();
   }
 
-  const { data } = useRequest(() => {
-    return infoQueryDetails(+params.id);
-  });
+  const { data } = useRequest(
+    () => {
+      return infoQueryDetails(+params.id);
+    },
+    { formatResult: (res) => res },
+  );
 
   return (
     <BaseContainer back>
       <ProCard title={t('Basic information')}>
-        {query.type == '1' && <OperatingStatus data={data} />}
-        {query.type == '2' && <DataStatistics data={data} />}
-        {query.type == '3' && <DeviceInfo data={data} />}
+        {query.type == '1' && <OperatingStatus data={data?.data} />}
+        {query.type == '2' && <DataStatistics data={data?.data} />}
+        {query.type == '3' && <DeviceInfo data={data?.data} />}
       </ProCard>
     </BaseContainer>
   );

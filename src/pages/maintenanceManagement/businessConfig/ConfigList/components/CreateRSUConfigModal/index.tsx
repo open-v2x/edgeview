@@ -271,15 +271,13 @@ const CreateRSUConfigModal: React.FC<CreateModalProps> = ({ editId, success }) =
       editId={editId}
       request={async ({ id }) => {
         const {
-          data: {
-            name,
-            bsmConfig: bsm,
-            rsiConfig: rsi,
-            rsmConfig: rsm,
-            mapConfig: map,
-            spatConfig: spat,
-            rsus = [],
-          },
+          name,
+          bsmConfig: bsm,
+          rsiConfig: rsi,
+          rsmConfig: rsm,
+          mapConfig: map,
+          spatConfig: spat,
+          rsus = [],
         } = await parameterConfigInfo(id);
         const values = { bsm, rsi, rsm, map, spat };
         Object.values(values).map((value) => {

@@ -10,7 +10,7 @@ export async function maintenanceConfigList(params: API.PageParams) {
 
 // 编辑 RSU 运维配置
 export async function updateMaintenanceConfig(id: number, data: Config.MaintenanceItem) {
-  return request<API.PageResult<null>>(`/v1/mngs/${id}`, {
+  return request<Config.MaintenanceListItem>(`/v1/mngs/${id}`, {
     method: 'PUT',
     data,
   });
@@ -18,14 +18,14 @@ export async function updateMaintenanceConfig(id: number, data: Config.Maintenan
 
 // 下发 RSU 运维配置
 export async function sendMaintenanceConfig(id: number) {
-  return request<API.PageResult<null>>(`/v1/mngs/${id}/down`, {
+  return request<string>(`/v1/mngs/${id}/down`, {
     method: 'POST',
   });
 }
 
 // 复制 RSU 运维配置
 export async function copyMaintenanceConfig(id: number, data: { rsus: number[] }) {
-  return request<API.PageResult<null>>(`/v1/mngs/${id}/copy`, {
+  return request<string>(`/v1/mngs/${id}/copy`, {
     method: 'POST',
     data,
   });

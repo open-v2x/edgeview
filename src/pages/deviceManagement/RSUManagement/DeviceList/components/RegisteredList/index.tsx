@@ -59,7 +59,7 @@ const RegisteredList: React.FC = () => {
     },
     {
       title: t('Device Status'),
-      dataIndex: 'rsuStatus',
+      dataIndex: 'available',
       valueType: 'select',
       valueEnum: statusOptionFormat(DeviceStatusOptions),
     },
@@ -88,13 +88,13 @@ const RegisteredList: React.FC = () => {
         <Divider key="details-divider" type="vertical" />,
         <a
           key="disabled"
-          style={{ color: row.rsuStatus ? '#E74040' : '' }}
+          style={{ color: row.available ? '#E74040' : '' }}
           onClick={() =>
             confirmModal({
               id: row.id,
-              params: { rsuStatus: !row.rsuStatus },
-              title: row.rsuStatus ? t('Disable') : t('Enable'),
-              content: row.rsuStatus
+              params: { available: !row.available },
+              title: row.available ? t('Disable') : t('Enable'),
+              content: row.available
                 ? t('Are you sure you want to disable this device?')
                 : t('Are you sure you want to enable this device?'),
               successMsg: t('{{value}} successfully', { value: t('Status updated') }),
@@ -103,7 +103,7 @@ const RegisteredList: React.FC = () => {
             })
           }
         >
-          {row.rsuStatus ? t('Disable') : t('Enable')}
+          {row.available ? t('Disable') : t('Enable')}
         </a>,
         <Divider key="disabled-divider" type="vertical" />,
         <a

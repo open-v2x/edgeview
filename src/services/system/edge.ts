@@ -9,7 +9,7 @@ export async function systemConfig(id: number) {
 export async function updateSystemConfig(
   data: System.UpdateEdgeNameParams | System.UpdateEdgeConfigParams,
 ) {
-  return request<API.PageResult<null>>('/v1/system_configs', {
+  return request<System.SystemConfig>('/v1/system_configs', {
     method: 'POST',
     data,
   });

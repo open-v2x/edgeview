@@ -10,7 +10,7 @@ export async function infoQueryList(params: API.PageParams) {
 
 // 下发 RSU 信息查询指令
 export async function createQueryInstruction(data: Config.CreateQueryParams) {
-  return request<API.PageResult<null>>(`/v1/rsu_queries`, {
+  return request<Config.QueryListItem>(`/v1/rsu_queries`, {
     method: 'POST',
     data,
   });
@@ -18,7 +18,7 @@ export async function createQueryInstruction(data: Config.CreateQueryParams) {
 
 // RSU 信息查询详情
 export async function infoQueryDetails(id: number) {
-  return request<API.PageResult<Config.QueryInfoDetails[]>>(`/v1/rsu_queries/${id}`, {
+  return request<API.ListResult<Config.QueryInfoDetails>>(`/v1/rsu_queries/${id}`, {
     method: 'GET',
   });
 }

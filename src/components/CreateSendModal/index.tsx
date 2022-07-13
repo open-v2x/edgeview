@@ -9,7 +9,7 @@ import Modal from '../Modal';
 import { copyMaintenanceConfig } from '@/services/config/maintenance';
 
 const fetchDeviceList = async () => {
-  const { data } = await deviceList({ type: 'all' });
+  const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
   return data.map(({ id, rsuName, rsuEsn }: Device.DeviceListItem) => ({
     label: `${rsuName}（Esn: ${rsuEsn}）`,
     value: id,

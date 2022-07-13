@@ -73,9 +73,12 @@ const RSIDetails: React.FC<RouterMatchTypes> = ({ match: { params } }) => {
     history.goBack();
   }
 
-  const { data } = useRequest(() => {
-    return eventInfoDetail(+params.id);
-  });
+  const { data } = useRequest(
+    () => {
+      return eventInfoDetail(+params.id);
+    },
+    { formatResult: (res) => res },
+  );
 
   return (
     <BaseContainer back>

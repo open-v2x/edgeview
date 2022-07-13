@@ -10,7 +10,7 @@ export async function parameterConfigList(params: API.PageParams) {
 
 // 创建 RSU 参数配置
 export async function createParameterConfig(data: any) {
-  return request<API.PageResult<Config.ParameterListItem>>(`/v1/rsu_configs`, {
+  return request<Config.ParameterListItem>(`/v1/rsu_configs`, {
     method: 'POST',
     data,
   });
@@ -25,7 +25,7 @@ export async function parameterConfigInfo(id: number) {
 
 // 编辑 RSU 参数配置
 export async function updateParameterConfig(id: number, data: any) {
-  return request<API.PageResult<null>>(`/v1/rsu_configs/${id}`, {
+  return request<Config.ParameterListItem>(`/v1/rsu_configs/${id}`, {
     method: 'PUT',
     data,
   });
@@ -33,7 +33,7 @@ export async function updateParameterConfig(id: number, data: any) {
 
 // 删除 RSU 参数配置
 export async function deleteParameterConfig(id: number) {
-  return request<API.PageResult<null>>(`/v1/rsu_configs/${id}`, {
+  return request(`/v1/rsu_configs/${id}`, {
     method: 'DELETE',
   });
 }
