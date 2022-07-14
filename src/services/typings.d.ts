@@ -71,6 +71,7 @@ declare namespace Device {
     onlineStatus: boolean; // 设备在线状态
     rsuStatus: boolean; // RSU 状态
     enabled?: boolean; // RSU 启禁用状态
+    deliveryStatus?: number;
     createTime: string; // 创建时间
     countryCode: string; // 安装位置-国
     provinceCode: string; // 安装位置-省

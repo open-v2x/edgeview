@@ -42,7 +42,7 @@ const ConfigDetails: React.FC<RouterMatchTypes> = ({ match: { params } }) => {
       <BasicInfo basicInfo={data} />
       <ParameterInfo parameterInfo={data} />
       <ProCard title={t('Parameter configuration applicable RSU')}>
-        <ParameterDeviceList dataSource={data?.rsus || []} />
+        <ParameterDeviceList showDeliveryStatus dataSource={data?.rsus || []} />
       </ProCard>
     </BaseContainer>
   );
