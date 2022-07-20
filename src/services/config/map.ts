@@ -6,7 +6,7 @@ export async function mapConfigList({
   ...params
 }: API.PageParams & { countryName?: string[]; areaCode?: string }) {
   if (countryName?.length) {
-    params.areaCode = countryName.pop();
+    params.areaCode = countryName[countryName.length - 1];
   }
   return request<API.ListResult<Config.MapListItem>>(`/v1/maps`, {
     method: 'GET',

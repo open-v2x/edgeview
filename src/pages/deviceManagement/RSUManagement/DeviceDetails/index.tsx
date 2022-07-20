@@ -74,7 +74,7 @@ const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
     },
     {
       key: 'enabled',
-      label: t('Device Status'),
+      label: t('Device Enabled'),
       render: ({ enabled }: Device.DeviceListItem) => DeviceStatusOptions[`${enabled}`],
     },
   ];
