@@ -2,3 +2,4 @@
 host=review.sh.99cloud.net
 port=29418
 project=v2x/edgeview
+defaultbranch=albany
