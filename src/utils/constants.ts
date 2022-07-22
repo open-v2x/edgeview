@@ -124,19 +124,19 @@ export const DataSourceOptions = [
 ];
 
 // RSU 查询信息类型
-export const QueryTypeOptions = {
-  1: t('RSU operating status information'),
-  2: t('V2X data statistics'),
-  3: t('Device information connected to RSU'),
-};
+export const QueryTypeOptions = [
+  t('RSU operating status information'),
+  t('V2X data statistics'),
+  t('Device information connected to RSU'),
+];
 
 // RSU 查询信息时间区间
-export const QueryIntervalOptions = {
-  1: t('Within an hour'),
-  2: t('Within a day'),
-  3: t('Within a week'),
-  4: t('System boot up to now'),
-};
+export const QueryIntervalOptions = [
+  t('Within an hour'),
+  t('Within a day'),
+  t('Within a week'),
+  t('System boot up to now'),
+];
 
 // RSU 查询信息电源状态
 export const PowerStatusOptions = {
