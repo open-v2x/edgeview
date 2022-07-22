@@ -265,9 +265,11 @@ declare namespace Config {
     deviceId: number; // 设备 ID
     deviceType: string; // 设备类型
     deviceName: string; // 设备名称
-    powerStatus: number; // 电源状态
-    runStatus: number; // 运行状态
-    networkStatus: number; // 连接状态
+    Status: {
+      powerStatus: number; // 电源状态
+      runStatus: number; // 运行状态
+      networkStatus: number; // 连接状态
+    }[];
   };
   type QueryInfoDetails = QueryItem & {
     rsuId: number;
@@ -276,7 +278,7 @@ declare namespace Config {
     powerStatus?: string;
     runStatus?: string;
     networkStatus?: string;
-    data: QueryStatusDetails[] | QueryStatisticsDetails[] | QueryDeviceDetails[];
+    data: QueryStatusDetails | QueryStatisticsDetails | QueryDeviceDetails[];
   };
 }
 
