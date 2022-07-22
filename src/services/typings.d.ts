@@ -81,6 +81,16 @@ declare namespace Device {
     rsuModelId: number; // RSU 型号
     rsuModelName: string; // RSU 型号
     rsuIP: string; // RSU IP
+    imei: string; // IMEI
+    iccID: string; // 集成电路卡识别码
+    communicationType: string; // 支持的通信方式
+    runningCommunicationType: string; // 当前通信方式
+    transprotocal: string; // 服务器类型
+    softwareVersion: string; // 版本号
+    hardwareVersion: string; // 硬件版本号
+    depart: string; // 所属组织
+    runningInfo: Config.QueryStatusDetails; // 运行信息
+    config: Config.ParameterInfo[]; // 配置参数
   };
 
   type ModelListItem = {

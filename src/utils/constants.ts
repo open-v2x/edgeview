@@ -39,6 +39,11 @@ export const DeviceStatusOptions = {
   false: t('Disabled'),
 };
 
+export const RSUStatusOptions = {
+  Normal: t('Normal'),
+  Abnormal: t('Abnormal'),
+};
+
 // 下发状态
 export const SendStatusOptions = [t('Sending'), t('Success'), t('Fail')];
 
@@ -125,7 +130,7 @@ export const QueryTypeOptions = {
   3: t('Device information connected to RSU'),
 };
 
-// RSU 查询信息类型
+// RSU 查询信息时间区间
 export const QueryIntervalOptions = {
   1: t('Within an hour'),
   2: t('Within a day'),

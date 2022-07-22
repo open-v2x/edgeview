@@ -369,5 +369,13 @@
   "Please enter password": "请输入密码",
   "Please enter the relevant information of the MQTT server": "请输入 MQTT 服务器的相关信息",
   "Edge Site Name": "边缘站点名称",
-  "Please select the query information time interval": "请选择查询信息时间区间"
+  "Please select the query information time interval": "请选择查询信息时间区间",
+  "IMEI": "IMEI",
+  "Identification Code": "集成电路卡识别码",
+  "Supported Communication Methods": "支持的通信方式",
+  "Current Communication Method": "当前通信方式",
+  "Version": "版本号",
+  "Hardware Version": "硬件版本号",
+  "Organization": "所属组织",
+  "Abnormal": "异常"
 }
