@@ -23,7 +23,7 @@ const CardList: React.FC<BasicInfoType> = ({ infoMap, info, md = 12, xl = 8 }) =
           className={classNames(styles.list, 'f')}
         >
           <span>{label}：</span>
-          {render?.(info) || info[key]}
+          {render?.(info) || info[key] || '-'}
         </Col>
       ))}
     </Row>

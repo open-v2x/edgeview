@@ -369,5 +369,13 @@
   "Please enter password": "Please enter password",
   "Please enter the relevant information of the MQTT server": "Please enter the relevant information of the MQTT server",
   "Edge Site Name": "Edge Site Name",
-  "Please select the query information time interval": "Please select the query information time interval"
+  "Please select the query information time interval": "Please select the query information time interval",
+  "IMEI": "IMEI",
+  "Identification Code": "Identification Code",
+  "Supported Communication Methods": "Supported Communication Methods",
+  "Current Communication Method": "Current Communication Method",
+  "Version": "Version",
+  "Hardware Version": "Hardware Version",
+  "Organization": "Organization",
+  "Abnormal": "Abnormal"
 }
