@@ -8,7 +8,7 @@ import { createQueryInstruction } from '@/services/config/query';
 import { statusOptionFormat } from '@/utils';
 
 const fetchDeviceList = async () => {
-  const { data } = await deviceList({ type: 'all' });
+  const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
   return data.map(({ id, rsuName, rsuEsn }: Device.DeviceListItem) => ({
     label: `${rsuName}（Esn: ${rsuEsn}）`,
     value: id,
@@ -35,9 +35,13 @@ const CreateQueryModal: React.FC<CreateModalProps> = ({ success }) => {
       children: [
         {
           type: 'select',
+          required: true,
           name: 'timeType',
           label: t('Query Information Time Interval'),
           valueEnum: statusOptionFormat(QueryIntervalOptions),
+          rules: [
+            { required: true, message: t('Please select the query information time interval') },
+          ],
         },
       ],
     },

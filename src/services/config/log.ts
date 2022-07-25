@@ -10,7 +10,7 @@ export async function logConfigList(params: API.PageParams) {
 
 // 创建 RSU 日志下发配置
 export async function createLogConfig(data: Config.CreateLogConfigParams) {
-  return request<API.PageResult<Config.CreateLogConfigParams>>(`/v1/rsu_logs`, {
+  return request<Config.LogListItem>(`/v1/rsu_logs`, {
     method: 'POST',
     data,
   });
@@ -18,7 +18,7 @@ export async function createLogConfig(data: Config.CreateLogConfigParams) {
 
 // 编辑 RSU 日志下发配置
 export async function updateLogConfig(id: number, data: Config.CreateLogConfigParams) {
-  return request<API.PageResult<null>>(`/v1/rsu_logs/${id}`, {
+  return request<Config.LogListItem>(`/v1/rsu_logs/${id}`, {
     method: 'PUT',
     data,
   });
@@ -26,7 +26,7 @@ export async function updateLogConfig(id: number, data: Config.CreateLogConfigPa
 
 // 删除 RSU 日志下发配置
 export async function deleteLogConfig(id: number) {
-  return request<API.PageResult<null>>(`/v1/rsu_logs/${id}`, {
+  return request(`/v1/rsu_logs/${id}`, {
     method: 'DELETE',
   });
 }

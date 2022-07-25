@@ -4,10 +4,15 @@ import type { ToolBarProps } from '@ant-design/pro-table/lib/components/ToolBar'
 import type { TableProps } from 'antd';
 import BaseProTable from '@/components/BaseProTable';
 import OnlineStatus from '@/components/OnlineStatus';
-import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
+import {
+  DeviceOnlineStatusOptions,
+  DeviceStatusOptions,
+  SendStatusOptions,
+} from '@/utils/constants';
 import { statusOptionFormat } from '@/utils';
 
 type ParameterDeviceListType = {
+  showDeliveryStatus?: boolean;
   dataSource?: Device.DeviceListItem[];
   request?: (params: { pageSize?: number; current?: number }) => Promise<Partial<RequestData<any>>>;
   rowSelection?:
@@ -22,6 +27,7 @@ type ParameterDeviceListType = {
 };
 
 const ParameterDeviceList: React.FC<ParameterDeviceListType> = ({
+  showDeliveryStatus,
   dataSource,
   request,
   rowSelection,
@@ -64,6 +70,16 @@ const ParameterDeviceList: React.FC<ParameterDeviceListType> = ({
       valueEnum: statusOptionFormat(DeviceStatusOptions),
     },
   ];
+  if (showDeliveryStatus) {
+    columns.push({
+      title: t('Send Status'),
+      dataIndex: 'deliveryStatus',
+      render: (statusName, row) => (
+        <OnlineStatus status={row.deliveryStatus === 1} statusName={statusName} />
+      ),
+      valueEnum: statusOptionFormat(SendStatusOptions),
+    });
+  }
   const optionColumn: ProColumns[] = [
     {
       title: t('Operate'),

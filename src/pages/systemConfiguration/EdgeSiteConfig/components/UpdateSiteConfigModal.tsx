@@ -4,9 +4,15 @@ import type { FormGroupType } from '@/components/typings';
 import Modal from '@/components/Modal';
 import FormItem from '@/components/FormItem';
 import { IPReg } from '@/utils/constants';
+import { updateSystemConfig } from '@/services/system/edge';
 
 type UpdateSiteConfigProps = CreateModalProps & {
-  info?: { host: string; port: string; username: string; password: string };
+  info?: {
+    host: string;
+    port: number;
+    username: string;
+    password: string;
+  };
 };
 
 const UpdateSiteConfigModal: React.FC<UpdateSiteConfigProps> = ({ info = {}, success }) => {
@@ -59,14 +65,13 @@ const UpdateSiteConfigModal: React.FC<UpdateSiteConfigProps> = ({ info = {}, suc
     <Modal
       title={t('Cloud control center connection configuration')}
       trigger={
-        <Button type="primary" style={{ width: '94px' }}>
+        <Button id="siteConfig" type="primary" style={{ width: '94px' }}>
           {t('Configure')}
         </Button>
       }
       modalProps={{ maskClosable: false }}
-      submitForm={async () => {
-        // values
-        // await (id, values);
+      submitForm={async (values) => {
+        await updateSystemConfig({ mqtt_config: values });
         success();
       }}
       successMsg={t('{{value}} successfully', { value: t('Modify') })}

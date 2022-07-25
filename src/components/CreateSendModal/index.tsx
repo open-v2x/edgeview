@@ -9,7 +9,7 @@ import Modal from '../Modal';
 import { copyMaintenanceConfig } from '@/services/config/maintenance';
 
 const fetchDeviceList = async () => {
-  const { data } = await deviceList({ type: 'all' });
+  const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
   return data.map(({ id, rsuName, rsuEsn }: Device.DeviceListItem) => ({
     label: `${rsuName}（Esn: ${rsuEsn}）`,
     value: id,
@@ -43,6 +43,7 @@ const CreateSendModal: React.FC<CreateSendModalProps> = ({ type, id, success }) 
       title={type === 'map' ? t('Add the issued RSU') : t('Copy configuration')}
       trigger={
         <Button
+          id="sendRSU"
           icon={type === 'map' ? <PlusOutlined /> : ''}
           type={type === 'map' ? 'primary' : 'link'}
         >

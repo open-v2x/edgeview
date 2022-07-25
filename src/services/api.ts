@@ -3,7 +3,7 @@ import request from './request';
 // 登录
 // 登录后刷新 token
 export async function login(body: API.LoginParams) {
-  return request<API.PageResult<string>>('/v1/login', {
+  return request<API.LoginResult>('/v1/login', {
     method: 'POST',
     data: body,
   });
@@ -11,7 +11,7 @@ export async function login(body: API.LoginParams) {
 
 // 获取登录用户信息
 export async function currentUser() {
-  return request<API.PageResult<string>>('/v1/users/me', {
+  return request<API.CurrentUser>('/v1/users/me', {
     method: 'GET',
   });
 }

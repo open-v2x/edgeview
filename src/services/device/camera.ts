@@ -10,7 +10,7 @@ export async function cameraList(params: API.PageParams) {
 
 // 创建摄像头
 export async function createCamera(data: Device.CreateCameraParams) {
-  return request<API.ListResult<null>>(`/v1/cameras`, {
+  return request<Device.CameraListItem>(`/v1/cameras`, {
     method: 'POST',
     data,
   });
@@ -18,7 +18,7 @@ export async function createCamera(data: Device.CreateCameraParams) {
 
 // 编辑摄像头
 export async function updateCamera(id: number, data: Device.CreateCameraParams) {
-  return request<API.ListResult<null>>(`/v1/cameras/${id}`, {
+  return request<Device.CameraListItem>(`/v1/cameras/${id}`, {
     method: 'PUT',
     data,
   });
@@ -26,7 +26,7 @@ export async function updateCamera(id: number, data: Device.CreateCameraParams) 
 
 // 删除摄像头
 export async function deleteCamera(id: number) {
-  return request<API.PageResult<null>>(`/v1/cameras/${id}`, {
+  return request(`/v1/cameras/${id}`, {
     method: 'DELETE',
   });
 }

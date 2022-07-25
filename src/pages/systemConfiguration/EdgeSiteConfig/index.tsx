@@ -1,13 +1,33 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import BaseContainer from '@/components/BaseContainer';
 import ProCard from '@ant-design/pro-card';
 import classNames from 'classnames';
 import UpdateSiteNameModal from './components/UpdateSiteNameModal';
+import UpdateSiteConfigModal from './components/UpdateSiteConfigModal';
+import { systemConfig } from '@/services/system/edge';
 
 import styles from './index.less';
-import UpdateSiteConfigModal from './components/UpdateSiteConfigModal';
 
 const EdgeSiteConfig: React.FC = () => {
+  const [config, setConfig] = useState({
+    name: '',
+    mqtt_config: {
+      host: '',
+      port: 0,
+      username: '',
+      password: '',
+    },
+  });
+
+  const fetchSystemConfig = async () => {
+    const res = await systemConfig(1);
+    setConfig(res);
+  };
+
+  useEffect(() => {
+    fetchSystemConfig();
+  }, []);
+
   return (
     <BaseContainer>
       <ProCard className={styles.edge_site}>
@@ -16,10 +36,10 @@ const EdgeSiteConfig: React.FC = () => {
           <div className={styles.site_info}>
             <div className={styles.site_info_name}>{t('Edge site name')}</div>
             <div className={styles.site_info_desc}>
-              {t('Current name')}：{0 ? <span>{'**名称'}</span> : t('Unnamed')}
+              {t('Current name')}：{config.name ? <span>{config.name}</span> : t('Unnamed')}
             </div>
           </div>
-          <UpdateSiteNameModal name={''} success={() => {}} />
+          <UpdateSiteNameModal name={config.name} success={fetchSystemConfig} />
         </div>
         <div className={classNames('f f-a-center', styles.site)}>
           <img className={styles.site_icon} src="/assets/images/site_config.png" alt="" />
@@ -28,10 +48,14 @@ const EdgeSiteConfig: React.FC = () => {
               {t('Cloud control center connection configuration')}
             </div>
             <div className={styles.site_info_desc}>
-              {0 ? <span>Host：{'106.15.193.98'}</span> : t('Connection configuration tips')}
+              {config.mqtt_config?.host ? (
+                <span>Host：{config.mqtt_config.host}</span>
+              ) : (
+                t('Connection configuration tips')
+              )}
             </div>
           </div>
-          <UpdateSiteConfigModal info={undefined} success={() => {}} />
+          <UpdateSiteConfigModal info={config.mqtt_config || {}} success={fetchSystemConfig} />
         </div>
       </ProCard>
     </BaseContainer>

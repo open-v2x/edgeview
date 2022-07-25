@@ -10,7 +10,7 @@ export async function radarList(params: API.PageParams) {
 
 // 创建雷达
 export async function createRadar(data: Device.CreateCameraParams) {
-  return request<API.ListResult<null>>(`/v1/radars`, {
+  return request<Device.CameraListItem>(`/v1/radars`, {
     method: 'POST',
     data,
   });
@@ -18,7 +18,7 @@ export async function createRadar(data: Device.CreateCameraParams) {
 
 // 编辑雷达
 export async function updateRadar(id: number, data: Device.CreateCameraParams) {
-  return request<API.ListResult<null>>(`/v1/radars/${id}`, {
+  return request<Device.CameraListItem>(`/v1/radars/${id}`, {
     method: 'PUT',
     data,
   });
@@ -26,7 +26,7 @@ export async function updateRadar(id: number, data: Device.CreateCameraParams) {
 
 // 删除雷达
 export async function deleteRadar(id: number) {
-  return request<API.PageResult<null>>(`/v1/radars/${id}`, {
+  return request(`/v1/radars/${id}`, {
     method: 'DELETE',
   });
 }

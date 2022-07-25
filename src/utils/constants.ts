@@ -46,7 +46,10 @@ export const SendStatusOptions = [t('Sending'), t('Success'), t('Fail')];
 export const LogLevelOptions = ['DEBUG', 'INFO', 'WARN', 'ERROR', 'NOLog'];
 
 // RSU 运维是否重启
-export const RebootOptions = [t("Don't reboot"), t('Reboot')];
+export const RebootOptions = {
+  not_reboot: t("Don't reboot"),
+  reboot: t('Reboot'),
+};
 
 // 日志下发服务器类型
 export const LogServerTypeOptions = ['http', 'https', 'ftp', 'sftp', 'other'];

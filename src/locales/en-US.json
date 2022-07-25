@@ -368,5 +368,6 @@
   "Please enter username": "Please enter username",
   "Please enter password": "Please enter password",
   "Please enter the relevant information of the MQTT server": "Please enter the relevant information of the MQTT server",
-  "Edge Site Name": "Edge Site Name"
+  "Edge Site Name": "Edge Site Name",
+  "Please select the query information time interval": "Please select the query information time interval"
 }

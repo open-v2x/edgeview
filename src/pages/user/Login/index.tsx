@@ -21,11 +21,8 @@ const Login: React.FC = () => {
   const handleSubmit = async (values: API.LoginParams) => {
     const { access_token: accessToken, token_type: tokenType } = await login(values);
     const token = `${tokenType} ${accessToken}`;
-    // const { data } = await login({ methods: ['password'], password: values });
-    // const { data: token } = await tokens({ methods: ['token'], token: data });
     setToken(token);
     await fetchUserInfo();
-    /** 此方法会跳转到 redirect 参数所在的位置 */
     if (!history) return;
     const { query } = history.location;
     const { redirect } = query as { redirect: string };

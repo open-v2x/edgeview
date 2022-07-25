@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import type { FormGroupType } from '@/components/typings';
 import Modal from '@/components/Modal';
 import FormItem from '@/components/FormItem';
+import { updateSystemConfig } from '@/services/system/edge';
 
 const UpdateSiteNameModal: React.FC<CreateModalProps & { name: string }> = ({
   name = '',
@@ -10,7 +11,7 @@ const UpdateSiteNameModal: React.FC<CreateModalProps & { name: string }> = ({
 }) => {
   const formItems: FormGroupType[] = [
     {
-      key: 'rsus',
+      key: 'name',
       children: [
         {
           required: true,
@@ -25,15 +26,14 @@ const UpdateSiteNameModal: React.FC<CreateModalProps & { name: string }> = ({
     <Modal
       title={t('Modify edge site name')}
       trigger={
-        <Button type="primary" style={{ width: '94px' }}>
+        <Button id="siteName" type="primary" style={{ width: '94px' }}>
           {t('Modify')}
         </Button>
       }
       width={500}
       modalProps={{ maskClosable: false }}
-      submitForm={async () => {
-        // values
-        // await (id, values);
+      submitForm={async (values) => {
+        await updateSystemConfig(values);
         success();
       }}
       successMsg={t('{{value}} successfully', { value: t('Modify') })}

@@ -16,7 +16,7 @@ export async function eventInfoList({
 
 // 事件信息详情
 export async function eventInfoDetail(id: number) {
-  return request<API.PageResult<Event.RSIDetails>>(`/v1/events/${id}`, {
+  return request<Event.RSIDetails>(`/v1/events/${id}`, {
     method: 'GET',
   });
 }

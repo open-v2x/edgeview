@@ -3,7 +3,7 @@
 
 declare namespace API {
   type Result = {
-    msg: string;
+    detail: string;
   };
 
   type PageResult<T> = Result & {
@@ -11,36 +11,24 @@ declare namespace API {
   };
 
   type ListResult<T> = Result & {
-    data: {
-      data: T[];
-      total: number;
-    };
+    data: T[];
+    total: number;
   };
 
   type LoginParams = {
     username: string;
     password: string;
-    // methods: ['password'];
-    // password: {
-    //   account: string;
-    //   password: string;
-    // };
   };
+
   type LoginResult = {
     access_token: string;
     token_type: string;
   };
 
-  // type RefreshParams = {
-  //   methods: ['token'];
-  //   token: string;
-  // };
-
   type CurrentUser = {
     id?: number;
     is_active?: boolean;
     username?: string;
-    avatar?: string;
   };
 
   type PageParams = {
@@ -71,7 +59,7 @@ declare namespace Device {
     rsuModelId?: number; // RSU 型号
     desc?: string; // 描述
     rsuIP?: string; // RSU IP
-    rsuStatus?: boolean; // RSU 状态
+    enabled?: boolean; // RSU 状态
   };
   type DeviceListItem = DeviceItem & {
     id: number;
@@ -81,7 +69,9 @@ declare namespace Device {
     cityName: string; // 安装位置-市
     areaName: string; // 安装位置-区
     onlineStatus: boolean; // 设备在线状态
-    rsuStatus: boolean; // 设备状态 1：启用 2：禁用
+    rsuStatus: boolean; // RSU 状态
+    enabled?: boolean; // RSU 启禁用状态
+    deliveryStatus?: number;
     createTime: string; // 创建时间
     countryCode: string; // 安装位置-国
     provinceCode: string; // 安装位置-省
@@ -311,4 +301,19 @@ declare namespace Event {
   type RSMDetails = RSMListItem & {
     id: number;
   };
+}
+
+declare namespace System {
+  type UpdateEdgeNameParams = {
+    name: string;
+  };
+  type UpdateEdgeConfigParams = {
+    mqtt_config: {
+      host: string;
+      port: number;
+      username: string;
+      password: string;
+    };
+  };
+  type SystemConfig = UpdateEdgeNameParams & UpdateEdgeConfigParams;
 }

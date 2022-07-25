@@ -11,12 +11,16 @@ const errorHandler = (error: any) => {
     history.push('/user/login');
     return Promise.reject(error);
   } else if (response.status != 200) {
-    response.json().then((res: { msg: string }) => {
-      const { msg } = res || {};
-      if (msg) {
-        message.error(msg);
-      }
-    });
+    if (response.headers.get('Content-Type').includes('application/json')) {
+      response.json().then((res: { detail: string }) => {
+        const { detail } = res || {};
+        if (detail) {
+          message.error(detail);
+        }
+      });
+    } else {
+      message.error(response.statusText);
+    }
     return Promise.reject(error);
   }
 };

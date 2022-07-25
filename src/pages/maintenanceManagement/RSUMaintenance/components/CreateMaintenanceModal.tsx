@@ -4,10 +4,7 @@ import type { FormGroupType } from '@/components/typings';
 import { updateMaintenanceConfig } from '@/services/config/maintenance';
 import { LogLevelOptions, RebootOptions } from '@/utils/constants';
 import Modal from '@/components/Modal';
-
-const optionFormat = (data: string[]) => {
-  return data.map((value: string, index: number) => ({ label: value, value: index }));
-};
+import { statusOptionFormat } from '@/utils';
 
 const CreateMaintenanceModal: React.FC<CreateModalProps> = ({ editInfo, success }) => {
   const formItems: FormGroupType[] = [
@@ -43,7 +40,7 @@ const CreateMaintenanceModal: React.FC<CreateModalProps> = ({ editInfo, success 
           type: 'select',
           name: 'reboot',
           label: t('Whether To Reboot'),
-          options: optionFormat(RebootOptions),
+          valueEnum: statusOptionFormat(RebootOptions),
         },
       ],
     },

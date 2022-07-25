@@ -8,9 +8,7 @@ import Modal from '@/components/Modal';
 import { IPReg } from '@/utils/constants';
 
 const fetchModelList = async () => {
-  const {
-    data: { data },
-  } = await modelList({ pageNum: 1, pageSize: 999 });
+  const { data } = await modelList({ pageNum: 1, pageSize: -1 });
   return data.map(({ id, name }: Device.ModelListItem) => ({ label: name, value: id }));
 };
 
