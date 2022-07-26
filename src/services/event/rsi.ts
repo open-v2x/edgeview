@@ -6,7 +6,7 @@ export async function eventInfoList({
   ...params
 }: API.PageParams & { countryName?: string[]; areaCode?: string }) {
   if (countryName?.length) {
-    params.areaCode = countryName.pop();
+    params.areaCode = countryName[countryName.length - 1];
   }
   return request<API.ListResult<Event.RSIListItem>>(`/v1/events`, {
     method: 'GET',
