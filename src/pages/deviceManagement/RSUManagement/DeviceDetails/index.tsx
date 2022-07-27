@@ -101,7 +101,7 @@ const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
     },
   ];
   return (
-    <ProCard title={t('Basic information')}>
+    <ProCard title={t('Basic Information')}>
       <CardList infoMap={infoMap} info={basicInfo} xl={12} />
     </ProCard>
   );

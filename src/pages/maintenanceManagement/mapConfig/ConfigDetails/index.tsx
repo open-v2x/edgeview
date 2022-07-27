@@ -71,7 +71,7 @@ const BasicInfo: React.FC<{ basicInfo: Config.MapListItem | undefined }> = ({ ba
     },
   ];
   return (
-    <ProCard title={t('Basic information')}>
+    <ProCard title={t('Basic Information')}>
       <CardList infoMap={infoMap} info={basicInfo} />
     </ProCard>
   );
