@@ -165,33 +165,34 @@ export const IPReg =
   /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(\:([0-9]|[1-9]\d{1,3}|[1-5]\d{4}|6[0-5]{2}[0-3][0-5]))?$/;
 
 // 驾驶行为类型
-export const DriveBehaviorTypeOptions = {
-  goStraightForward: t('Go straight'),
-  laneChangingToLeft: t('Change lane to the left'),
-  laneChangingToRight: t('Change lane to the right'),
-  rampIn: t('Drive in'),
-  rampOut: t('Drive out'),
-  intersectionStraightThrough: t('Go straight through the intersection'),
-  intersectionTurnLeft: t('Turn left through the intersection'),
-  intersectionTurnRight: t('Turn right through the intersection'),
-  intersectionUTurn: t('U-turn through the intersection'),
-  stop: t('Stop'),
-  'slow-down': t('Slow down'),
-  'speed-up': t('Speed up'),
-  parking: t('Parking'),
-};
+export const DriveBehaviorTypeOptions = [
+  t('Go straight'),
+  t('Change lane to the left'),
+  t('Change lane to the right'),
+  t('Drive in'),
+  t('Drive out'),
+  t('Go straight through the intersection'),
+  t('Turn left through the intersection'),
+  t('Turn right through the intersection'),
+  t('U-turn through the intersection'),
+  t('Stop and go'),
+  t('Stop'),
+  t('Slow down'),
+  t('Speed up'),
+  t('Parking'),
+];
 
 // 协调信息类型
-export const CoordinationInfoTypeOptions = {
-  cooperativeLaneChanging: t('Cooperative lane changing'),
-  cooperativeVehMerging: t('Cooperative vehicle merging'),
-  laneChangingAtIntersection: t('Lane changing at intersection'),
-  'no-signalIntersectionPassing': t('No-signal intersection passing'),
-  dynamicLaneManagement: t('Dynamic lane management'),
-  laneReservation: t('Lane reservation'),
-  laneRestriction: t('Lane restriction'),
-  signalPriority: t('Signal priority'),
-};
+export const CoordinationInfoTypeOptions = [
+  t('Cooperative lane changing'),
+  t('Cooperative vehicle merging'),
+  t('Lane changing at intersection'),
+  t('No-signal intersection passing'),
+  t('Dynamic lane management'),
+  t('Lane reservation'),
+  t('Lane restriction'),
+  t('Signal priority'),
+];
 
 // RSU 业务配置采样方式
 export const SampleModeOptions = {

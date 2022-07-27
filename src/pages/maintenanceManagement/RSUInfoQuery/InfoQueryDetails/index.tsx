@@ -251,7 +251,7 @@ const InfoQueryDetails: React.FC<RouterMatchTypes> = ({
 
   return (
     <BaseContainer back>
-      <ProCard title={t('Basic information')}>
+      <ProCard title={t('Basic Information')}>
         {query.type == '0' && <OperatingStatus data={data?.data} />}
         {query.type == '1' && <DataStatistics data={data?.data} />}
         {query.type == '2' && <DeviceInfo data={data?.data} />}

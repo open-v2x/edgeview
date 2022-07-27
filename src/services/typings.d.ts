@@ -310,8 +310,18 @@ declare namespace Event {
     lat: number; // 纬度
     createTime: string; // 上报时间
   };
-  type RSMDetails = RSMListItem & {
+
+  type DNPWListItem = {
     id: number;
+    msgID: string;
+    secMark: number;
+    refPos: LonLat;
+    vehID: string;
+    driveSuggestion: {
+      suggestion: number;
+      lifeTime: number;
+    };
+    info: number;
   };
 }
 
