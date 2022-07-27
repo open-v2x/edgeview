@@ -22,7 +22,13 @@ export const MenuTitle = [
   t('RSI Details'),
   t('Roadside Safety Message'),
   t('RSM Details'),
+  t('Intersection Collision Warning'),
+  t('ICW Details'),
   t('Do Not Pass Warning'),
+  t('Sensor Data Sharing'),
+  t('Vulnerable Road User Collision Warning'),
+  t('VRUCW Details'),
+  t('Cooperative Lane Change'),
   t('System'),
   t('Edge Site Config'),
 ];
@@ -199,3 +205,13 @@ export const SampleModeOptions = {
   ByAll: t('Global sampling'),
   ByID: t('Sampling by ID'),
 };
+
+// ICW 碰撞类型
+export const ICWCollisionTypeOptions = [
+  t('Rear end collision warning'),
+  t('Forward collision warning'),
+  t('Side collision warning'),
+];
+
+// SDS 设备类型
+export const DSDEquipmentTypeOptions = [t('Unknown type'), t('RSU'), t('OBU'), t('VRU')];
