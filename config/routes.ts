@@ -219,10 +219,64 @@ export default [
         ],
       },
       {
+        path: 'icw',
+        name: 'icw',
+        locale: 'Intersection Collision Warning',
+        routes: [
+          {
+            path: '/event/icw',
+            component: './eventManagement/intersectionCollisionWarning/ICWList',
+          },
+          {
+            path: 'details',
+            name: 'details',
+            locale: 'ICW Details',
+            component: './eventManagement/intersectionCollisionWarning/ICWDetails',
+            hideInMenu: true,
+          },
+          {
+            component: './404',
+          },
+        ],
+      },
+      {
+        path: 'vrucw',
+        name: 'vrucw',
+        locale: 'Vulnerable Road User Collision Warning',
+        routes: [
+          {
+            path: '/event/vrucw',
+            component: './eventManagement/vulnerableRoadUser/VRUCWList',
+          },
+          {
+            path: 'details',
+            name: 'details',
+            locale: 'VRUCW Details',
+            component: './eventManagement/vulnerableRoadUser/VRUCWDetails',
+            hideInMenu: true,
+          },
+          {
+            component: './404',
+          },
+        ],
+      },
+      {
         path: 'dnpw',
         name: 'dnpw',
         locale: 'Do Not Pass Warning',
         component: './eventManagement/DoNotPassWarning',
+      },
+      {
+        path: 'sds',
+        name: 'sds',
+        locale: 'Sensor Data Sharing',
+        component: './eventManagement/SensorDataSharing',
+      },
+      {
+        path: 'clc',
+        name: 'clc',
+        locale: 'Cooperative Lane Change',
+        component: './eventManagement/CooperativeLaneChange',
       },
       {
         path: '/event',
