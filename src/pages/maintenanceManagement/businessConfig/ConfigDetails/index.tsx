@@ -19,7 +19,7 @@ const BasicInfo: React.FC<{ basicInfo: BasicInfoType | undefined }> = ({ basicIn
     },
   ];
   return (
-    <ProCard title={t('Basic information')}>
+    <ProCard title={t('Basic Information')}>
       <CardList infoMap={infoMap} info={basicInfo} />
     </ProCard>
   );

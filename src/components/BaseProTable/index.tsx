@@ -53,7 +53,7 @@ const BaseProTable: React.FC<BaseProTableType> = (props) => {
       dataSource={dataSource}
       request={async (param) => {
         const res = await request?.(param);
-        return { data: res?.data, success: true };
+        return { data: res?.data, total: res?.total, success: true };
       }}
       params={params}
       rowSelection={rowSelection}

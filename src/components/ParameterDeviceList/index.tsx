@@ -4,11 +4,7 @@ import type { ToolBarProps } from '@ant-design/pro-table/lib/components/ToolBar'
 import type { TableProps } from 'antd';
 import BaseProTable from '@/components/BaseProTable';
 import OnlineStatus from '@/components/OnlineStatus';
-import {
-  DeviceOnlineStatusOptions,
-  DeviceStatusOptions,
-  SendStatusOptions,
-} from '@/utils/constants';
+import { DeviceOnlineStatusOptions, RSUStatusOptions, SendStatusOptions } from '@/utils/constants';
 import { statusOptionFormat } from '@/utils';
 
 type ParameterDeviceListType = {
@@ -67,7 +63,7 @@ const ParameterDeviceList: React.FC<ParameterDeviceListType> = ({
       title: t('Device Status'),
       dataIndex: 'rsuStatus',
       valueType: 'select',
-      valueEnum: statusOptionFormat(DeviceStatusOptions),
+      valueEnum: statusOptionFormat(RSUStatusOptions),
     },
   ];
   if (showDeliveryStatus) {

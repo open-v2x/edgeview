@@ -187,7 +187,7 @@ const CreateRSUConfigModal: React.FC<CreateModalProps> = ({ editId, success }) =
   const formItems: FormGroupType[] = [
     {
       key: 'basic',
-      title: t('Basic information'),
+      title: t('Basic Information'),
       children: [
         {
           required: true,

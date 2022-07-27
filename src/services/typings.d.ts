@@ -81,6 +81,16 @@ declare namespace Device {
     rsuModelId: number; // RSU 型号
     rsuModelName: string; // RSU 型号
     rsuIP: string; // RSU IP
+    imei: string; // IMEI
+    iccID: string; // 集成电路卡识别码
+    communicationType: string; // 支持的通信方式
+    runningCommunicationType: string; // 当前通信方式
+    transprotocal: string; // 服务器类型
+    softwareVersion: string; // 版本号
+    hardwareVersion: string; // 硬件版本号
+    depart: string; // 所属组织
+    runningInfo: Config.QueryStatusDetails; // 运行信息
+    config: Config.ParameterInfo[]; // 配置参数
   };
 
   type ModelListItem = {
@@ -255,9 +265,11 @@ declare namespace Config {
     deviceId: number; // 设备 ID
     deviceType: string; // 设备类型
     deviceName: string; // 设备名称
-    powerStatus: number; // 电源状态
-    runStatus: number; // 运行状态
-    networkStatus: number; // 连接状态
+    Status: {
+      powerStatus: number; // 电源状态
+      runStatus: number; // 运行状态
+      networkStatus: number; // 连接状态
+    }[];
   };
   type QueryInfoDetails = QueryItem & {
     rsuId: number;
@@ -266,7 +278,7 @@ declare namespace Config {
     powerStatus?: string;
     runStatus?: string;
     networkStatus?: string;
-    data: QueryStatusDetails[] | QueryStatisticsDetails[] | QueryDeviceDetails[];
+    data: QueryStatusDetails | QueryStatisticsDetails | QueryDeviceDetails[];
   };
 }
 
@@ -298,8 +310,58 @@ declare namespace Event {
     lat: number; // 纬度
     createTime: string; // 上报时间
   };
-  type RSMDetails = RSMListItem & {
+
+  type LonLat = {
+    lon: number; // 经度
+    lat: number; // 纬度
+  };
+  type KinematicsInfo = {
+    speed: number; // 速度
+    accelerate: number; // 加速度
+    angularSpeed: number; // 角速度
+  };
+  type ICWListItem = {
     id: number;
+    sensorPos: LonLat; // 传感器位置
+    collisionType: number; // 碰撞类型
+    secMark: number; // 1分钟中的毫秒级时刻
+    egoId: string; // 自车 ID
+    egoPos: LonLat; // 自车位置
+    egoHeading: number; // 自车方向角
+    egoWidth: number; // 自车车宽
+    egoLength: number; // 自车车长
+    egoRadius?: number; // 自车半径
+    egoKinematicsInfo: KinematicsInfo;
+    otherId: string; // 他车 ID
+    otherPos: LonLat; // 他车位置
+    otherHeading: number; // 他车方向角
+    otherWidth: number; // 他车车宽
+    otherLength: number; // 他车车长
+    otherRadius?: number; // 他车半径
+    otherKinematicsInfo: KinematicsInfo;
+  };
+
+  type DNPWListItem = {
+    id: number;
+    msgID: string;
+    secMark: number;
+    refPos: LonLat;
+    vehID: string;
+    driveSuggestion: {
+      suggestion: number;
+      lifeTime: number;
+    };
+    info: number;
+  };
+
+  type SDSListItem = {
+    id: number;
+    msgID: string;
+    equipmentType: number;
+    sensorPos: LonLat;
+    secMark: number;
+    egoId: string;
+    egoPos: LonLat;
   };
 }
 

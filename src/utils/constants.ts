@@ -22,7 +22,13 @@ export const MenuTitle = [
   t('RSI Details'),
   t('Roadside Safety Message'),
   t('RSM Details'),
+  t('Intersection Collision Warning'),
+  t('ICW Details'),
   t('Do Not Pass Warning'),
+  t('Sensor Data Sharing'),
+  t('Vulnerable Road User Collision Warning'),
+  t('VRUCW Details'),
+  t('Cooperative Lane Change'),
   t('System'),
   t('Edge Site Config'),
 ];
@@ -37,6 +43,11 @@ export const DeviceOnlineStatusOptions = {
 export const DeviceStatusOptions = {
   true: t('Enabled'),
   false: t('Disabled'),
+};
+
+export const RSUStatusOptions = {
+  Normal: t('Normal'),
+  Abnormal: t('Abnormal'),
 };
 
 // 下发状态
@@ -119,19 +130,19 @@ export const DataSourceOptions = [
 ];
 
 // RSU 查询信息类型
-export const QueryTypeOptions = {
-  1: t('RSU operating status information'),
-  2: t('V2X data statistics'),
-  3: t('Device information connected to RSU'),
-};
+export const QueryTypeOptions = [
+  t('RSU operating status information'),
+  t('V2X data statistics'),
+  t('Device information connected to RSU'),
+];
 
-// RSU 查询信息类型
-export const QueryIntervalOptions = {
-  1: t('Within an hour'),
-  2: t('Within a day'),
-  3: t('Within a week'),
-  4: t('System boot up to now'),
-};
+// RSU 查询信息时间区间
+export const QueryIntervalOptions = [
+  t('Within an hour'),
+  t('Within a day'),
+  t('Within a week'),
+  t('System boot up to now'),
+];
 
 // RSU 查询信息电源状态
 export const PowerStatusOptions = {
@@ -160,36 +171,47 @@ export const IPReg =
   /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(\:([0-9]|[1-9]\d{1,3}|[1-5]\d{4}|6[0-5]{2}[0-3][0-5]))?$/;
 
 // 驾驶行为类型
-export const DriveBehaviorTypeOptions = {
-  goStraightForward: t('Go straight'),
-  laneChangingToLeft: t('Change lane to the left'),
-  laneChangingToRight: t('Change lane to the right'),
-  rampIn: t('Drive in'),
-  rampOut: t('Drive out'),
-  intersectionStraightThrough: t('Go straight through the intersection'),
-  intersectionTurnLeft: t('Turn left through the intersection'),
-  intersectionTurnRight: t('Turn right through the intersection'),
-  intersectionUTurn: t('U-turn through the intersection'),
-  stop: t('Stop'),
-  'slow-down': t('Slow down'),
-  'speed-up': t('Speed up'),
-  parking: t('Parking'),
-};
+export const DriveBehaviorTypeOptions = [
+  t('Go straight'),
+  t('Change lane to the left'),
+  t('Change lane to the right'),
+  t('Drive in'),
+  t('Drive out'),
+  t('Go straight through the intersection'),
+  t('Turn left through the intersection'),
+  t('Turn right through the intersection'),
+  t('U-turn through the intersection'),
+  t('Stop and go'),
+  t('Stop'),
+  t('Slow down'),
+  t('Speed up'),
+  t('Parking'),
+];
 
 // 协调信息类型
-export const CoordinationInfoTypeOptions = {
-  cooperativeLaneChanging: t('Cooperative lane changing'),
-  cooperativeVehMerging: t('Cooperative vehicle merging'),
-  laneChangingAtIntersection: t('Lane changing at intersection'),
-  'no-signalIntersectionPassing': t('No-signal intersection passing'),
-  dynamicLaneManagement: t('Dynamic lane management'),
-  laneReservation: t('Lane reservation'),
-  laneRestriction: t('Lane restriction'),
-  signalPriority: t('Signal priority'),
-};
+export const CoordinationInfoTypeOptions = [
+  t('Cooperative lane changing'),
+  t('Cooperative vehicle merging'),
+  t('Lane changing at intersection'),
+  t('No-signal intersection passing'),
+  t('Dynamic lane management'),
+  t('Lane reservation'),
+  t('Lane restriction'),
+  t('Signal priority'),
+];
 
 // RSU 业务配置采样方式
 export const SampleModeOptions = {
   ByAll: t('Global sampling'),
   ByID: t('Sampling by ID'),
 };
+
+// ICW 碰撞类型
+export const ICWCollisionTypeOptions = [
+  t('Rear end collision warning'),
+  t('Forward collision warning'),
+  t('Side collision warning'),
+];
+
+// SDS 设备类型
+export const DSDEquipmentTypeOptions = [t('Unknown type'), t('RSU'), t('OBU'), t('VRU')];

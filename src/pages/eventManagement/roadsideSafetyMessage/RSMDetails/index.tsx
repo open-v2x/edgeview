@@ -6,7 +6,7 @@ import CardList from '@/components/CardList';
 import { DataSourceOptions, ParticipantTypeOptions } from '@/utils/constants';
 
 // 基本信息
-const BasicInfo: React.FC<{ basicInfo: Event.RSMDetails | undefined }> = ({ basicInfo = {} }) => {
+const BasicInfo: React.FC<{ basicInfo: Event.RSMListItem | undefined }> = ({ basicInfo = {} }) => {
   const infoMap = [
     {
       key: 'id',
@@ -19,12 +19,12 @@ const BasicInfo: React.FC<{ basicInfo: Event.RSMDetails | undefined }> = ({ basi
     {
       key: 'ptcType',
       label: t('Participant Type'),
-      render: ({ ptcType }: Event.RSMDetails) => ParticipantTypeOptions[ptcType],
+      render: ({ ptcType }: Event.RSMListItem) => ParticipantTypeOptions[ptcType],
     },
     {
       key: 'source',
       label: t('Data Sources'),
-      render: ({ source }: Event.RSMDetails) => DataSourceOptions[source],
+      render: ({ source }: Event.RSMListItem) => DataSourceOptions[source],
     },
     {
       key: 'secMark',
@@ -52,7 +52,7 @@ const BasicInfo: React.FC<{ basicInfo: Event.RSMDetails | undefined }> = ({ basi
     },
   ];
   return (
-    <ProCard title={t('Basic information')}>
+    <ProCard title={t('Basic Information')}>
       <CardList infoMap={infoMap} info={basicInfo} xl={12} />
     </ProCard>
   );
@@ -65,7 +65,7 @@ const RSMDetails: React.FC<RouterMatchTypes> = ({ location: { state } }) => {
 
   return (
     <BaseContainer back>
-      <BasicInfo basicInfo={state as Event.RSMDetails} />
+      <BasicInfo basicInfo={state as Event.RSMListItem} />
     </BaseContainer>
   );
 };
