@@ -3,20 +3,10 @@ import { history, useRequest } from 'umi';
 import ProCard from '@ant-design/pro-card';
 import BaseContainer from '@/components/BaseContainer';
 import CardList from '@/components/CardList';
-// import ParameterInfo from '@/components/ParameterInfo';
+import ParameterInfo from '@/components/ParameterInfo';
 import { deviceInfo } from '@/services/device/device';
 import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
-
-// type RunningInfoType = {
-//   load: string;
-//   utilization: string;
-//   totalMemory: number;
-//   SavedMemory: number;
-//   availableMemory: number;
-//   totalDisk: number;
-//   usedDisk: number;
-//   freeDisk: number;
-// };
+import { Col, Row } from 'antd';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
@@ -62,9 +52,20 @@ const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
       label: t('Creation Time'),
     },
     {
-      key: 'desc',
-      label: t('Describe'),
-      block: true,
+      key: 'imei',
+      label: t('IMEI'),
+    },
+    {
+      key: 'iccID',
+      label: t('Identification Code'),
+    },
+    {
+      key: 'communicationType',
+      label: t('Supported Communication Methods'),
+    },
+    {
+      key: 'runningCommunicationType',
+      label: t('Current Communication Method'),
     },
     {
       key: 'onlineStatus',
@@ -77,61 +78,102 @@ const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
       label: t('Device Enabled'),
       render: ({ enabled }: Device.DeviceListItem) => DeviceStatusOptions[`${enabled}`],
     },
+    {
+      key: 'transprotocal',
+      label: t('Server Type'),
+    },
+    {
+      key: 'softwareVersion',
+      label: t('Version'),
+    },
+    {
+      key: 'hardwareVersion',
+      label: t('Hardware Version'),
+    },
+    {
+      key: 'depart',
+      label: t('Organization'),
+    },
+    {
+      key: 'desc',
+      label: t('Describe'),
+      block: true,
+    },
   ];
   return (
-    <ProCard title={t('Basic information')}>
+    <ProCard title={t('Basic Information')}>
       <CardList infoMap={infoMap} info={basicInfo} xl={12} />
     </ProCard>
   );
 };
 
 // 运行信息
-// const RunningInfo: React.FC<{ runningInfo: RunningInfoType | undefined }> = ({
-//   runningInfo = {},
-// }) => {
-//   const infoMap = [
-//     {
-//       title: t('CPU Running Information'),
-//       children: [
-//         { key: 'load', span: 24, label: t('CPU Load') },
-//         { key: 'utilization', span: 24, label: t('CPU Utilization') },
-//       ],
-//     },
-//     {
-//       title: t('Memory Operation Information'),
-//       children: [
-//         { key: 'totalMemory', span: 24, label: t('Total Memory (M)') },
-//         { key: 'SavedMemory', span: 12, label: t('Stored Memory (M)') },
-//         { key: 'availableMemory', span: 12, label: t('Available Memory (M)') },
-//       ],
-//     },
-//     {
-//       title: t('Disk Operation Information'),
-//       children: [
-//         { key: 'totalDisk', span: 24, label: t('Total Disk (M)') },
-//         { key: 'usedDisk', span: 12, label: t('Used Disk (M)') },
-//         { key: 'freeDisk', span: 12, label: t('Free Disk (M)') },
-//       ],
-//     },
-//   ];
-//   return (
-//     <ProCard title={t('Running information')} className="parameter-info" gutter={[20, 20]}>
-//       {infoMap.map(({ title, children }) => (
-//         <ProCard key={title} colSpan={12} bordered>
-//           <div className="parameter-title t-center">{title}</div>
-//           <Row gutter={[16, 14]}>
-//             {children.map(({ key, span, label }) => (
-//               <Col key={key} span={span}>
-//                 <span>{label}：</span>
-//                 {runningInfo[key]}
-//               </Col>
-//             ))}
-//           </Row>
-//         </ProCard>
-//       ))}
-//     </ProCard>
-//   );
-// };
+const RunningInfo: React.FC<{ runningInfo: Config.QueryStatusDetails | undefined }> = ({
+  runningInfo = {},
+}) => {
+  const infoMap = [
+    {
+      title: t('CPU Running Information'),
+      groupKey: 'cpu',
+      colSpan: { sm: 24, xl: 12 },
+      children: [
+        { key: 'load', span: 24, label: t('CPU Load') },
+        { key: 'uti', span: 24, label: t('CPU Utilization') },
+      ],
+    },
+    {
+      title: t('Memory Operation Information'),
+      groupKey: 'mem',
+      colSpan: { sm: 24, xl: 12 },
+      children: [
+        { key: 'total', span: 24, label: t('Total Memory (M)') },
+        { key: 'used', span: 12, label: t('Stored Memory (M)') },
+        { key: 'free', span: 12, label: t('Available Memory (M)') },
+      ],
+    },
+    {
+      title: t('Disk Operation Information'),
+      groupKey: 'disk',
+      colSpan: { sm: 24, xxl: 12 },
+      children: [
+        { key: 'total', span: 12, label: t('Total Disk (M)') },
+        { key: 'used', span: 12, label: t('Used Disk (M)') },
+        { key: 'free', span: 12, label: t('Free Disk (M)') },
+        { key: 'tps', span: 12, label: t('IO Requests Per Second') },
+        { key: 'write', span: 12, label: t('Disk Data Written Per Second (K)') },
+        { key: 'read', span: 12, label: t('Disk Data Read Per Second (K)') },
+      ],
+    },
+    {
+      title: t('Network Operation Information'),
+      groupKey: 'net',
+      colSpan: { sm: 24, xxl: 12 },
+      children: [
+        { key: 'rx', span: 12, label: t('Received Packets Per Second') },
+        { key: 'tx', span: 12, label: t('Send Packets Per Second') },
+        { key: 'rxByte', span: 12, label: t('Bytes Received Per Second') },
+        { key: 'txByte', span: 12, label: t('Bytes Sent Per Second') },
+      ],
+    },
+  ];
+  return (
+    <ProCard title={t('Running information')} className="parameter-info" gutter={[20, 20]}>
+      {infoMap.map(({ title, groupKey, colSpan, children }) => (
+        <ProCard key={title} colSpan={colSpan} bordered>
+          <div className="parameter-title t-center">{title}</div>
+          <Row gutter={[16, 14]}>
+            {children.map(({ key, span, label }) => (
+              <Col key={key} span={span}>
+                <span>{label}：</span>
+                {runningInfo[groupKey]?.[key]}
+              </Col>
+            ))}
+          </Row>
+        </ProCard>
+      ))}
+    </ProCard>
+  );
+};
 
 const DeviceDetails: React.FC<RouterMatchTypes> = ({ match: { params } }) => {
   if (!params.id) {
@@ -148,8 +190,8 @@ const DeviceDetails: React.FC<RouterMatchTypes> = ({ match: { params } }) => {
   return (
     <BaseContainer back>
       <BasicInfo basicInfo={data} />
-      {/* <RunningInfo runningInfo={data} />
-      <ParameterInfo parameterInfo={data} /> */}
+      <RunningInfo runningInfo={data?.runningInfo} />
+      <ParameterInfo parameterInfo={data?.config?.[0]} />
     </BaseContainer>
   );
 };

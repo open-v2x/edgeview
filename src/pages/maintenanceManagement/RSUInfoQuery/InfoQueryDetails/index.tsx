@@ -9,7 +9,7 @@ import { NetworkStatusOptions, PowerStatusOptions, RunStatusOptions } from '@/ut
 import { statusOptionFormat } from '@/utils';
 
 const OperatingStatus: React.FC<{ data?: Config.QueryInfoDetails[] }> = ({ data = [] }) => {
-  const dataSource = data.map(({ data: d, ...item }) => ({ ...item, ...d[0] }));
+  const dataSource = data.map(({ data: d, ...item }) => ({ ...item, ...d }));
   const columns: ProColumns<Config.QueryInfoDetails>[] = [
     {
       title: t('Device ID'),
@@ -118,7 +118,7 @@ const OperatingStatus: React.FC<{ data?: Config.QueryInfoDetails[] }> = ({ data 
 };
 
 const DataStatistics: React.FC<{ data?: Config.QueryInfoDetails[] }> = ({ data = [] }) => {
-  const dataSource = data.map(({ data: d, ...item }) => ({ ...item, ...d[0] }));
+  const dataSource = data.map(({ data: d, ...item }) => ({ ...item, ...d }));
   const columns: ProColumns<Config.QueryInfoDetails>[] = [
     {
       title: t('Device ID'),
@@ -199,7 +199,8 @@ const DeviceInfo: React.FC<{ data?: Config.QueryInfoDetails[] }> = ({ data = [] 
       valueEnum: statusOptionFormat(NetworkStatusOptions),
     },
   ];
-  const SubDeviceTable: React.FC<Config.QueryInfoDetails> = ({ data: list = [] }) => {
+  const SubDeviceTable: React.FC<{ data: Config.QueryDeviceDetails[] }> = ({ data: list = [] }) => {
+    const dataSource = list.map(({ Status: d, ...item }) => ({ ...item, ...d[0] }));
     const deviceType = [
       {
         title: t('Device ID'),
@@ -209,15 +210,11 @@ const DeviceInfo: React.FC<{ data?: Config.QueryInfoDetails[] }> = ({ data = [] 
         title: t('Device type'),
         dataIndex: 'deviceType',
       },
-      {
-        title: t('Device Name'),
-        dataIndex: 'deviceName',
-      },
     ];
     return (
       <BaseProTable
         columns={[...deviceType, ...columns]}
-        dataSource={list}
+        dataSource={dataSource}
         rowKey="deviceId"
         search={false}
         options={false}
@@ -254,10 +251,10 @@ const InfoQueryDetails: React.FC<RouterMatchTypes> = ({
 
   return (
     <BaseContainer back>
-      <ProCard title={t('Basic information')}>
-        {query.type == '1' && <OperatingStatus data={data?.data} />}
-        {query.type == '2' && <DataStatistics data={data?.data} />}
-        {query.type == '3' && <DeviceInfo data={data?.data} />}
+      <ProCard title={t('Basic Information')}>
+        {query.type == '0' && <OperatingStatus data={data?.data} />}
+        {query.type == '1' && <DataStatistics data={data?.data} />}
+        {query.type == '2' && <DeviceInfo data={data?.data} />}
       </ProCard>
     </BaseContainer>
   );

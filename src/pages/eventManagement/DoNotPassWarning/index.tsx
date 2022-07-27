@@ -8,7 +8,7 @@ import { overtakingWarningList } from '@/services/event/dnpw';
 
 const RoadSideCoordination: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const columns: ProColumns<Event.RSMListItem>[] = [
+  const columns: ProColumns<Event.DNPWListItem>[] = [
     {
       title: t('ID'),
       dataIndex: 'id',
@@ -47,7 +47,7 @@ const RoadSideCoordination: React.FC = () => {
       search: false,
     },
     {
-      title: t('Lifecycle'),
+      title: t('Request Valid Time'),
       dataIndex: ['driveSuggestion', 'lifeTime'],
       search: false,
     },

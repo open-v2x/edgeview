@@ -17,7 +17,7 @@ const CreateModelModal: React.FC<CreateModalProps> = ({ editId, success }) => {
           fieldProps: { maxLength: 64 },
           rules: [
             { required: true, message: t('Please enter the RSU device model') },
-            { pattern: /^[\u4e00-\u9fa5a-zA-Z0-9_]+$/, message: t('RSU_NAME_VALIDATE_MSG') },
+            { pattern: /^[\u4e00-\u9fa5a-zA-Z0-9_-]+$/, message: t('RSU_NAME_VALIDATE_MSG') },
           ],
         },
         {

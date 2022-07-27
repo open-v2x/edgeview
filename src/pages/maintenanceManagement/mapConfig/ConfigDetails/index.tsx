@@ -8,11 +8,7 @@ import BaseProTable from '@/components/BaseProTable';
 import OnlineStatus from '@/components/OnlineStatus';
 import CardList from '@/components/CardList';
 import CreateSendModal from '@/components/CreateSendModal';
-import {
-  DeviceOnlineStatusOptions,
-  DeviceStatusOptions,
-  SendStatusOptions,
-} from '@/utils/constants';
+import { DeviceOnlineStatusOptions, RSUStatusOptions, SendStatusOptions } from '@/utils/constants';
 import { deleteMapRSU, downloadMapConfig, mapConfigInfo, mapRSUList } from '@/services/config/map';
 import { FileTextOutlined } from '@ant-design/icons';
 import { confirmModal } from '@/components/ConfirmModal';
@@ -75,7 +71,7 @@ const BasicInfo: React.FC<{ basicInfo: Config.MapListItem | undefined }> = ({ ba
     },
   ];
   return (
-    <ProCard title={t('Basic information')}>
+    <ProCard title={t('Basic Information')}>
       <CardList infoMap={infoMap} info={basicInfo} />
     </ProCard>
   );
@@ -107,7 +103,7 @@ const SendList: React.FC<{ mapId: number }> = ({ mapId }) => {
       title: t('Device Status'),
       dataIndex: 'rsuStatus',
       valueType: 'select',
-      valueEnum: statusOptionFormat(DeviceStatusOptions),
+      valueEnum: statusOptionFormat(RSUStatusOptions),
     },
     {
       title: t('Send Status'),

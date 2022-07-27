@@ -159,7 +159,7 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
   }
   if (type === 'radar') {
     formItems[3].children!.push({
-      name: 'radarIP',
+      name: 'radarIp',
       label: t('Radar IP'),
       disabled: isDetails,
       rules: [{ pattern: IPReg, message: t('Incorrect radar IP format') }],
@@ -192,7 +192,7 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
       request={async () => {
         const { name, sn, streamUrl, radarIP, lng, lat, elevation, towards, rsuId, desc } =
           editInfo!;
-        return { name, sn, streamUrl, radarIP, lng, lat, elevation, towards, rsuId, desc };
+        return { name, sn, streamUrl, radarIp: radarIP, lng, lat, elevation, towards, rsuId, desc };
       }}
     >
       <FormItem items={formItems} />
