@@ -71,6 +71,14 @@ const CameraManagement: React.FC = () => {
       dataIndex: 'rsuName',
       valueType: 'select',
       request: fetchDeviceList,
+      search: false,
+    },
+    {
+      title: t('Associate RSU'),
+      dataIndex: 'rsuId',
+      valueType: 'select',
+      request: fetchDeviceList,
+      hideInTable: true,
     },
     {
       title: t('Creation Time'),
