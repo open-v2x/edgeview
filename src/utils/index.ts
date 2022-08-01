@@ -19,3 +19,10 @@ export const downloadFile = (url: string, name: string) => {
   a.click();
   a.remove();
 };
+
+export const dataFormat = (data: number, unit?: string | React.ReactNode) => {
+  if (data) {
+    return `${Math.round(data * 100) / 100} ${unit || ''}`;
+  }
+  return '-';
+};

@@ -4,6 +4,7 @@ import BaseProTable from '../BaseProTable';
 import { statusOptionFormat } from '@/utils';
 import { ICWCollisionTypeOptions } from '@/utils/constants';
 import { intersectionCollisionWarningList } from '@/services/event/icw';
+import LonLatUnit from '../LonLatUnit';
 
 type CollisionWarningProps = {
   type: 'ICW' | 'VRUCW';
@@ -17,11 +18,13 @@ const CollisionWarningList: React.FC<CollisionWarningProps> = ({ type, navigator
     {
       title: t('Sensor Longitude'),
       dataIndex: ['sensorPos', 'lon'],
+      render: (_, { sensorPos: { lon } }) => <LonLatUnit data={lon} />,
       search: false,
     },
     {
       title: t('Sensor Latitude'),
       dataIndex: ['sensorPos', 'lat'],
+      render: (_, { sensorPos: { lat } }) => <LonLatUnit data={lat} />,
       search: false,
     },
     {

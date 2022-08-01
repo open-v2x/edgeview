@@ -1,7 +1,13 @@
 import request from '../request';
 
 // 摄像头列表
-export async function cameraList(params: API.PageParams) {
+export async function cameraList({
+  countryName,
+  ...params
+}: API.PageParams & { countryName?: string[]; areaCode?: string }) {
+  if (countryName?.length) {
+    params.areaCode = countryName[countryName.length - 1];
+  }
   return request<API.ListResult<Device.CameraListItem>>(`/v1/cameras`, {
     method: 'GET',
     params,

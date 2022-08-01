@@ -5,7 +5,7 @@ import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
 import { eventInfoList } from '@/services/event/rsi';
 import { EventClassOptions, EventSourceOptions, EventTypeOptions } from '@/utils/constants';
-import { statusOptionFormat } from '@/utils';
+import { dataFormat, statusOptionFormat } from '@/utils';
 
 const RSIList: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -44,11 +44,13 @@ const RSIList: React.FC = () => {
       title: t('Event Confidence'),
       dataIndex: 'eventConfidence',
       search: false,
+      render: (_, { eventConfidence }: Event.RSIListItem) => eventConfidence || '-',
     },
     {
       title: t('Occurrence Area Radius'),
       dataIndex: 'eventRadius',
       search: false,
+      render: (_, { eventRadius }: Event.RSIListItem) => dataFormat(eventRadius / 10, 'm'),
     },
     {
       title: t('Event Description'),
