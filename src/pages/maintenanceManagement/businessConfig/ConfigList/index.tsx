@@ -26,7 +26,10 @@ const ParameterInfo: React.FC<ParameterInfoType> = ({ infoMap, info }) => {
   return (
     <>
       {infoMap.map(({ key, label, unit, render }) => {
-        const text = `${label}：${render?.(info![key]) || info![key] || ''} ${unit ?? t('bars/s')}`;
+        const value = info![key];
+        const text = `${label}：${render?.(value) || value || '-'} ${
+          value ? unit ?? t('bars/s') : ''
+        }`;
         return (
           <div key={key} className="ellipsis">
             <Tooltip title={text}>{text}</Tooltip>
