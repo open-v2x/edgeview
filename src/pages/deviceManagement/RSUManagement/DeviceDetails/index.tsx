@@ -157,7 +157,7 @@ const RunningInfo: React.FC<{ runningInfo: Config.QueryStatusDetails | undefined
     },
   ];
   return (
-    <ProCard title={t('Running information')} className="parameter-info" gutter={[20, 20]}>
+    <ProCard title={t('Running Information')} className="parameter-info" gutter={[20, 20]}>
       {infoMap.map(({ title, groupKey, colSpan, children }) => (
         <ProCard key={title} colSpan={colSpan} bordered>
           <div className="parameter-title t-center">{title}</div>
