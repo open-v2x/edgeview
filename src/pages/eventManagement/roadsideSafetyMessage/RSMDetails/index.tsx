@@ -4,6 +4,8 @@ import ProCard from '@ant-design/pro-card';
 import BaseContainer from '@/components/BaseContainer';
 import CardList from '@/components/CardList';
 import { DataSourceOptions, ParticipantTypeOptions } from '@/utils/constants';
+import { dataFormat } from '@/utils';
+import LonLatUnit from '@/components/LonLatUnit';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Event.RSMListItem | undefined }> = ({ basicInfo = {} }) => {
@@ -33,18 +35,22 @@ const BasicInfo: React.FC<{ basicInfo: Event.RSMListItem | undefined }> = ({ bas
     {
       key: 'speed',
       label: t('Speed'),
+      render: ({ speed }: Event.RSMListItem) => dataFormat(speed * 0.02 * 3.6, 'km/h'),
     },
     {
       key: 'heading',
       label: t('Heading'),
+      render: ({ heading }: Event.RSMListItem) => dataFormat(heading * 0.0125, '°'),
     },
     {
       key: 'lon',
       label: t('Longitude'),
+      render: ({ lon }: Event.RSMListItem) => <LonLatUnit data={lon} />,
     },
     {
       key: 'lat',
       label: t('Latitude'),
+      render: ({ lat }: Event.RSMListItem) => <LonLatUnit data={lat} />,
     },
     {
       key: 'createTime',

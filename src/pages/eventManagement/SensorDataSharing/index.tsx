@@ -5,6 +5,7 @@ import BaseProTable from '@/components/BaseProTable';
 import { DSDEquipmentTypeOptions } from '@/utils/constants';
 import { statusOptionFormat } from '@/utils';
 import { sensorDataSharingList } from '@/services/event/sds';
+import LonLatUnit from '@/components/LonLatUnit';
 
 const SensorDataSharing: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -21,11 +22,13 @@ const SensorDataSharing: React.FC = () => {
       title: t('Sensor Longitude'),
       dataIndex: ['sensorPos', 'lon'],
       search: false,
+      render: (_, { sensorPos: { lon } }) => <LonLatUnit data={lon} />,
     },
     {
       title: t('Sensor Latitude'),
       dataIndex: ['sensorPos', 'lat'],
       search: false,
+      render: (_, { sensorPos: { lat } }) => <LonLatUnit data={lat} />,
     },
     { title: t('Millisecond Time'), dataIndex: 'secMark', search: false },
     { title: t('Vehicle ID'), dataIndex: 'egoID', search: false },
@@ -33,11 +36,13 @@ const SensorDataSharing: React.FC = () => {
       title: t('Vehicle Longitude'),
       dataIndex: ['egoPos', 'lon'],
       search: false,
+      render: (_, { egoPos: { lon } }) => <LonLatUnit data={lon} />,
     },
     {
       title: t('Vehicle Latitude'),
       dataIndex: ['egoPos', 'lat'],
       search: false,
+      render: (_, { egoPos: { lat } }) => <LonLatUnit data={lat} />,
     },
   ];
   return (

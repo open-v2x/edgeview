@@ -1,7 +1,13 @@
 import request from '../request';
 
 // 雷达列表
-export async function radarList(params: API.PageParams) {
+export async function radarList({
+  countryName,
+  ...params
+}: API.PageParams & { countryName?: string[]; areaCode?: string }) {
+  if (countryName?.length) {
+    params.areaCode = countryName[countryName.length - 1];
+  }
   return request<API.ListResult<Device.CameraListItem>>(`/v1/radars`, {
     method: 'GET',
     params,

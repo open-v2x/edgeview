@@ -3,8 +3,9 @@ import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
 import { CoordinationInfoTypeOptions, DriveBehaviorTypeOptions } from '@/utils/constants';
-import { statusOptionFormat } from '@/utils';
+import { dataFormat, statusOptionFormat } from '@/utils';
 import { cooperativeLaneChangeList } from '@/services/event/clc';
+import LonLatUnit from '@/components/LonLatUnit';
 
 const CooperativeLaneChange: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -12,8 +13,18 @@ const CooperativeLaneChange: React.FC = () => {
     { title: t('ID'), dataIndex: 'id', search: false },
     { title: t('Message Number'), dataIndex: 'msgID', search: false },
     { title: t('Millisecond Time'), dataIndex: 'secMark', search: false },
-    { title: t('Longitude'), dataIndex: ['refPos', 'lon'], search: false },
-    { title: t('Latitude'), dataIndex: ['refPos', 'lat'], search: false },
+    {
+      title: t('Longitude'),
+      dataIndex: ['refPos', 'lon'],
+      search: false,
+      render: (_, { refPos: { lon } }) => <LonLatUnit data={lon} />,
+    },
+    {
+      title: t('Latitude'),
+      dataIndex: ['refPos', 'lat'],
+      search: false,
+      render: (_, { refPos: { lat } }) => <LonLatUnit data={lat} />,
+    },
     { title: t('Vehicle ID'), dataIndex: 'vehID', search: false },
     {
       title: t('Driving Behavior'),
@@ -22,7 +33,12 @@ const CooperativeLaneChange: React.FC = () => {
       valueEnum: statusOptionFormat(DriveBehaviorTypeOptions),
       search: false,
     },
-    { title: t('Request Valid Time'), dataIndex: ['driveSuggestion', 'lifeTime'], search: false },
+    {
+      title: t('Request Valid Time'),
+      dataIndex: ['driveSuggestion', 'lifeTime'],
+      search: false,
+      render: (_, { driveSuggestion: { lifeTime } }) => dataFormat(lifeTime * 10, 'ms'),
+    },
     {
       title: t('Coordination Information'),
       dataIndex: 'info',
