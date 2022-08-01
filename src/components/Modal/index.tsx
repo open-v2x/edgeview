@@ -57,7 +57,7 @@ const Modal: React.FC<ModalProps> = ({
       omitNil={omitNil}
       size="large"
       layout={layout}
-      modalProps={{ ...modalProps, destroyOnClose: true }}
+      modalProps={{ ...modalProps, destroyOnClose: true, maskClosable: false }}
       submitter={
         isDetails
           ? false
