@@ -7,6 +7,15 @@ import { QueryIntervalOptions, QueryTypeOptions } from '@/utils/constants';
 import { infoQueryList } from '@/services/config/query';
 import CreateQueryModal from './components/CreateQueryModal';
 import { statusOptionFormat } from '@/utils';
+import { deviceList } from '@/services/device/device';
+
+const fetchDeviceList = async () => {
+  const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
+  return data.map(({ id, rsuName, rsuEsn }: Device.DeviceListItem) => ({
+    label: `${rsuName}（Esn: ${rsuEsn}）`,
+    value: id,
+  }));
+};
 
 const InfoQueryList: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -15,6 +24,14 @@ const InfoQueryList: React.FC = () => {
       title: t('Query RSU'),
       dataIndex: 'rsus',
       render: (_, { rsus }) => rsus.map(({ rsuName }) => rsuName).join('、'),
+      search: false,
+    },
+    {
+      title: t('Query RSU'),
+      dataIndex: 'rsuId',
+      valueType: 'select',
+      request: fetchDeviceList,
+      hideInTable: true,
     },
     {
       title: t('Query Information Type'),
