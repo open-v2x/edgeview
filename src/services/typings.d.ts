@@ -32,7 +32,7 @@ declare namespace API {
   };
 
   type PageParams = {
-    sort?: number;
+    sortDir?: 'asc' | 'desc';
     pageNum?: number;
     pageSize?: number;
   };
