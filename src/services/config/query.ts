@@ -22,3 +22,10 @@ export async function infoQueryDetails(id: number) {
     method: 'GET',
   });
 }
+
+// 删除信息查询
+export async function deleteInfoQuery(id: number) {
+  return request(`/v1/rsu_queries/${id}`, {
+    method: 'DELETE',
+  });
+}

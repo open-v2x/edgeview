@@ -44,6 +44,12 @@ const SensorDataSharing: React.FC = () => {
       search: false,
       render: (_, { egoPos: { lat } }) => <LonLatUnit data={lat} />,
     },
+    {
+      title: t('Reporting Time'),
+      dataIndex: 'createTime',
+      sorter: true,
+      search: false,
+    },
   ];
   return (
     <BaseContainer>

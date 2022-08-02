@@ -45,6 +45,12 @@ const CollisionWarningList: React.FC<CollisionWarningProps> = ({ type, navigator
         </a>,
       ],
     },
+    {
+      title: t('Reporting Time'),
+      dataIndex: 'createTime',
+      sorter: true,
+      search: false,
+    },
   ];
   return (
     <BaseProTable
