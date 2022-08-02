@@ -45,6 +45,12 @@ const CooperativeLaneChange: React.FC = () => {
       valueType: 'select',
       valueEnum: statusOptionFormat(CoordinationInfoTypeOptions),
     },
+    {
+      title: t('Reporting Time'),
+      dataIndex: 'createTime',
+      sorter: true,
+      search: false,
+    },
   ];
   return (
     <BaseContainer>

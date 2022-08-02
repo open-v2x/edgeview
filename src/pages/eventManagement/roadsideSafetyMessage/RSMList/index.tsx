@@ -66,6 +66,7 @@ const RSMList: React.FC = () => {
     {
       title: t('Reporting Time'),
       dataIndex: 'createTime',
+      sorter: true,
       search: false,
     },
   ];

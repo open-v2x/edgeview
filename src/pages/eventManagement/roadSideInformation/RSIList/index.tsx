@@ -44,7 +44,6 @@ const RSIList: React.FC = () => {
       title: t('Event Confidence'),
       dataIndex: 'eventConfidence',
       search: false,
-      render: (_, { eventConfidence }: Event.RSIListItem) => eventConfidence || '-',
     },
     {
       title: t('Occurrence Area Radius'),
@@ -65,6 +64,7 @@ const RSIList: React.FC = () => {
     {
       title: t('Reporting Time'),
       dataIndex: 'createTime',
+      sorter: true,
       search: false,
     },
   ];
