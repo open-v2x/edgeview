@@ -165,7 +165,7 @@ const RunningInfo: React.FC<{ runningInfo: Config.QueryStatusDetails | undefined
             {children.map(({ key, span, label }) => (
               <Col key={key} span={span}>
                 <span>{label}：</span>
-                {runningInfo[groupKey]?.[key]}
+                {runningInfo[groupKey]?.[key] || '-'}
               </Col>
             ))}
           </Row>
