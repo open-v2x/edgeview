@@ -38,13 +38,13 @@ jobs:
       - name: apply to all-in-one environment
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.AIO_MASTER_HOST }}
-          username: ${{ secrets.AIO_MASTER_USERNAME }}
-          key: ${{ secrets.AIO_MASTER_KEY }}
-          port: ${{ secrets.AIO_MASTER_PORT }}
+          host: ${{ secrets.AIO_ALBANY_HOST }}
+          username: ${{ secrets.AIO_ALBANY_USERNAME }}
+          key: ${{ secrets.AIO_ALBANY_KEY }}
+          port: ${{ secrets.AIO_ALBANY_PORT }}
           script: |
             set -e
-            rm -rf master.zip && wget https://gitee.com/open-v2x/docs/repository/archive/master.zip
-            rm -rf docs-master && unzip master.zip
-            cd docs-master/src/
+            rm -rf albany.zip && wget https://gitee.com/open-v2x/docs/repository/archive/albany.zip
+            rm -rf docs-albany && unzip albany.zip
+            cd docs-albany/src/
             sh install.sh
