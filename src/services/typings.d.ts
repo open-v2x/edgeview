@@ -92,6 +92,32 @@ declare namespace Device {
     runningInfo: Config.QueryStatusDetails; // 运行信息
     config: Config.ParameterInfo[]; // 配置参数
   };
+  type CPURunningInfo = {
+    load: number;
+    uti: number;
+    time: string;
+  };
+  type DiskRunningInfo = {
+    rxByte: number;
+    wxByte: number;
+    time: string;
+  };
+  type MemRunningInfo = {
+    total: number;
+    used: number;
+    time: string;
+  };
+  type NetRunningInfo = {
+    read: number;
+    write: number;
+    time: string;
+  };
+  type DeviceRunningInfo = {
+    cpu: CPURunningInfo[];
+    disk: DiskRunningInfo[];
+    mem: MemRunningInfo[];
+    net: NetRunningInfo[];
+  };
 
   type ModelListItem = {
     id?: number;

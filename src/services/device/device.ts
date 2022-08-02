@@ -44,6 +44,13 @@ export async function deviceInfo(id: number) {
   });
 }
 
+// RSU 设备详情-运行信息
+export async function runningInfo(id: number) {
+  return request<Device.DeviceRunningInfo>(`/v1/rsus/${id}/running`, {
+    method: 'GET',
+  });
+}
+
 // 编辑 RSU 设备
 export async function updateDevice(id: number, data: Device.CreateDeviceParams) {
   return request<Device.DeviceListItem>(`/v1/rsus/${id}`, {

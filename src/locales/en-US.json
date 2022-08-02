@@ -406,5 +406,7 @@
   "Equipment Type": "Equipment Type",
   "OBU": "OBU",
   "VRU": "VRU",
-  "Participant Information": "Participant Information"
+  "Participant Information": "Participant Information",
+  "CPU Core Count": "CPU Core Count",
+  "Are you sure you want to delete this query?": "Are you sure you want to delete this query?"
 }
