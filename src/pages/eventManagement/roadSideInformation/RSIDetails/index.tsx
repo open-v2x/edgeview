@@ -13,6 +13,7 @@ import {
 } from '@uiw/react-amap';
 import { EventClassOptions, EventSourceOptions, EventTypeOptions } from '@/utils/constants';
 import { eventInfoDetail } from '@/services/event/rsi';
+import { dataFormat } from '@/utils';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Event.RSIDetails | undefined }> = ({ basicInfo = {} }) => {
@@ -20,12 +21,12 @@ const BasicInfo: React.FC<{ basicInfo: Event.RSIDetails | undefined }> = ({ basi
     {
       key: 'eventClass',
       label: t('Event Classification'),
-      render: ({ eventClass }: { eventClass: string }) => EventClassOptions[eventClass],
+      render: ({ eventClass }: Event.RSIDetails) => EventClassOptions[eventClass],
     },
     {
       key: 'eventType',
       label: t('Event Type'),
-      render: ({ eventType }: { eventType: string }) => EventTypeOptions[eventType],
+      render: ({ eventType }: Event.RSIDetails) => EventTypeOptions[eventType],
     },
     {
       key: 'duration',
@@ -34,15 +35,17 @@ const BasicInfo: React.FC<{ basicInfo: Event.RSIDetails | undefined }> = ({ basi
     {
       key: 'eventSource',
       label: t('Event Source'),
-      render: ({ eventSource }: { eventSource: string }) => EventSourceOptions[eventSource],
+      render: ({ eventSource }: Event.RSIDetails) => EventSourceOptions[eventSource],
     },
     {
       key: 'eventConfidence',
       label: t('Event Confidence'),
+      render: ({ eventConfidence }: Event.RSIDetails) => eventConfidence || '-',
     },
     {
       key: 'eventRadius',
       label: t('Occurrence Area Radius'),
+      render: ({ eventRadius }: Event.RSIDetails) => dataFormat(eventRadius / 10, 'm'),
     },
     {
       key: 'eventDescription',

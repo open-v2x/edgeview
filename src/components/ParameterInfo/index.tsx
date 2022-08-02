@@ -81,13 +81,16 @@ const ParameterInfo: React.FC<{ parameterInfo: Config.ParameterInfo | undefined 
         <ProCard key={title} colSpan={12} bordered>
           <div className="parameter-title t-center">{title}</div>
           <Row gutter={[16, 14]}>
-            {children.map(({ key, span, label, render, unit }) => (
-              <Col key={key} span={span}>
-                <span>{label}：</span>
-                {render?.(parameterInfo[groupKey]?.[key]) || parameterInfo[groupKey]?.[key]}
-                {unit ?? ` ${t('bars/s')}`}
-              </Col>
-            ))}
+            {children.map(({ key, span, label, render, unit }) => {
+              const value = parameterInfo[groupKey]?.[key];
+              return (
+                <Col key={key} span={span}>
+                  <span>{label}：</span>
+                  {render?.(value) || value || '-'}
+                  {value ? unit ?? ` ${t('bars/s')}` : ''}
+                </Col>
+              );
+            })}
           </Row>
         </ProCard>
       ))}

@@ -4,9 +4,20 @@ import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
 import { QueryIntervalOptions, QueryTypeOptions } from '@/utils/constants';
-import { infoQueryList } from '@/services/config/query';
+import { deleteInfoQuery, infoQueryList } from '@/services/config/query';
 import CreateQueryModal from './components/CreateQueryModal';
 import { statusOptionFormat } from '@/utils';
+import { deviceList } from '@/services/device/device';
+import { Divider } from 'antd';
+import { confirmModal } from '@/components/ConfirmModal';
+
+const fetchDeviceList = async () => {
+  const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
+  return data.map(({ id, rsuName, rsuEsn }: Device.DeviceListItem) => ({
+    label: `${rsuName}（Esn: ${rsuEsn}）`,
+    value: id,
+  }));
+};
 
 const InfoQueryList: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -15,6 +26,14 @@ const InfoQueryList: React.FC = () => {
       title: t('Query RSU'),
       dataIndex: 'rsus',
       render: (_, { rsus }) => rsus.map(({ rsuName }) => rsuName).join('、'),
+      search: false,
+    },
+    {
+      title: t('Query RSU'),
+      dataIndex: 'rsuId',
+      valueType: 'select',
+      request: fetchDeviceList,
+      hideInTable: true,
     },
     {
       title: t('Query Information Type'),
@@ -53,6 +72,20 @@ const InfoQueryList: React.FC = () => {
           }
         >
           {t('Details')}
+        </a>,
+        <Divider key="delete-divider" type="vertical" />,
+        <a
+          key="delete"
+          onClick={() =>
+            confirmModal({
+              id,
+              content: t('Are you sure you want to delete this query?'),
+              modalFn: deleteInfoQuery,
+              actionRef,
+            })
+          }
+        >
+          {t('Delete')}
         </a>,
       ],
     },

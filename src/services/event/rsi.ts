@@ -1,13 +1,7 @@
 import request from '../request';
 
 // 事件信息列表
-export async function eventInfoList({
-  countryName,
-  ...params
-}: API.PageParams & { countryName?: string[]; areaCode?: string }) {
-  if (countryName?.length) {
-    params.areaCode = countryName[countryName.length - 1];
-  }
+export async function eventInfoList(params: API.PageParams) {
   return request<API.ListResult<Event.RSIListItem>>(`/v1/events`, {
     method: 'GET',
     params,

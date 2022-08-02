@@ -200,7 +200,7 @@ const CreateRSUConfigModal: React.FC<CreateModalProps> = ({ editId, success }) =
     },
     {
       key: 'template',
-      title: t('Parameter configuration template'),
+      title: t('Parameter Configuration Template'),
       components: configMap.map(({ title, children }) => (
         <ProCard key={title} bordered className="parameter-info">
           <div className="parameter-title t-center">{title}</div>
@@ -215,7 +215,7 @@ const CreateRSUConfigModal: React.FC<CreateModalProps> = ({ editId, success }) =
           dataSource={deviceList}
           headerTitle={
             <div className="ant-pro-form-group-title">
-              {t('Parameter configuration applicable RSU')}
+              {t('Parameter Configuration Applicable RSU')}
             </div>
           }
           pagination={{ pageSize: 5 }}

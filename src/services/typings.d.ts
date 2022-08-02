@@ -32,7 +32,7 @@ declare namespace API {
   };
 
   type PageParams = {
-    type?: 'all' | 'page';
+    sort?: number;
     pageNum?: number;
     pageSize?: number;
   };
@@ -285,18 +285,17 @@ declare namespace Config {
 declare namespace Event {
   type RSIListItem = {
     id: number;
-    eventClass: string; // 事件分类
-    eventType: string; // 事件类型
-    countryName: string; // 发生区域-国
-    provinceName: string; // 发生区域-省
-    cityName: string; // 发生区域-市
-    areaName: string; // 发生区域-区
-    address: string; // 发生地点
-    createTime: string; // 上报时间
+    duration: number;
+    eventClass: string;
+    eventType: number;
+    eventSource: string;
+    eventConfidence: number;
+    eventRadius: number;
+    eventDescription: string;
+    eventPriority: string;
+    createTime: string;
   };
   type RSIDetails = RSIListItem & {
-    id: number;
-    createTime: string; // 上报时间
     rsuName: string; // 下发 RSU
     eventPosition: { lon: number; lat: number }; // 经纬度
   };
@@ -306,6 +305,9 @@ declare namespace Event {
     ptcId: number; // 目标 ID
     ptcType: string; // 参与者类型
     source: number; // 数据来源
+    secMark: number; // 1分钟中的毫秒级时刻
+    speed: number; // 速度
+    heading: number; // 航向角
     lon: number; // 经度
     lat: number; // 纬度
     createTime: string; // 上报时间

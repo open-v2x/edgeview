@@ -5,7 +5,8 @@ import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
 import { roadSideMessageList } from '@/services/event/rsm';
 import { DataSourceOptions, ParticipantTypeOptions } from '@/utils/constants';
-import { statusOptionFormat } from '@/utils';
+import { dataFormat, statusOptionFormat } from '@/utils';
+import LonLatUnit from '@/components/LonLatUnit';
 
 const RSMList: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -42,25 +43,30 @@ const RSMList: React.FC = () => {
       title: t('Speed'),
       dataIndex: 'speed',
       search: false,
+      render: (_, { speed }: Event.RSMListItem) => dataFormat(speed * 0.02 * 3.6, 'km/h'),
     },
     {
       title: t('Heading'),
       dataIndex: 'heading',
       search: false,
+      render: (_, { heading }: Event.RSMListItem) => dataFormat(heading * 0.0125, '°'),
     },
     {
       title: t('Longitude'),
       dataIndex: 'lon',
       search: false,
+      render: (_, { lon }: Event.RSMListItem) => <LonLatUnit data={lon} />,
     },
     {
       title: t('Latitude'),
       dataIndex: 'lat',
       search: false,
+      render: (_, { lat }: Event.RSMListItem) => <LonLatUnit data={lat} />,
     },
     {
       title: t('Reporting Time'),
       dataIndex: 'createTime',
+      sorter: true,
       search: false,
     },
   ];

@@ -143,7 +143,7 @@ body,
         padding-left: 3% !important;
       }
 
-      .ant-form-item {
+      .ant-form-item > .ant-form-item-row {
         flex-direction: column;
 
         .ant-form-item-label {
@@ -253,8 +253,12 @@ body,
       .ant-pro-form-group {
         padding: 0 20px;
 
-        .ant-form-item .ant-form-item-label label {
-          color: #70727a;
+        .ant-pro-form-group-container {
+          flex-wrap: nowrap;
+
+          .ant-form-item .ant-form-item-label label {
+            color: #70727a;
+          }
         }
       }
 

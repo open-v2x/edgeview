@@ -51,7 +51,10 @@ const BaseProTable: React.FC<BaseProTableType> = (props) => {
       columns={columns}
       actionRef={actionRef}
       dataSource={dataSource}
-      request={async (param) => {
+      request={async (param, { createTime }) => {
+        if (createTime) {
+          param.sort = createTime === 'ascend' ? 1 : 2;
+        }
         const res = await request?.(param);
         return { data: res?.data, total: res?.total, success: true };
       }}
