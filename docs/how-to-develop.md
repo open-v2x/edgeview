@@ -12,12 +12,13 @@
 
 - node 环境
 
-  - package.json 中要求：`"node": ">=10.0.0"`
-  - 验证 nodejs 版本
+  - package.json 中要求：`"node": ">=14.17.0"`
+  - 验证 nodejs 版本，请确认 nodejs 版本符合要求
 
     ```shell
     node -v
     ```
+    > 推荐使用 [nvm](https://github.com/nvm-sh/nvm) 管理 node 版本
 
 - yarn
 
@@ -34,6 +35,14 @@
     ```shell
     yarn install
     ```
+
+> 如果下载出现意外请设置国内镜像
+
+> `npm config set registry http://registry.npmmirror.com`
+
+> 或者
+
+> `yarn config set registry http://registry.npmmirror.com`
 
 - 准备好可用的后端
 

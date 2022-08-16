@@ -2,7 +2,7 @@ FROM node:14-alpine AS builder
 
 COPY ./ /root/edgeview/
 WORKDIR /root/edgeview
-RUN yarn config set registry https://registry.npm.taobao.org/ \
+RUN yarn config set registry http://registry.npmmirror.com \
   && yarn config set network-timeout 300000 \
   && yarn install \
   && yarn run build
