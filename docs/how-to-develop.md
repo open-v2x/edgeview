@@ -88,6 +88,12 @@
 docker build -t openv2x/edgeview:latest .
 ```
 
+## 如何启用镜像
+
+```js
+docker run -d -p <映射端口>:80 -e API_SERVER='http://<dandelion所在环境ip>/api' -e MAP_KEY=<高德地图key> -v <绝对路径>/deploy/edgeview.conf:/etc/nginx/conf.d/default.conf -v <绝对路径>/deploy/nginx.conf:/etc/nginx/nginx.conf --name=edgeview openv2x/edgeview:latest
+```
+
 ## 如何贡献代码
 
 参考 [v2x_contribution](https://github.com/open-v2x/docs/blob/master/src/v2x_contribution-zh_CN.md) 提交
