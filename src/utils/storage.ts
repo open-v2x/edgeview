@@ -1,4 +1,4 @@
-const V2X = 'v2v_degeview_';
+const V2X = 'v2x_edgeview_';
 
 export const clearStorage = () => {
   const locale = localStorage.getItem('umi_locale');
