@@ -43,7 +43,7 @@ const CreateDeviceModal: React.FC<CreateModalProps & { isRegister?: boolean }> =
           disabled: isRegister,
           rules: [
             { required: true, message: t('Please enter the RSU serial number') },
-            { pattern: /^[a-zA-Z0-9_]+$/, message: t('SERIAL_NUMBER_VALIDATE_MSG') },
+            { pattern: /^[a-zA-Z0-9_-]+$/, message: t('SERIAL_NUMBER_VALIDATE_MSG') },
           ],
         },
       ],
