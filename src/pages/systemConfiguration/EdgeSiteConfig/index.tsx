@@ -13,7 +13,7 @@ const EdgeSiteConfig: React.FC = () => {
     name: '',
     mqtt_config: {
       host: '',
-      port: 0,
+      port: 1883,
       username: '',
       password: '',
     },

@@ -28,7 +28,7 @@ const UpdateSiteConfigModal: React.FC<UpdateSiteConfigProps> = ({ info = {}, suc
         {
           required: true,
           name: 'host',
-          label: 'Host',
+          label: 'MQTT Host',
           rules: [
             { required: true, message: t('Please enter host') },
             { pattern: IPReg, message: t('Incorrect host format') },
@@ -37,7 +37,7 @@ const UpdateSiteConfigModal: React.FC<UpdateSiteConfigProps> = ({ info = {}, suc
         {
           required: true,
           name: 'port',
-          label: 'Port',
+          label: 'MQTT Port',
           rules: [{ required: true, message: t('Please enter port') }],
         },
       ],
@@ -48,14 +48,14 @@ const UpdateSiteConfigModal: React.FC<UpdateSiteConfigProps> = ({ info = {}, suc
         {
           required: true,
           name: 'username',
-          label: t('Username'),
+          label: `MQTT ${t('Username')}`,
           rules: [{ required: true, message: t('Please enter username') }],
         },
         {
           type: 'password',
           required: true,
           name: 'password',
-          label: t('Password'),
+          label: `MQTT ${t('Password')}`,
           rules: [{ required: true, message: t('Please enter password') }],
         },
       ],
