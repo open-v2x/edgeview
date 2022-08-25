@@ -1,8 +1,10 @@
 import React, { useRef } from 'react';
 import type { ProColumns, ActionType } from '@ant-design/pro-table';
 import BaseProTable from '@/components/BaseProTable';
-import { notRegisterDeviceList } from '@/services/device/device';
+import { deleteTemporaryDevice, notRegisterDeviceList } from '@/services/device/device';
 import CreateDeviceModal from '../CreateDeviceModal';
+import { Divider } from 'antd';
+import { confirmModal } from '@/components/ConfirmModal';
 
 const columns: ProColumns<Device.DeviceListItem>[] = [
   {
@@ -34,6 +36,20 @@ const RegisteredList: React.FC = () => {
           editInfo={row}
           success={() => actionRef.current?.reload()}
         />,
+        <Divider key="edit-divider" type="vertical" />,
+        <a
+          key="delete"
+          onClick={() =>
+            confirmModal({
+              id: row.id,
+              content: t('Are you sure you want to delete this device?'),
+              modalFn: deleteTemporaryDevice,
+              actionRef,
+            })
+          }
+        >
+          {t('Delete')}
+        </a>,
       ],
     },
   ];

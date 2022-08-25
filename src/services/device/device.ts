@@ -65,3 +65,10 @@ export async function deleteDevice(id: number) {
     method: 'DELETE',
   });
 }
+
+// 删除未注册 RSU 设备
+export async function deleteTemporaryDevice(id: number) {
+  return request(`/v1/rsu_tmps/${id}`, {
+    method: 'DELETE',
+  });
+}
