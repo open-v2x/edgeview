@@ -45,7 +45,7 @@
   "RSU_NAME_VALIDATE_MSG": "仅支持中文、字母、数字、下划线、中划线",
   "SERIAL_NUMBER_TIP": "仅支持字母、数字、下划线，长度阈值为64个字符",
   "Please enter the RSU serial number": "请输入 RSU 序列号",
-  "SERIAL_NUMBER_VALIDATE_MSG": "仅支持字母、数字、下划线、中划线",
+  "SERIAL_NUMBER_VALIDATE_MSG": "仅支持字母、数字、下划线",
   "Please select an installation area": "请选择安装区域",
   "Please enter a specific location": "请输入具体位置",
   "Please enter RSU ID": "请输入 RSU ID",
