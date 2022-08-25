@@ -45,7 +45,7 @@
   "RSU_NAME_VALIDATE_MSG": "Only supports Chinese, letters, numbers, underscores, and underscores",
   "SERIAL_NUMBER_TIP": "Only letters, numbers, and underscores are supported, and the length threshold is 64 characters",
   "Please enter the RSU serial number": "Please enter the RSU serial number",
-  "SERIAL_NUMBER_VALIDATE_MSG": "Only letters, numbers, underscores and strikethrough are supported",
+  "SERIAL_NUMBER_VALIDATE_MSG": "Only letters, numbers, underscores are supported",
   "Please select an installation area": "Please select an installation area",
   "Please enter a specific location": "Please enter a specific location",
   "Please enter RSU ID": "Please enter RSU ID",
