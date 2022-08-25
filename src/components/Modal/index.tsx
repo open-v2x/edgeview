@@ -9,6 +9,7 @@ type ModalProps = {
   title: string | React.ReactNode;
   submitForm: (formData: any) => Promise<boolean | void>;
   children: React.ReactNode | React.ReactNode[];
+  finishFailed?: (formData: any) => void;
   trigger?: JSX.Element;
   className?: string;
   width?: number;
@@ -35,6 +36,7 @@ const Modal: React.FC<ModalProps> = ({
   modalProps = {},
   layout = 'vertical',
   submitForm,
+  finishFailed,
   editId,
   isDetails,
   params,
@@ -77,6 +79,7 @@ const Modal: React.FC<ModalProps> = ({
         );
         return true;
       }}
+      onFinishFailed={(values) => finishFailed?.(values)}
       params={params || { id: editId }}
       request={params || editId ? request : undefined}
     >
