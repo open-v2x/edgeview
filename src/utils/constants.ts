@@ -199,3 +199,10 @@ export const SampleModeOptions = {
   ByAll: t('Global sampling'),
   ByID: t('Sampling by ID'),
 };
+
+// 边缘站点配置模式类型
+export const SiteModeTypeOptions = {
+  edge: t('Edge mode'),
+  center: t('Center mode'),
+  coexist: t('Coexist mode'),
+};

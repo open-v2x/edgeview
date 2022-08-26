@@ -330,6 +330,7 @@ declare namespace Event {
 declare namespace System {
   type UpdateEdgeNameParams = {
     name: string;
+    mode: string;
   };
   type UpdateEdgeConfigParams = {
     mqtt_config: {

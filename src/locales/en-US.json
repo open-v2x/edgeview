@@ -379,5 +379,12 @@
   "Hardware Version": "Hardware Version",
   "Organization": "Organization",
   "Abnormal": "Abnormal",
-  "Stop and go": "Stop and go"
+  "Stop and go": "Stop and go",
+  "Are you sure you want to delete this query?": "Are you sure you want to delete this query?",
+  "Site mode": "Site mode",
+  "Current mode": "Current mode",
+  "Edge mode": "Edge mode",
+  "Center mode": "Center mode",
+  "Coexist mode": "Coexist mode",
+  "SITE_MODE_TIPS": "Site name and connection configuration not editable while in center mode"
 }
