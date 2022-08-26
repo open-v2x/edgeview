@@ -215,3 +215,10 @@ export const ICWCollisionTypeOptions = [
 
 // SDS 设备类型
 export const DSDEquipmentTypeOptions = [t('Unknown type'), t('RSU'), t('OBU'), t('VRU')];
+
+// 边缘站点配置模式类型
+export const SiteModeTypeOptions = {
+  edge: t('Edge mode'),
+  center: t('Center mode'),
+  coexist: t('Coexist mode'),
+};

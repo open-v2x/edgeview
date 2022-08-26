@@ -5,12 +5,14 @@ import classNames from 'classnames';
 import UpdateSiteNameModal from './components/UpdateSiteNameModal';
 import UpdateSiteConfigModal from './components/UpdateSiteConfigModal';
 import { systemConfig } from '@/services/system/edge';
+import { SiteModeTypeOptions } from '@/utils/constants';
 
 import styles from './index.less';
 
 const EdgeSiteConfig: React.FC = () => {
   const [config, setConfig] = useState({
     name: '',
+    mode: '',
     mqtt_config: {
       host: '',
       port: 1883,
@@ -32,6 +34,23 @@ const EdgeSiteConfig: React.FC = () => {
     <BaseContainer>
       <ProCard className={styles.edge_site}>
         <div className={classNames('f f-a-center', styles.site)}>
+          <img
+            className={styles.site_icon}
+            src="/assets/images/site_mode.svg"
+            style={{ padding: '8px' }}
+            alt=""
+          />
+          <div className={styles.site_info}>
+            <div className={styles.site_info_name}>{t('Site mode')}</div>
+            <div className={styles.site_info_desc}>
+              {t('Current mode')}：{SiteModeTypeOptions[config.mode]}
+              {config.mode === 'center' && (
+                <span style={{ marginLeft: '10px' }}>({t('SITE_MODE_TIPS')})</span>
+              )}
+            </div>
+          </div>
+        </div>
+        <div className={classNames('f f-a-center', styles.site)}>
           <img className={styles.site_icon} src="/assets/images/site_name.png" alt="" />
           <div className={styles.site_info}>
             <div className={styles.site_info_name}>{t('Edge site name')}</div>
@@ -39,7 +58,9 @@ const EdgeSiteConfig: React.FC = () => {
               {t('Current name')}：{config.name ? <span>{config.name}</span> : t('Unnamed')}
             </div>
           </div>
-          <UpdateSiteNameModal name={config.name} success={fetchSystemConfig} />
+          {config.mode !== 'center' && (
+            <UpdateSiteNameModal name={config.name} success={fetchSystemConfig} />
+          )}
         </div>
         <div className={classNames('f f-a-center', styles.site)}>
           <img className={styles.site_icon} src="/assets/images/site_config.png" alt="" />
@@ -55,7 +76,9 @@ const EdgeSiteConfig: React.FC = () => {
               )}
             </div>
           </div>
-          <UpdateSiteConfigModal info={config.mqtt_config || {}} success={fetchSystemConfig} />
+          {config.mode !== 'center' && (
+            <UpdateSiteConfigModal info={config.mqtt_config || {}} success={fetchSystemConfig} />
+          )}
         </div>
       </ProCard>
     </BaseContainer>
