@@ -268,6 +268,12 @@ const CreateRSUConfigModal: React.FC<CreateModalProps> = ({ editId, success }) =
         }
         success();
       }}
+      finishFailed={({ errorFields: [error] }) => {
+        const [errorText] = error?.errors;
+        if (errorText) {
+          message.error(errorText);
+        }
+      }}
       editId={editId}
       request={async ({ id }) => {
         const {
