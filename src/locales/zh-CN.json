@@ -408,5 +408,11 @@
   "VRU": "VRU",
   "Participant Information": "参与者信息",
   "CPU Core Count": "CPU 核心数",
-  "Are you sure you want to delete this query?": "确定要删除该信息查询吗？"
+  "Are you sure you want to delete this query?": "确定要删除该信息查询吗？",
+  "Site mode": "站点模式",
+  "Current mode": "当前模式",
+  "Edge mode": "边缘模式",
+  "Center mode": "中心模式",
+  "Coexist mode": "混合模式",
+  "SITE_MODE_TIPS": "在中心模式下，不可编辑站点名称和连接配置"
 }
