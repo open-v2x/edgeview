@@ -7,6 +7,7 @@ export const MenuTitle = [
   t('RSU Model'),
   t('Camera Device'),
   t('Radar Device'),
+  t('Lidar Device'),
   t('Maintenance'),
   t('MAP Config'),
   t('MAP Details'),

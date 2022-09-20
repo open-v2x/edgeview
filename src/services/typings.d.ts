@@ -148,6 +148,25 @@ declare namespace Device {
     rsuName: string; // RSU 名称
     createTime: string; // 创建时间
   };
+  // 激光雷达
+  type LidarItem = {
+    name: string;
+    sn: string;
+    rsuId: string;
+  };
+  type CreateLidarItem = LidarItem & {
+    lidarIP: string;
+    lng: number; // 经度
+    lat: number; // 纬度
+    elevation: number; // 海拔
+    towards: number; // 朝向
+    point: string;
+    pole: string;
+    desc: string;
+  };
+  type LidarListItem = LidarItem & {
+    id: number;
+  };
 }
 
 declare namespace Config {
