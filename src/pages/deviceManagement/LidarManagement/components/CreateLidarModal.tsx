@@ -3,7 +3,7 @@ import Modal from '@/components/Modal';
 import type { FormGroupType } from '@/components/typings';
 import { deviceList } from '@/services/device/device';
 import { createLidar, updateLidar } from '@/services/device/lidar';
-import { IPReg } from '@/utils/constants';
+import { IPReg, LatReg, LngReg } from '@/utils/constants';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
@@ -61,7 +61,10 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
           disabled: isDetails,
           min: Number.MIN_SAFE_INTEGER,
           fieldProps: { precision: 8 },
-          rules: [{ required: true, message: t('Please enter longitude') }],
+          rules: [
+            { required: true, message: t('Please enter longitude') },
+            { pattern: LngReg, message: t('Incorrect longitude format') },
+          ],
         },
         {
           type: 'digit',
@@ -71,7 +74,10 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
           disabled: isDetails,
           min: Number.MIN_SAFE_INTEGER,
           fieldProps: { precision: 8 },
-          rules: [{ required: true, message: t('Please enter latitude') }],
+          rules: [
+            { required: true, message: t('Please enter latitude') },
+            { pattern: LatReg, message: t('Incorrect latitude format') },
+          ],
         },
       ],
     },
@@ -112,7 +118,7 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
           rules: [{ required: true, message: t('Please select an associated RSU') }],
         },
         {
-          name: 'lidarIp',
+          name: 'lidarIP',
           label: t('Lidar IP'),
           required: true,
           disabled: isDetails,
@@ -177,8 +183,9 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
       editId={editInfo?.id}
       isDetails={isDetails}
       request={async () => {
-        const { name, sn } = editInfo!;
-        return { name, sn };
+        const { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc } =
+          editInfo!;
+        return { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc };
       }}
     >
       <FormItem items={formItems} />

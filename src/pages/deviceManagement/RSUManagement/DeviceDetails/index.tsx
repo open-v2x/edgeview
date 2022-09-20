@@ -5,7 +5,7 @@ import BaseContainer from '@/components/BaseContainer';
 import CardList from '@/components/CardList';
 import ParameterInfo from '@/components/ParameterInfo';
 import { deviceInfo, runningInfo } from '@/services/device/device';
-import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
+import { AreaFormatName, DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
 import CPULineChart from './components/CPULineChart';
 import MemoryLineChart from './components/MemoryLineChart';
 import DiskLineChart from './components/DiskLineChart';
@@ -35,12 +35,7 @@ const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
     {
       key: 'provinceName',
       label: t('Installation Area'),
-      render: ({
-        countryName = '',
-        provinceName = '',
-        cityName = '',
-        areaName = '',
-      }: Device.DeviceListItem) => `${countryName}${provinceName}${cityName}${areaName}`,
+      render: AreaFormatName,
     },
     {
       key: 'address',

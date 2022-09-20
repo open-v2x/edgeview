@@ -27,6 +27,7 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
 }) => {
   const lowerType = type === 'camera' ? t('camera') : t('radar');
   const upperType = type === 'camera' ? t('Camera') : t('Radar');
+
   const formItems: FormGroupType[] = [
     {
       key: 'name',
@@ -59,6 +60,25 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
           ],
         },
       ],
+    },
+    {
+      key: 'streamUrl',
+      children: [
+        {
+          required: true,
+          width: 912,
+          name: 'streamUrl',
+          label: t('Video Stream URL'),
+          disabled: isDetails,
+          rules: [
+            {
+              required: true,
+              message: t('Please enter video stream URL'),
+            },
+          ],
+        },
+      ],
+      hidden: type !== 'camera',
     },
     {
       key: 'lng',
@@ -121,6 +141,13 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
           request: fetchDeviceList,
           rules: [{ required: true, message: t('Please select an associated RSU') }],
         },
+        {
+          name: 'radarIP',
+          label: t('Radar IP'),
+          disabled: isDetails,
+          rules: [{ pattern: IPReg, message: t('Incorrect radar IP format') }],
+          hidden: type !== 'radar',
+        },
       ],
     },
     {
@@ -137,34 +164,6 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
       ],
     },
   ];
-  if (type === 'camera') {
-    formItems.splice(1, 0, {
-      key: 'streamUrl',
-      children: [
-        {
-          required: true,
-          width: 912,
-          name: 'streamUrl',
-          label: t('Video Stream URL'),
-          disabled: isDetails,
-          rules: [
-            {
-              required: true,
-              message: t('Please enter video stream URL'),
-            },
-          ],
-        },
-      ],
-    });
-  }
-  if (type === 'radar') {
-    formItems[3].children!.push({
-      name: 'radarIp',
-      label: t('Radar IP'),
-      disabled: isDetails,
-      rules: [{ pattern: IPReg, message: t('Incorrect radar IP format') }],
-    });
-  }
 
   const modalTitle = () => {
     return isDetails
@@ -192,7 +191,7 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
       request={async () => {
         const { name, sn, streamUrl, radarIP, lng, lat, elevation, towards, rsuId, desc } =
           editInfo!;
-        return { name, sn, streamUrl, radarIp: radarIP, lng, lat, elevation, towards, rsuId, desc };
+        return { name, sn, streamUrl, radarIP, lng, lat, elevation, towards, rsuId, desc };
       }}
     >
       <FormItem items={formItems} />

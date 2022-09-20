@@ -8,7 +8,12 @@ import BaseProTable from '@/components/BaseProTable';
 import OnlineStatus from '@/components/OnlineStatus';
 import CardList from '@/components/CardList';
 import CreateSendModal from '@/components/CreateSendModal';
-import { DeviceOnlineStatusOptions, RSUStatusOptions, SendStatusOptions } from '@/utils/constants';
+import {
+  AreaFormatName,
+  DeviceOnlineStatusOptions,
+  RSUStatusOptions,
+  SendStatusOptions,
+} from '@/utils/constants';
 import { deleteMapRSU, downloadMapConfig, mapConfigInfo, mapRSUList } from '@/services/config/map';
 import { FileTextOutlined } from '@ant-design/icons';
 import { confirmModal } from '@/components/ConfirmModal';
@@ -32,8 +37,7 @@ const BasicInfo: React.FC<{ basicInfo: Config.MapListItem | undefined }> = ({ ba
     {
       key: 'countryName',
       label: t('MAP Area'),
-      render: ({ countryName, provinceName, cityName, areaName }: Config.MapListItem) =>
-        `${countryName}${provinceName}${cityName}${areaName}`,
+      render: AreaFormatName,
     },
     {
       key: 'address',

@@ -91,6 +91,8 @@
   "Please enter video stream URL": "Please enter video stream URL",
   "Incorrect radar IP format": "Incorrect radar IP format",
   "Incorrect lidar IP format": "Incorrect lidar IP format",
+  "Incorrect longitude format": "Incorrect longitude format",
+  "Incorrect latitude format": "Incorrect latitude format",
   "Message ID": "Message ID",
   "Target ID": "Target ID",
   "Participant Type": "Participant Type",

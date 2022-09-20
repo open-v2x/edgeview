@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
 import { maintenanceConfigList, sendMaintenanceConfig } from '@/services/config/maintenance';
@@ -11,57 +11,50 @@ import { statusOptionFormat } from '@/utils';
 
 const RSUMaintenance: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const columns: ProColumns<Config.MaintenanceListItem>[] = [
+  const columns: TableProColumns<Config.MaintenanceListItem>[] = [
     {
       title: t('RSU Name'),
       dataIndex: 'rsuName',
       ellipsis: true,
+      search: true,
     },
     {
       title: t('Serial Number'),
       dataIndex: 'rsuEsn',
+      search: true,
     },
     {
       title: t('Heartbeat Frequency'),
       dataIndex: 'hbRate',
-      render: (heartbeat) => `${heartbeat}s`,
-      search: false,
+      render: (heartbeat: string | number) => `${heartbeat}s`,
     },
     {
       title: t('Operating Frequency'),
       dataIndex: 'runningInfoRate',
-      render: (heartbeat) => `${heartbeat}s`,
-      search: false,
+      render: (heartbeat: string | number) => `${heartbeat}s`,
     },
     {
       title: t('Log Level'),
       dataIndex: 'logLevel',
-      search: false,
     },
     {
       title: t('Whether To Reboot'),
       dataIndex: 'reboot',
-      search: false,
       valueType: 'select',
       valueEnum: statusOptionFormat(RebootOptions),
     },
     {
       title: t('Address'),
       dataIndex: ['addressChg', 'cssUrl'],
-      search: false,
     },
     {
       title: t('Timestamp'),
       dataIndex: ['addressChg', 'time'],
-      search: false,
     },
     {
       title: t('Custom Configuration'),
       dataIndex: 'extendConfig',
-      search: false,
     },
-  ];
-  const optionColumn: ProColumns[] = [
     {
       title: t('Operate'),
       width: 200,
@@ -94,13 +87,10 @@ const RSUMaintenance: React.FC = () => {
       ],
     },
   ];
+
   return (
     <BaseContainer>
-      <BaseProTable
-        columns={[...columns, ...optionColumn]}
-        actionRef={actionRef}
-        request={maintenanceConfigList}
-      />
+      <BaseProTable columns={columns} actionRef={actionRef} request={maintenanceConfigList} />
     </BaseContainer>
   );
 };

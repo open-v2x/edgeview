@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { history } from 'umi';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
 import { QueryIntervalOptions, QueryTypeOptions } from '@/utils/constants';
@@ -21,12 +21,11 @@ const fetchDeviceList = async () => {
 
 const InfoQueryList: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const columns: ProColumns<Config.QueryListItem>[] = [
+  const columns: TableProColumns<Config.QueryListItem>[] = [
     {
       title: t('Query RSU'),
       dataIndex: 'rsus',
       render: (_, { rsus }) => rsus.map(({ rsuName }) => rsuName).join('、'),
-      search: false,
     },
     {
       title: t('Query RSU'),
@@ -34,28 +33,24 @@ const InfoQueryList: React.FC = () => {
       valueType: 'select',
       request: fetchDeviceList,
       hideInTable: true,
+      search: true,
     },
     {
       title: t('Query Information Type'),
       dataIndex: 'queryType',
       valueType: 'select',
       valueEnum: statusOptionFormat(QueryTypeOptions),
-      search: false,
     },
     {
       title: t('Query Information Time Interval'),
       dataIndex: 'timeType',
       valueType: 'select',
       valueEnum: statusOptionFormat(QueryIntervalOptions),
-      search: false,
     },
     {
       title: t('Command Issue Time'),
       dataIndex: 'createTime',
-      search: false,
     },
-  ];
-  const optionColumn: ProColumns[] = [
     {
       title: t('Operate'),
       width: 160,
@@ -93,7 +88,7 @@ const InfoQueryList: React.FC = () => {
   return (
     <BaseContainer>
       <BaseProTable
-        columns={[...columns, ...optionColumn]}
+        columns={columns}
         actionRef={actionRef}
         request={infoQueryList}
         toolBarRender={() => [

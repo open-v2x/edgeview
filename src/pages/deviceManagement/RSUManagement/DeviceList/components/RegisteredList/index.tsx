@@ -1,52 +1,43 @@
 import React, { useRef } from 'react';
 import { history } from 'umi';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
 import BaseProTable from '@/components/BaseProTable';
 import OnlineStatus from '@/components/OnlineStatus';
 import CreateDeviceModal from '../CreateDeviceModal';
-import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
+import { AreaFormatName, DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
 import { deleteDevice, deviceList, updateDevice } from '@/services/device/device';
-import Country from '@/components/Country';
 import { confirmModal } from '@/components/ConfirmModal';
 import { statusOptionFormat } from '@/utils';
+import { renderAreaFormItem } from '@/components/Country/renderHelper';
 
 const RegisteredList: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const columns: ProColumns<Device.DeviceListItem>[] = [
+  const columns: TableProColumns<Device.DeviceListItem>[] = [
     {
       title: t('RSU ID'),
       dataIndex: 'rsuId',
-      search: false,
     },
     {
       title: t('RSU Name'),
       dataIndex: 'rsuName',
+      search: true,
     },
     {
       title: t('Serial Number'),
       dataIndex: 'rsuEsn',
+      search: true,
     },
     {
       title: t('RSU IP'),
       dataIndex: 'rsuIP',
-      search: false,
     },
     {
       title: t('Installation Area'),
       dataIndex: 'countryName',
-      render: (_, { countryName, provinceName, cityName, areaName, address }) =>
-        `${countryName}${provinceName}${cityName}${areaName}${address}`,
-      renderFormItem: (_, { type, defaultRender, ...rest }, form) => {
-        if (type === 'form') {
-          return null;
-        }
-        const status = form.getFieldValue('state');
-        if (status !== 'open') {
-          return <Country {...rest} />;
-        }
-        return defaultRender(_);
-      },
+      render: AreaFormatName,
+      renderFormItem: renderAreaFormItem,
+      search: true,
     },
     {
       title: t('Online Status'),
@@ -62,14 +53,12 @@ const RegisteredList: React.FC = () => {
       dataIndex: 'enabled',
       valueType: 'select',
       valueEnum: statusOptionFormat(DeviceStatusOptions),
+      search: true,
     },
     {
       title: t('Creation Time'),
       dataIndex: 'createTime',
-      search: false,
     },
-  ];
-  const optionColumn: ProColumns[] = [
     {
       title: t('Operate'),
       width: 260,
@@ -124,7 +113,7 @@ const RegisteredList: React.FC = () => {
   ];
   return (
     <BaseProTable
-      columns={[...columns, ...optionColumn]}
+      columns={columns}
       actionRef={actionRef}
       request={deviceList}
       toolBarRender={() => [

@@ -36,3 +36,11 @@ export async function deleteLidar(id: number) {
     method: 'DELETE',
   });
 }
+
+// 启用激光雷达
+export async function enabledLidar(id: number, data: Device.CreateLidarItem) {
+  return request(`/v1/lidars/${id}`, {
+    method: 'POST',
+    data,
+  });
+}

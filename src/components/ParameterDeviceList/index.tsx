@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import type { ActionType, ProColumns, RequestData } from '@ant-design/pro-table';
+import type { ActionType, RequestData, TableProColumns } from '@ant-design/pro-table';
 import type { ToolBarProps } from '@ant-design/pro-table/lib/components/ToolBar';
 import type { TableProps } from 'antd';
 import BaseProTable from '@/components/BaseProTable';
@@ -33,7 +33,7 @@ const ParameterDeviceList: React.FC<ParameterDeviceListType> = ({
   deleteOperation,
 }) => {
   const actionRef = useRef<ActionType>();
-  const columns: ProColumns<Device.DeviceListItem>[] = [
+  const columns: TableProColumns<Device.DeviceListItem>[] = [
     {
       title: t('RSU Name'),
       dataIndex: 'rsuName',
@@ -65,18 +65,15 @@ const ParameterDeviceList: React.FC<ParameterDeviceListType> = ({
       valueType: 'select',
       valueEnum: statusOptionFormat(RSUStatusOptions),
     },
-  ];
-  if (showDeliveryStatus) {
-    columns.push({
+    {
       title: t('Send Status'),
       dataIndex: 'deliveryStatus',
       render: (statusName, row) => (
         <OnlineStatus status={row.deliveryStatus === 1} statusName={statusName} />
       ),
       valueEnum: statusOptionFormat(SendStatusOptions),
-    });
-  }
-  const optionColumn: ProColumns[] = [
+      hidden: !showDeliveryStatus,
+    },
     {
       title: t('Operate'),
       width: 120,
@@ -87,12 +84,13 @@ const ParameterDeviceList: React.FC<ParameterDeviceListType> = ({
           {t('Delete')}
         </a>,
       ],
+      hidden: !deleteOperation,
     },
   ];
 
   return (
     <BaseProTable
-      columns={deleteOperation ? [...columns, ...optionColumn] : columns}
+      columns={columns}
       actionRef={actionRef}
       dataSource={dataSource}
       request={request}

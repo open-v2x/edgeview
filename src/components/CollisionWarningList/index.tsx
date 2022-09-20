@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import BaseProTable from '../BaseProTable';
 import { statusOptionFormat } from '@/utils';
 import { ICWCollisionTypeOptions } from '@/utils/constants';
@@ -13,27 +13,26 @@ type CollisionWarningProps = {
 
 const CollisionWarningList: React.FC<CollisionWarningProps> = ({ type, navigator }) => {
   const actionRef = useRef<ActionType>();
-  const columns: ProColumns<Event.ICWListItem>[] = [
-    { title: t('ID'), dataIndex: 'id', search: false },
+  const columns: TableProColumns<Event.ICWListItem>[] = [
+    { title: t('ID'), dataIndex: 'id' },
     {
       title: t('Sensor Longitude'),
       dataIndex: ['sensorPos', 'lon'],
       render: (_, { sensorPos: { lon } }) => <LonLatUnit data={lon} />,
-      search: false,
     },
     {
       title: t('Sensor Latitude'),
       dataIndex: ['sensorPos', 'lat'],
       render: (_, { sensorPos: { lat } }) => <LonLatUnit data={lat} />,
-      search: false,
     },
     {
       title: t('Collision Type'),
       dataIndex: 'collisionType',
       valueType: 'select',
       valueEnum: statusOptionFormat(ICWCollisionTypeOptions),
+      search: true,
     },
-    { title: t('Millisecond Time'), dataIndex: 'secMark', search: false },
+    { title: t('Millisecond Time'), dataIndex: 'secMark' },
     {
       title: t('Operate'),
       width: 160,
@@ -49,7 +48,6 @@ const CollisionWarningList: React.FC<CollisionWarningProps> = ({ type, navigator
       title: t('Reporting Time'),
       dataIndex: 'createTime',
       sorter: true,
-      search: false,
     },
   ];
   return (

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
@@ -7,33 +7,31 @@ import CreateModelModal from './components/CreateModelModal';
 import { modelList, deleteModel } from '@/services/device/model';
 import { confirmModal } from '@/components/ConfirmModal';
 
-const columns: ProColumns<Device.ModelListItem>[] = [
-  {
-    title: t('Model Name'),
-    dataIndex: 'name',
-    ellipsis: true,
-  },
-  {
-    title: t('Manufacturer Name'),
-    dataIndex: 'manufacturer',
-    ellipsis: true,
-  },
-  {
-    title: t('Describe'),
-    dataIndex: 'desc',
-    search: false,
-    ellipsis: true,
-  },
-  {
-    title: t('Creation Time'),
-    dataIndex: 'createTime',
-    search: false,
-  },
-];
-
 const RSUModelManagement: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const optionColumn: ProColumns[] = [
+
+  const columns: TableProColumns<Device.ModelListItem>[] = [
+    {
+      title: t('Model Name'),
+      dataIndex: 'name',
+      ellipsis: true,
+      search: true,
+    },
+    {
+      title: t('Manufacturer Name'),
+      dataIndex: 'manufacturer',
+      ellipsis: true,
+      search: true,
+    },
+    {
+      title: t('Describe'),
+      dataIndex: 'desc',
+      ellipsis: true,
+    },
+    {
+      title: t('Creation Time'),
+      dataIndex: 'createTime',
+    },
     {
       title: t('Operate'),
       width: 160,
@@ -61,7 +59,7 @@ const RSUModelManagement: React.FC = () => {
   return (
     <BaseContainer>
       <BaseProTable
-        columns={[...columns, ...optionColumn]}
+        columns={columns}
         actionRef={actionRef}
         request={modelList}
         toolBarRender={() => [

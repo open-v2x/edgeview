@@ -1,30 +1,28 @@
 import React, { useRef } from 'react';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import BaseProTable from '@/components/BaseProTable';
 import { deleteTemporaryDevice, notRegisterDeviceList } from '@/services/device/device';
 import CreateDeviceModal from '../CreateDeviceModal';
 import { Divider } from 'antd';
 import { confirmModal } from '@/components/ConfirmModal';
 
-const columns: ProColumns<Device.DeviceListItem>[] = [
-  {
-    title: t('RSU Name'),
-    dataIndex: 'rsuName',
-  },
-  {
-    title: t('Serial Number'),
-    dataIndex: 'rsuEsn',
-  },
-  {
-    title: t('Protocol Version'),
-    dataIndex: 'version',
-    search: false,
-  },
-];
-
 const RegisteredList: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const optionColumn: ProColumns[] = [
+  const columns: TableProColumns<Device.DeviceListItem>[] = [
+    {
+      title: t('RSU Name'),
+      dataIndex: 'rsuName',
+      search: true,
+    },
+    {
+      title: t('Serial Number'),
+      dataIndex: 'rsuEsn',
+      search: true,
+    },
+    {
+      title: t('Protocol Version'),
+      dataIndex: 'version',
+    },
     {
       title: t('Operate'),
       fixed: 'right',
@@ -53,13 +51,7 @@ const RegisteredList: React.FC = () => {
       ],
     },
   ];
-  return (
-    <BaseProTable
-      columns={[...columns, ...optionColumn]}
-      actionRef={actionRef}
-      request={notRegisterDeviceList}
-    />
-  );
+  return <BaseProTable columns={columns} actionRef={actionRef} request={notRegisterDeviceList} />;
 };
 
 export default RegisteredList;

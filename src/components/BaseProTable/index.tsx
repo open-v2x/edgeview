@@ -1,11 +1,11 @@
 import ProTable from '@ant-design/pro-table';
-import type { ActionType, ProColumns } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import type { OptionConfig, ToolBarProps } from '@ant-design/pro-table/lib/components/ToolBar';
 import type { TableProps } from 'antd';
 import type { ExpandableConfig } from 'antd/lib/table/interface';
 
 type BaseProTableType = {
-  columns: ProColumns[];
+  columns: TableProColumns[];
   bordered?: boolean;
   actionRef?: React.Ref<ActionType | undefined> | undefined;
   dataSource?: any[];
@@ -29,7 +29,7 @@ type BaseProTableType = {
 const BaseProTable: React.FC<BaseProTableType> = (props) => {
   const {
     bordered = false,
-    columns,
+    columns = [],
     actionRef,
     dataSource,
     request,
@@ -45,10 +45,27 @@ const BaseProTable: React.FC<BaseProTableType> = (props) => {
     expandable,
   } = props;
 
+  /**
+   * @description: 获取处理后的columns
+   * @return {*}
+   */
+  const getColumns = () => {
+    const newColumns = columns
+      .filter((c) => !c.hidden)
+      .map((col) => {
+        return {
+          ...col,
+          search: col.search || false,
+        };
+      });
+
+    return newColumns;
+  };
+
   return (
     <ProTable
       bordered={bordered}
-      columns={columns}
+      columns={getColumns()}
       actionRef={actionRef}
       dataSource={dataSource}
       request={async (param, { createTime }) => {
