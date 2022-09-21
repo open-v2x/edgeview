@@ -7,6 +7,7 @@ export const MenuTitle = [
   t('RSU Model'),
   t('Camera Device'),
   t('Radar Device'),
+  t('Lidar Device'),
   t('Maintenance'),
   t('MAP Config'),
   t('MAP Details'),
@@ -169,6 +170,10 @@ export const NetworkStatusOptions = {
 // IP 正则
 export const IPReg =
   /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(\:([0-9]|[1-9]\d{1,3}|[1-5]\d{4}|6[0-5]{2}[0-3][0-5]))?$/;
+// 经度 正则
+export const LngReg = /^[\-\+]?(0?\d{1,2}\.\d{1,5}|1[0-7]?\d{1}\.\d{1,5}|180\.0{1,5})$/;
+// 纬度 正则
+export const LatReg = /^[\-\+]?([0-8]?\d{1}\.\d{1,5}|90\.0{1,5})$/;
 
 // 驾驶行为类型
 export const DriveBehaviorTypeOptions = [

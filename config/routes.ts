@@ -65,6 +65,12 @@ export default [
         component: './deviceManagement/RadarManagement',
       },
       {
+        path: 'lidar',
+        name: 'lidar',
+        locale: 'Lidar Device',
+        component: './deviceManagement/LidarManagement',
+      },
+      {
         path: '/device',
         redirect: '/device/rsu',
       },

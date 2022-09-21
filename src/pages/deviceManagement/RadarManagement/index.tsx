@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
@@ -7,7 +7,8 @@ import { deleteRadar, radarList } from '@/services/device/radar';
 import CreateCameraModal from '@/components/CreateCameraModal';
 import { confirmModal } from '@/components/ConfirmModal';
 import { deviceList } from '@/services/device/device';
-import Country from '@/components/Country';
+import { AreaFormatName } from '@/utils/constants';
+import { renderAreaFormItem } from '@/components/Country/renderHelper';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
@@ -16,62 +17,49 @@ const fetchDeviceList = async () => {
 
 const RadarManagement: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const columns: ProColumns<Device.CameraListItem>[] = [
+  const columns: TableProColumns<Device.CameraListItem>[] = [
     {
       title: t('Radar Name'),
       dataIndex: 'name',
+      search: true,
     },
     {
       title: t('Serial Number'),
       dataIndex: 'sn',
+      search: true,
     },
     {
       title: t('Radar IP'),
       dataIndex: 'radarIP',
-      search: false,
     },
     {
       title: t('Installation Area'),
       dataIndex: 'countryName',
-      render: (_, { countryName = '', provinceName = '', cityName = '', areaName = '' }) =>
-        `${countryName}${provinceName}${cityName}${areaName}`,
-      renderFormItem: (_, { type, defaultRender, ...rest }, form) => {
-        if (type === 'form') {
-          return null;
-        }
-        const status = form.getFieldValue('state');
-        if (status !== 'open') {
-          return <Country {...rest} />;
-        }
-        return defaultRender(_);
-      },
+      render: AreaFormatName,
+      renderFormItem: renderAreaFormItem,
+      search: true,
     },
     {
       title: t('Longitude'),
       dataIndex: 'lng',
-      search: false,
     },
     {
       title: t('Latitude'),
       dataIndex: 'lat',
-      search: false,
     },
     {
       title: t('Altitude (m)'),
       dataIndex: 'elevation',
-      search: false,
     },
     {
       title: t('Orientation (°)'),
       dataIndex: 'towards',
-      search: false,
     },
     {
       title: t('Associate RSU'),
       dataIndex: 'rsuName',
       valueType: 'select',
       request: fetchDeviceList,
-      search: false,
     },
     {
       title: t('Associate RSU'),
@@ -79,14 +67,12 @@ const RadarManagement: React.FC = () => {
       valueType: 'select',
       request: fetchDeviceList,
       hideInTable: true,
+      search: true,
     },
     {
       title: t('Creation Time'),
       dataIndex: 'createTime',
-      search: false,
     },
-  ];
-  const optionColumn: ProColumns[] = [
     {
       title: t('Operate'),
       width: 200,
@@ -127,7 +113,7 @@ const RadarManagement: React.FC = () => {
   return (
     <BaseContainer>
       <BaseProTable
-        columns={[...columns, ...optionColumn]}
+        columns={columns}
         actionRef={actionRef}
         request={radarList}
         toolBarRender={() => [

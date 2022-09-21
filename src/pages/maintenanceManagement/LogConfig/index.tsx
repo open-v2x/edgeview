@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
@@ -7,32 +7,30 @@ import CreateLogConfigModal from './components/CreateLogConfigModal';
 import { deleteLogConfig, logConfigList } from '@/services/config/log';
 import { confirmModal } from '@/components/ConfirmModal';
 
-const columns: ProColumns<Config.LogListItem>[] = [
-  {
-    title: t('ID'),
-    dataIndex: 'id',
-  },
-  {
-    title: t('Log Upload Address'),
-    dataIndex: 'uploadUrl',
-  },
-  {
-    title: t('Log Server Username'),
-    dataIndex: 'userId',
-  },
-  {
-    title: t('Server Type'),
-    dataIndex: 'transprotocal',
-  },
-  {
-    title: t('Creation Time'),
-    dataIndex: 'createTime',
-  },
-];
-
 const LogConfig: React.FC = () => {
   const actionRef = useRef<ActionType>();
-  const optionColumn: ProColumns[] = [
+
+  const columns: TableProColumns<Config.LogListItem>[] = [
+    {
+      title: t('ID'),
+      dataIndex: 'id',
+    },
+    {
+      title: t('Log Upload Address'),
+      dataIndex: 'uploadUrl',
+    },
+    {
+      title: t('Log Server Username'),
+      dataIndex: 'userId',
+    },
+    {
+      title: t('Server Type'),
+      dataIndex: 'transprotocal',
+    },
+    {
+      title: t('Creation Time'),
+      dataIndex: 'createTime',
+    },
     {
       title: t('Operate'),
       width: 160,
@@ -64,7 +62,7 @@ const LogConfig: React.FC = () => {
   return (
     <BaseContainer>
       <BaseProTable
-        columns={[...columns, ...optionColumn]}
+        columns={columns}
         actionRef={actionRef}
         request={logConfigList}
         search={false}

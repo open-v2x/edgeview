@@ -27,10 +27,12 @@ type FormItemType = {
   icon?: React.ReactNode;
   max?: number;
   components?: React.ReactNode | React.ReactNode[];
+  hidden?: boolean;
 };
 type FormGroupType = {
   key: string;
   title?: string;
   children?: FormItemType[];
   components?: React.ReactNode | React.ReactNode[];
+  hidden?: boolean;
 };

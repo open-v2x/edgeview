@@ -3,11 +3,12 @@ import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
-import { cameraList, deleteCamera } from '@/services/device/camera';
-import CreateCameraModal from '@/components/CreateCameraModal';
 import { confirmModal } from '@/components/ConfirmModal';
 import { deviceList } from '@/services/device/device';
-import { AreaFormatName } from '@/utils/constants';
+import { deleteLidar, enabledLidar, lidarList } from '@/services/device/lidar';
+import CreateLidarModal from './components/CreateLidarModal';
+import { statusOptionFormat } from '@/utils';
+import { AreaFormatName, DeviceStatusOptions } from '@/utils/constants';
 import { renderAreaFormItem } from '@/components/Country/renderHelper';
 
 const fetchDeviceList = async () => {
@@ -15,11 +16,11 @@ const fetchDeviceList = async () => {
   return data.map(({ id, rsuName }: Device.DeviceListItem) => ({ label: rsuName, value: id }));
 };
 
-const CameraManagement: React.FC = () => {
+const LidarManagement: React.FC = () => {
   const actionRef = useRef<ActionType>();
   const columns: TableProColumns<Device.CameraListItem>[] = [
     {
-      title: t('Camera Name'),
+      title: t('Lidar Name'),
       dataIndex: 'name',
       search: true,
     },
@@ -29,8 +30,8 @@ const CameraManagement: React.FC = () => {
       search: true,
     },
     {
-      title: t('Video Stream URL'),
-      dataIndex: 'streamUrl',
+      title: t('Lidar IP'),
+      dataIndex: 'lidarIP',
     },
     {
       title: t('Installation Area'),
@@ -56,6 +57,20 @@ const CameraManagement: React.FC = () => {
       dataIndex: 'towards',
     },
     {
+      title: t('Point'),
+      dataIndex: 'point',
+    },
+    {
+      title: t('Pole'),
+      dataIndex: 'pole',
+    },
+    {
+      title: t('Device Status'),
+      dataIndex: 'enabled',
+      valueType: 'select',
+      valueEnum: statusOptionFormat(DeviceStatusOptions),
+    },
+    {
       title: t('Associate RSU'),
       dataIndex: 'rsuName',
       valueType: 'select',
@@ -79,16 +94,30 @@ const CameraManagement: React.FC = () => {
       fixed: 'right',
       valueType: 'option',
       render: (_, row) => [
-        <CreateCameraModal
-          key="edit"
-          type="camera"
-          editInfo={row}
-          success={() => actionRef.current?.reload()}
-        />,
+        <CreateLidarModal key="edit" editInfo={row} success={() => actionRef.current?.reload()} />,
         <Divider key="edit-divider" type="vertical" />,
-        <CreateCameraModal
+        <a
+          key="disabled"
+          style={{ color: row.enabled ? '#E74040' : '' }}
+          onClick={() =>
+            confirmModal({
+              id: row.id,
+              params: { enabled: !row.enabled },
+              title: row.enabled ? t('Disable') : t('Enable'),
+              content: row.enabled
+                ? t('Are you sure you want to disable this device?')
+                : t('Are you sure you want to enable this device?'),
+              successMsg: t('{{value}} successfully', { value: t('Status updated') }),
+              modalFn: enabledLidar,
+              actionRef,
+            })
+          }
+        >
+          {row.enabled ? t('Disable') : t('Enable')}
+        </a>,
+        <Divider key="disabled-divider" type="vertical" />,
+        <CreateLidarModal
           key="details"
-          type="camera"
           isDetails={true}
           editInfo={row}
           success={() => actionRef.current?.reload()}
@@ -99,8 +128,8 @@ const CameraManagement: React.FC = () => {
           onClick={() =>
             confirmModal({
               id: row.id,
-              content: t('Are you sure you want to delete this camera?'),
-              modalFn: deleteCamera,
+              content: t('Are you sure you want to delete this lidar?'),
+              modalFn: deleteLidar,
               actionRef,
             })
           }
@@ -115,17 +144,13 @@ const CameraManagement: React.FC = () => {
       <BaseProTable
         columns={columns}
         actionRef={actionRef}
-        request={cameraList}
+        request={lidarList}
         toolBarRender={() => [
-          <CreateCameraModal
-            key="create"
-            type="camera"
-            success={() => actionRef.current?.reload()}
-          />,
+          <CreateLidarModal key="create" success={() => actionRef.current?.reload()} />,
         ]}
       />
     </BaseContainer>
   );
 };
 
-export default CameraManagement;
+export default LidarManagement;

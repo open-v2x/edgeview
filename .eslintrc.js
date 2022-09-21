@@ -30,7 +30,7 @@ module.exports = {
     ],
     'react/destructuring-assignment': 'warn',
     'import/prefer-default-export': 'off',
-    'no-nested-ternary': 'warn',
+    'no-nested-ternary': 0,
     'no-console': 'error',
     'global-require': 'off',
   },

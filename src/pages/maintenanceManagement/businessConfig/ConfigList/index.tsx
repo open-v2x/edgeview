@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { history } from 'umi';
-import type { ProColumns, ActionType } from '@ant-design/pro-table';
+import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider, Tooltip } from 'antd';
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
@@ -77,15 +77,15 @@ const ConfigList: React.FC = () => {
     ...rsiMap,
   ];
 
-  const columns: ProColumns<Config.ParameterListItem>[] = [
+  const columns: TableProColumns<Config.ParameterListItem>[] = [
     {
       title: t('Configuration Name'),
       dataIndex: 'name',
       ellipsis: true,
+      search: true,
     },
     {
       title: t('Configuration Parameters'),
-      search: false,
       children: [
         {
           title: t('BSM'),
