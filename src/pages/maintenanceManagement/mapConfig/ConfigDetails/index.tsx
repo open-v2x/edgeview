@@ -8,18 +8,14 @@ import BaseProTable from '@/components/BaseProTable';
 import OnlineStatus from '@/components/OnlineStatus';
 import CardList from '@/components/CardList';
 import CreateSendModal from '@/components/CreateSendModal';
-import {
-  AreaFormatName,
-  DeviceOnlineStatusOptions,
-  RSUStatusOptions,
-  SendStatusOptions,
-} from '@/utils/constants';
+import { DeviceOnlineStatusOptions, RSUStatusOptions, SendStatusOptions } from '@/utils/constants';
 import { deleteMapRSU, downloadMapConfig, mapConfigInfo, mapRSUList } from '@/services/config/map';
 import { FileTextOutlined } from '@ant-design/icons';
 import { confirmModal } from '@/components/ConfirmModal';
 import { downloadFile, statusOptionFormat } from '@/utils';
 
 import styles from './index.less';
+import { renderAreaFormatName } from '@/components/Country/renderHelper';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Config.MapListItem | undefined }> = ({ basicInfo = {} }) => {
@@ -37,7 +33,7 @@ const BasicInfo: React.FC<{ basicInfo: Config.MapListItem | undefined }> = ({ ba
     {
       key: 'countryName',
       label: t('MAP Area'),
-      render: AreaFormatName,
+      render: renderAreaFormatName,
     },
     {
       key: 'address',

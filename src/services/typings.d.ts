@@ -167,6 +167,25 @@ declare namespace Device {
   type LidarListItem = LidarItem & {
     id: number;
   };
+
+  type SpatItem = {
+    name: string;
+    intersectionId: string; // 序列号
+    spatIP: string;
+    point: string;
+  };
+
+  type CreateSpatItem = SpatItem & {
+    phaseId: string;
+    light: string;
+    rsuId: number;
+  };
+
+  type SpatListItem = SpatItem & {
+    id: string;
+    onlineStatus: boolean;
+    enabled: boolean;
+  };
 }
 
 declare namespace Config {

@@ -7,8 +7,7 @@ import BaseProTable from '@/components/BaseProTable';
 import CreateMapConfigModal from './components/CreateMapConfigModal';
 import { deleteMapConfig, mapConfigList } from '@/services/config/map';
 import { confirmModal } from '@/components/ConfirmModal';
-import { AreaFormatName } from '@/utils/constants';
-import { renderAreaFormItem } from '@/components/Country/renderHelper';
+import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
 
 const ConfigList: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -23,7 +22,7 @@ const ConfigList: React.FC = () => {
       title: t('MAP Area'),
       dataIndex: 'countryName',
       ellipsis: true,
-      render: AreaFormatName,
+      render: renderAreaFormatName,
       renderFormItem: renderAreaFormItem,
       search: true,
     },

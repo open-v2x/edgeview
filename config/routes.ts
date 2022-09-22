@@ -71,6 +71,12 @@ export default [
         component: './deviceManagement/LidarManagement',
       },
       {
+        path: 'spat',
+        name: 'spat',
+        locale: 'SPAT Device',
+        component: './deviceManagement/SPATManagement',
+      },
+      {
         path: '/device',
         redirect: '/device/rsu',
       },

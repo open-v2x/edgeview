@@ -5,11 +5,12 @@ import BaseContainer from '@/components/BaseContainer';
 import CardList from '@/components/CardList';
 import ParameterInfo from '@/components/ParameterInfo';
 import { deviceInfo, runningInfo } from '@/services/device/device';
-import { AreaFormatName, DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
+import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
 import CPULineChart from './components/CPULineChart';
 import MemoryLineChart from './components/MemoryLineChart';
 import DiskLineChart from './components/DiskLineChart';
 import NetworkLineChart from './components/NetworkLineChart';
+import { renderAreaFormatName } from '@/components/Country/renderHelper';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
@@ -35,7 +36,7 @@ const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({
     {
       key: 'provinceName',
       label: t('Installation Area'),
-      render: AreaFormatName,
+      render: renderAreaFormatName,
     },
     {
       key: 'address',
