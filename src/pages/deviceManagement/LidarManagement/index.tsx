@@ -8,8 +8,8 @@ import { deviceList } from '@/services/device/device';
 import { deleteLidar, enabledLidar, lidarList } from '@/services/device/lidar';
 import CreateLidarModal from './components/CreateLidarModal';
 import { statusOptionFormat } from '@/utils';
-import { AreaFormatName, DeviceStatusOptions } from '@/utils/constants';
-import { renderAreaFormItem } from '@/components/Country/renderHelper';
+import { DeviceStatusOptions } from '@/utils/constants';
+import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
@@ -36,7 +36,7 @@ const LidarManagement: React.FC = () => {
     {
       title: t('Installation Area'),
       dataIndex: 'countryName',
-      render: AreaFormatName,
+      render: renderAreaFormatName,
       renderFormItem: renderAreaFormItem,
       search: true,
     },

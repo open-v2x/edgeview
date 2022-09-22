@@ -2,8 +2,9 @@ import FormItem from '@/components/FormItem';
 import Modal from '@/components/Modal';
 import type { FormGroupType } from '@/components/typings';
 import { deviceList } from '@/services/device/device';
-import { createLidar, updateLidar } from '@/services/device/lidar';
-import { IPReg, LatReg, LngReg } from '@/utils/constants';
+import { createSpat, updateSpat } from '@/services/device/spat';
+import { IPReg, LightStateOptions } from '@/utils/constants';
+import React from 'react';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
@@ -13,9 +14,9 @@ const fetchDeviceList = async () => {
   }));
 };
 
-const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = false, success }) => {
-  const lowerType = t('lidar');
-  const upperType = t('Lidar');
+const CreateSpatModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = false, success }) => {
+  const lowerType = t('spat');
+  const upperType = t('SPAT');
 
   const formItems: FormGroupType[] = [
     {
@@ -35,7 +36,7 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
         },
         {
           required: true,
-          name: 'sn',
+          name: 'intersectionId',
           label: t('{{type}} Serial Number', { type: upperType }),
           tooltip: t('SERIAL_NUMBER_TIP'),
           fieldProps: { maxLength: 64 },
@@ -51,57 +52,26 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
       ],
     },
     {
-      key: 'lng',
+      key: 'phase',
       children: [
         {
           type: 'digit',
           required: true,
-          name: 'lng',
-          label: t('Longitude'),
+          name: 'phaseId',
+          label: t('PhaseId'),
           disabled: isDetails,
-          min: Number.MIN_SAFE_INTEGER,
-          fieldProps: { precision: 5 },
-          rules: [
-            { required: true, message: t('Please enter longitude') },
-            { pattern: LngReg, message: t('Incorrect longitude format') },
-          ],
+          min: 1,
+          max: 255,
+          rules: [{ required: true, message: t('Please input an phase id') }],
         },
         {
-          type: 'digit',
+          type: 'select',
           required: true,
-          name: 'lat',
-          label: t('Latitude'),
+          name: 'light',
+          label: t('Light State'),
           disabled: isDetails,
-          min: Number.MIN_SAFE_INTEGER,
-          fieldProps: { precision: 5 },
-          rules: [
-            { required: true, message: t('Please enter latitude') },
-            { pattern: LatReg, message: t('Incorrect latitude format') },
-          ],
-        },
-      ],
-    },
-    {
-      key: 'elevation',
-      children: [
-        {
-          type: 'digit',
-          required: true,
-          name: 'elevation',
-          label: t('Altitude (m)'),
-          disabled: isDetails,
-          min: Number.MIN_SAFE_INTEGER,
-          fieldProps: { precision: 2 },
-          rules: [{ required: true, message: t('Please enter altitude') }],
-        },
-        {
-          type: 'digit',
-          required: true,
-          name: 'towards',
-          label: t('Orientation (°)'),
-          disabled: isDetails,
-          fieldProps: { precision: 2, max: 359.99 },
-          rules: [{ required: true, message: t('Please enter an orientation') }],
+          options: LightStateOptions,
+          rules: [{ required: true, message: t('Please select a light state') }],
         },
       ],
     },
@@ -118,13 +88,13 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
           rules: [{ required: true, message: t('Please select an associated RSU') }],
         },
         {
-          name: 'lidarIP',
-          label: t('Lidar IP'),
           required: true,
+          name: 'spatIP',
+          label: t('SPAT IP'),
           disabled: isDetails,
           rules: [
-            { required: true, message: t('Please input an lidar IP') },
-            { pattern: IPReg, message: t('Incorrect lidar IP format') },
+            { required: true, message: t('Please input an SPAT IP') },
+            { pattern: IPReg, message: t('Incorrect SPAT IP format') },
           ],
         },
       ],
@@ -138,26 +108,6 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
           required: true,
           disabled: isDetails,
           rules: [{ required: true, message: t('Please input an Point') }],
-        },
-        {
-          name: 'pole',
-          label: t('Pole'),
-          required: true,
-          disabled: isDetails,
-          rules: [{ required: true, message: t('Please input an Pole') }],
-        },
-      ],
-    },
-    {
-      key: 'desc',
-      children: [
-        {
-          type: 'textarea',
-          width: 912,
-          name: 'desc',
-          label: t('Describe'),
-          disabled: isDetails,
-          fieldProps: { autoSize: { minRows: 3, maxRows: 5 } },
         },
       ],
     },
@@ -179,18 +129,16 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
       modalProps={{ className: 'overflow' }}
       submitForm={async (values) => {
         if (editInfo) {
-          updateLidar(editInfo.id, values);
+          updateSpat(editInfo.id, values);
         } else {
-          createLidar(values);
+          createSpat(values);
         }
         success();
       }}
       editId={editInfo?.id}
       isDetails={isDetails}
       request={async () => {
-        const { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc } =
-          editInfo!;
-        return { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc };
+        return editInfo;
       }}
     >
       <FormItem items={formItems} />
@@ -198,4 +146,4 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
   );
 };
 
-export default CreateLidarModal;
+export default CreateSpatModal;

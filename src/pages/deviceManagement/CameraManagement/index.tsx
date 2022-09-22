@@ -7,8 +7,7 @@ import { cameraList, deleteCamera } from '@/services/device/camera';
 import CreateCameraModal from '@/components/CreateCameraModal';
 import { confirmModal } from '@/components/ConfirmModal';
 import { deviceList } from '@/services/device/device';
-import { AreaFormatName } from '@/utils/constants';
-import { renderAreaFormItem } from '@/components/Country/renderHelper';
+import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
@@ -35,7 +34,7 @@ const CameraManagement: React.FC = () => {
     {
       title: t('Installation Area'),
       dataIndex: 'countryName',
-      render: AreaFormatName,
+      render: renderAreaFormatName,
       renderFormItem: renderAreaFormItem,
       search: true,
     },

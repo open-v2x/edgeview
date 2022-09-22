@@ -8,6 +8,7 @@ export const MenuTitle = [
   t('Camera Device'),
   t('Radar Device'),
   t('Lidar Device'),
+  t('SPAT Device'),
   t('Maintenance'),
   t('MAP Config'),
   t('MAP Details'),
@@ -171,9 +172,10 @@ export const NetworkStatusOptions = {
 export const IPReg =
   /^(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])\.(\d{1,2}|1\d\d|2[0-4]\d|25[0-5])(\:([0-9]|[1-9]\d{1,3}|[1-5]\d{4}|6[0-5]{2}[0-3][0-5]))?$/;
 // 经度 正则
-export const LngReg = /^[\-\+]?(0?\d{1,2}\.\d{1,5}|1[0-7]?\d{1}\.\d{1,5}|180\.0{1,5})$/;
+export const LngReg =
+  /^[\-\+]?(0(\.\d{1,10})?|([1-9](\d)?)(\.\d{1,10})?|1[0-7]\d{1}(\.\d{1,10})?|180\.0{1,10})$/;
 // 纬度 正则
-export const LatReg = /^[\-\+]?([0-8]?\d{1}\.\d{1,5}|90\.0{1,5})$/;
+export const LatReg = /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/;
 
 // 驾驶行为类型
 export const DriveBehaviorTypeOptions = [
@@ -227,3 +229,15 @@ export const SiteModeTypeOptions = {
   center: t('Center mode'),
   coexist: t('Coexist mode'),
 };
+
+export const LightStateOptions = [
+  t('Disabled'),
+  t('Black'),
+  t('Red flashing'),
+  t('Red'),
+  t('Green flashing'),
+  t('Allowable phase of traffic'),
+  t('Traffic protection phase'),
+  t('Yellow'),
+  t('Yellow flashing'),
+];

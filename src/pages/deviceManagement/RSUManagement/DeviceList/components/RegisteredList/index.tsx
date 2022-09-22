@@ -5,11 +5,11 @@ import { Divider } from 'antd';
 import BaseProTable from '@/components/BaseProTable';
 import OnlineStatus from '@/components/OnlineStatus';
 import CreateDeviceModal from '../CreateDeviceModal';
-import { AreaFormatName, DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
+import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
 import { deleteDevice, deviceList, updateDevice } from '@/services/device/device';
 import { confirmModal } from '@/components/ConfirmModal';
 import { statusOptionFormat } from '@/utils';
-import { renderAreaFormItem } from '@/components/Country/renderHelper';
+import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
 
 const RegisteredList: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -35,7 +35,7 @@ const RegisteredList: React.FC = () => {
     {
       title: t('Installation Area'),
       dataIndex: 'countryName',
-      render: AreaFormatName,
+      render: renderAreaFormatName,
       renderFormItem: renderAreaFormItem,
       search: true,
     },

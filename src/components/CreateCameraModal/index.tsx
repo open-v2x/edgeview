@@ -5,7 +5,7 @@ import { deviceList } from '@/services/device/device';
 import { createCamera, updateCamera } from '@/services/device/camera';
 import { createRadar, updateRadar } from '@/services/device/radar';
 import Modal from '../Modal';
-import { IPReg } from '@/utils/constants';
+import { IPReg, LatReg, LngReg } from '@/utils/constants';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
@@ -90,8 +90,11 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
           label: t('Longitude'),
           disabled: isDetails,
           min: Number.MIN_SAFE_INTEGER,
-          fieldProps: { precision: 8 },
-          rules: [{ required: true, message: t('Please enter longitude') }],
+          fieldProps: { precision: 5 },
+          rules: [
+            { required: true, message: t('Please enter longitude') },
+            { pattern: LngReg, message: t('Incorrect longitude format') },
+          ],
         },
         {
           type: 'digit',
@@ -100,8 +103,11 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
           label: t('Latitude'),
           disabled: isDetails,
           min: Number.MIN_SAFE_INTEGER,
-          fieldProps: { precision: 8 },
-          rules: [{ required: true, message: t('Please enter latitude') }],
+          fieldProps: { precision: 5 },
+          rules: [
+            { required: true, message: t('Please enter latitude') },
+            { pattern: LatReg, message: t('Incorrect latitude format') },
+          ],
         },
       ],
     },
