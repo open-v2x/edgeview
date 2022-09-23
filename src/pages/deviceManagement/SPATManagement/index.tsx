@@ -1,7 +1,9 @@
 import BaseContainer from '@/components/BaseContainer';
 import BaseProTable from '@/components/BaseProTable';
 import { confirmModal } from '@/components/ConfirmModal';
+import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
 import OnlineStatus from '@/components/OnlineStatus';
+import { deviceList } from '@/services/device/device';
 import { deleteSpat, enabledSpat, spatList } from '@/services/device/spat';
 import { statusOptionFormat } from '@/utils';
 import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
@@ -9,6 +11,11 @@ import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
 import { useRef } from 'react';
 import CreateSpatModal from './components/CreateSpatModal';
+
+const fetchDeviceList = async () => {
+  const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
+  return data.map(({ id, rsuName }: Device.DeviceListItem) => ({ label: rsuName, value: id }));
+};
 
 const SpatManagement: React.FC = () => {
   const actionRef = useRef<ActionType>();
@@ -28,10 +35,26 @@ const SpatManagement: React.FC = () => {
       title: t('SPAT IP'),
       dataIndex: 'spatIP',
     },
+
+    {
+      title: t('Installation Area'),
+      dataIndex: 'countryName',
+      render: renderAreaFormatName,
+      renderFormItem: renderAreaFormItem,
+      search: true,
+      hideInTable: true,
+    },
+    {
+      title: t('Associate RSU'),
+      dataIndex: 'rsuId',
+      valueType: 'select',
+      request: fetchDeviceList,
+      hideInTable: true,
+      search: true,
+    },
     {
       title: t('Online Status'),
       dataIndex: 'onlineStatus',
-      search: true,
       render: (statusName, row) => (
         <OnlineStatus status={row.onlineStatus} statusName={statusName} />
       ),
@@ -47,7 +70,6 @@ const SpatManagement: React.FC = () => {
     {
       title: t('Point'),
       dataIndex: 'point',
-      search: true,
     },
     {
       title: t('Operate'),

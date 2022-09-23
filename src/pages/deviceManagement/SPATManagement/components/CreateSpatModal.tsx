@@ -88,12 +88,10 @@ const CreateSpatModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fal
           rules: [{ required: true, message: t('Please select an associated RSU') }],
         },
         {
-          required: true,
           name: 'spatIP',
           label: t('SPAT IP'),
           disabled: isDetails,
           rules: [
-            { required: true, message: t('Please input an SPAT IP') },
             { pattern: IPReg, message: t('Incorrect SPAT IP format') },
           ],
         },
