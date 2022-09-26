@@ -59,10 +59,15 @@ const CreateSpatModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fal
           required: true,
           name: 'phaseId',
           label: t('PhaseId'),
+          tooltip: t('SPAT_PHASE_ID_TIP'),
           disabled: isDetails,
-          min: 1,
-          max: 255,
-          rules: [{ required: true, message: t('Please input an phase id') }],
+          rules: [
+            { required: true, message: t('Please input an phase id') },
+            {
+              pattern: /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|[1-9])$/,
+              message: t('Please enter correct phase id'),
+            },
+          ],
         },
         {
           type: 'select',
@@ -91,9 +96,7 @@ const CreateSpatModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fal
           name: 'spatIP',
           label: t('SPAT IP'),
           disabled: isDetails,
-          rules: [
-            { pattern: IPReg, message: t('Incorrect SPAT IP format') },
-          ],
+          rules: [{ pattern: IPReg, message: t('Incorrect SPAT IP format') }],
         },
       ],
     },
