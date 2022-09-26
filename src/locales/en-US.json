@@ -446,5 +446,7 @@
   "Please input an SPAT IP": "Please input an SPAT IP",
   "Please input an lidar IP": "Please input an lidar IP",
   "Please input an Point": "Please input an Point",
-  "Please input an Pole": "Please input an Pole"
+  "Please input an Pole": "Please input an Pole",
+  "Please enter correct phase id": "Please enter correct phase id, the id range is 1-255",
+  "SPAT_PHASE_ID_TIP": "the range should be 1-255"
 }
