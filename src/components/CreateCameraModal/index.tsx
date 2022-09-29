@@ -84,26 +84,20 @@ const CreateCameraModal: React.FC<CreateCameraProps> = ({
       key: 'lng',
       children: [
         {
-          type: 'digit',
           required: true,
           name: 'lng',
           label: t('Longitude'),
           disabled: isDetails,
-          min: Number.MIN_SAFE_INTEGER,
-          fieldProps: { precision: 5 },
           rules: [
             { required: true, message: t('Please enter longitude') },
             { pattern: LngReg, message: t('Incorrect longitude format') },
           ],
         },
         {
-          type: 'digit',
           required: true,
           name: 'lat',
           label: t('Latitude'),
           disabled: isDetails,
-          min: Number.MIN_SAFE_INTEGER,
-          fieldProps: { precision: 5 },
           rules: [
             { required: true, message: t('Please enter latitude') },
             { pattern: LatReg, message: t('Incorrect latitude format') },

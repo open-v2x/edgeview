@@ -175,7 +175,7 @@ export const IPReg =
 export const LngReg =
   /^[\-\+]?(0(\.\d{1,10})?|([1-9](\d)?)(\.\d{1,10})?|1[0-7]\d{1}(\.\d{1,10})?|180\.0{1,10})$/;
 // 纬度 正则
-export const LatReg = /^[\-\+]?((0|([1-8]\d?))(\.\d{1,10})?|90(\.0{1,10})?)$/;
+export const LatReg = /^[\-\+]?([0-8]?\d{1}\.\d{1,5}|90{0,1}\.0{1,5})$/;
 
 // 驾驶行为类型
 export const DriveBehaviorTypeOptions = [
