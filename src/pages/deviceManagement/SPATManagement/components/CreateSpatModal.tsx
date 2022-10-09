@@ -64,7 +64,7 @@ const CreateSpatModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fal
           rules: [
             { required: true, message: t('Please input an phase id') },
             {
-              pattern: /^(25[0-5]|2[0-4]\d|1\d\d|[1-9]\d|[1-9])$/,
+              pattern: /^(25[0-5]|2[0-4][0-9]|[0-1]?[0-9]?[0-9])$/,
               message: t('Please enter correct phase id'),
             },
           ],
