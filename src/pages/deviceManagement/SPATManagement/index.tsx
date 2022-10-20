@@ -62,7 +62,7 @@ const SpatManagement: React.FC = () => {
       valueEnum: statusOptionFormat(DeviceOnlineStatusOptions),
     },
     {
-      title: t('Enabled'),
+      title: t('Device Enabled'),
       dataIndex: 'enabled',
       valueType: 'select',
       valueEnum: statusOptionFormat(DeviceStatusOptions),
