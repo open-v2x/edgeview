@@ -16,7 +16,7 @@ export const renderAreaFormItem = (
   return defaultRender(_);
 };
 
-export const renderAreaFormatName = (info: any, data: any) => {
-  const { countryName = '', provinceName = '', cityName = '', areaName = '' } = info || data || {};
+export const renderAreaFormatName = (data: any) => {
+  const { countryName = '', provinceName = '', cityName = '', areaName = '' } = data || {};
   return `${countryName}${provinceName}${cityName}${areaName}`;
 };
