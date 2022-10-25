@@ -22,7 +22,7 @@ const ConfigList: React.FC = () => {
       title: t('MAP Area'),
       dataIndex: 'countryName',
       ellipsis: true,
-      render: renderAreaFormatName,
+      render: (_, row) => renderAreaFormatName(row),
       renderFormItem: renderAreaFormItem,
       search: true,
     },

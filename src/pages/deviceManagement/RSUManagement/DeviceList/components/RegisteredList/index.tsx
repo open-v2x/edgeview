@@ -35,7 +35,7 @@ const RegisteredList: React.FC = () => {
     {
       title: t('Installation Area'),
       dataIndex: 'countryName',
-      render: renderAreaFormatName,
+      render: (_, row) => renderAreaFormatName(row),
       renderFormItem: renderAreaFormItem,
       search: true,
     },
