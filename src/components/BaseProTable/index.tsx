@@ -62,6 +62,19 @@ const BaseProTable: React.FC<BaseProTableType> = (props) => {
     return newColumns;
   };
 
+  const getPagination = () => {
+    if (pagination) {
+      const newPagination = {
+        ...pagination,
+        onShowSizeChange: (_: number, size: number) => {
+          pagination.pageSize = size;
+        },
+      };
+      return newPagination;
+    }
+    return pagination;
+  };
+
   return (
     <ProTable
       bordered={bordered}
@@ -79,7 +92,7 @@ const BaseProTable: React.FC<BaseProTableType> = (props) => {
       rowSelection={rowSelection}
       rowKey={rowKey}
       search={search}
-      pagination={pagination}
+      pagination={getPagination()}
       scroll={scroll}
       headerTitle={headerTitle}
       toolBarRender={toolBarRender}
