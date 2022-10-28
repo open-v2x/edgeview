@@ -250,10 +250,12 @@ const CreateRSUConfigModal: React.FC<CreateModalProps> = ({ editId, success }) =
       omitNil={false}
       modalProps={{ className: 'overflow' }}
       submitForm={async ({ name, ...values }) => {
-        Object.values(values as Record<string, Record<string, string>>).map((value) => {
+        Object.values(values as Record<string, Record<string, string | undefined>>).map((value) => {
           if (value.upFilters) {
             const json = dataProcess(value.upFilters, (item: string) => `{${item}}`);
             value.upFilters = JSON.parse(`[${json}]`);
+          } else {
+            value.upFilters = undefined;
           }
         });
         if (deviceList.length === 0) {
