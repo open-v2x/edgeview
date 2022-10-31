@@ -1,8 +1,8 @@
 import React from 'react';
-import { createModel, modelInfo, updateModel } from '@/services/device/model';
-import FormItem from '@/components/FormItem';
-import type { FormGroupType } from '@/components/typings';
-import Modal from '@/components/Modal';
+import { createModel, modelInfo, updateModel } from 'edge-src/services/device/model';
+import FormItem from 'edge-src/components/FormItem';
+import type { FormGroupType } from 'edge-src/components/typings';
+import Modal from 'edge-src/components/Modal';
 
 const CreateModelModal: React.FC<CreateModalProps> = ({ editId, success }) => {
   const formItems: FormGroupType[] = [

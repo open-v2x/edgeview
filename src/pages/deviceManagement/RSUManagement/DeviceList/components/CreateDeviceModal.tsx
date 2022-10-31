@@ -1,11 +1,11 @@
 import React from 'react';
-import FormItem from '@/components/FormItem';
-import { createDevice, deviceInfo, updateDevice } from '@/services/device/device';
-import { modelList } from '@/services/device/model';
-import Country from '@/components/Country';
-import type { FormGroupType } from '@/components/typings';
-import Modal from '@/components/Modal';
-import { IPReg } from '@/utils/constants';
+import FormItem from 'edge-src/components/FormItem';
+import { createDevice, deviceInfo, updateDevice } from 'edge-src/services/device/device';
+import { modelList } from 'edge-src/services/device/model';
+import Country from 'edge-src/components/Country';
+import type { FormGroupType } from 'edge-src/components/typings';
+import Modal from 'edge-src/components/Modal';
+import { IPReg } from 'edge-src/utils/constants';
 
 const fetchModelList = async () => {
   const { data } = await modelList({ pageNum: 1, pageSize: -1 });

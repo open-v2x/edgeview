@@ -1,15 +1,15 @@
 import React, { useRef } from 'react';
 import { history } from 'umi';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { QueryIntervalOptions, QueryTypeOptions } from '@/utils/constants';
-import { deleteInfoQuery, infoQueryList } from '@/services/config/query';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { QueryIntervalOptions, QueryTypeOptions } from 'edge-src/utils/constants';
+import { deleteInfoQuery, infoQueryList } from 'edge-src/services/config/query';
 import CreateQueryModal from './components/CreateQueryModal';
-import { statusOptionFormat } from '@/utils';
-import { deviceList } from '@/services/device/device';
+import { statusOptionFormat } from 'edge-src/utils';
+import { deviceList } from 'edge-src/services/device/device';
 import { Divider } from 'antd';
-import { confirmModal } from '@/components/ConfirmModal';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });

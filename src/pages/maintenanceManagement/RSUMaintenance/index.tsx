@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { maintenanceConfigList, sendMaintenanceConfig } from '@/services/config/maintenance';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { maintenanceConfigList, sendMaintenanceConfig } from 'edge-src/services/config/maintenance';
 import CreateMaintenanceModal from './components/CreateMaintenanceModal';
 import { Divider, message } from 'antd';
-import { RebootOptions } from '@/utils/constants';
-import CreateSendModal from '@/components/CreateSendModal';
-import { statusOptionFormat } from '@/utils';
+import { RebootOptions } from 'edge-src/utils/constants';
+import CreateSendModal from 'edge-src/components/CreateSendModal';
+import { statusOptionFormat } from 'edge-src/utils';
 
 const RSUMaintenance: React.FC = () => {
   const actionRef = useRef<ActionType>();

@@ -2,7 +2,7 @@ import type { Settings as LayoutSettings } from '@ant-design/pro-layout';
 import { PageLoading, ProBreadcrumb } from '@ant-design/pro-layout';
 import { history } from 'umi';
 import type { RequestConfig, RunTimeLayoutConfig } from 'umi';
-import RightContent from '@/components/RightContent';
+import RightContent from 'edge-src/components/RightContent';
 import defaultSettings from '../config/defaultSettings';
 import { currentUser as queryCurrentUser } from './services/api';
 import i18n from './utils/i18n';

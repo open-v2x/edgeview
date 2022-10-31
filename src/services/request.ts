@@ -1,5 +1,5 @@
 import { extend } from 'umi-request';
-import { getToken } from '@/utils/storage';
+import { getToken } from 'edge-src/utils/storage';
 import { message } from 'antd';
 import { clearStorage } from './../utils/storage';
 import { history } from 'umi';

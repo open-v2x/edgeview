@@ -6,7 +6,7 @@ import { stringify } from 'querystring';
 import HeaderDropdown from '../HeaderDropdown';
 import styles from './index.less';
 import type { MenuInfo } from 'rc-menu/lib/interface';
-import { clearStorage } from '@/utils/storage';
+import { clearStorage } from 'edge-src/utils/storage';
 
 export type GlobalHeaderRightProps = {
   menu?: boolean;

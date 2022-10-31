@@ -1,7 +1,7 @@
 import React from 'react';
 import { history } from 'umi';
-import BaseContainer from '@/components/BaseContainer';
-import CollisionWarningList from '@/components/CollisionWarningList';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import CollisionWarningList from 'edge-src/components/CollisionWarningList';
 
 const ICWList: React.FC = () => {
   return (

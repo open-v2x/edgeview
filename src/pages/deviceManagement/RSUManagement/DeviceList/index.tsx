@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
+import BaseContainer from 'edge-src/components/BaseContainer';
 import RegisteredList from './components/RegisteredList';
 import NotRegisteredList from './components/NotRegisteredList';
 

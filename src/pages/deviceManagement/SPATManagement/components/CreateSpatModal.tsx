@@ -1,9 +1,9 @@
-import FormItem from '@/components/FormItem';
-import Modal from '@/components/Modal';
-import type { FormGroupType } from '@/components/typings';
-import { deviceList } from '@/services/device/device';
-import { createSpat, updateSpat } from '@/services/device/spat';
-import { IPReg, LightStateOptions } from '@/utils/constants';
+import FormItem from 'edge-src/components/FormItem';
+import Modal from 'edge-src/components/Modal';
+import type { FormGroupType } from 'edge-src/components/typings';
+import { deviceList } from 'edge-src/services/device/device';
+import { createSpat, updateSpat } from 'edge-src/services/device/spat';
+import { IPReg, LightStateOptions } from 'edge-src/utils/constants';
 import React from 'react';
 
 const fetchDeviceList = async () => {

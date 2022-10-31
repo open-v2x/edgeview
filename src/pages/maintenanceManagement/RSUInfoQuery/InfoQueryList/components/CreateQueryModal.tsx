@@ -1,11 +1,11 @@
 import React from 'react';
-import type { FormGroupType } from '@/components/typings';
-import Modal from '@/components/Modal';
-import FormItem from '@/components/FormItem';
-import { QueryIntervalOptions, QueryTypeOptions } from '@/utils/constants';
-import { deviceList } from '@/services/device/device';
-import { createQueryInstruction } from '@/services/config/query';
-import { statusOptionFormat } from '@/utils';
+import type { FormGroupType } from 'edge-src/components/typings';
+import Modal from 'edge-src/components/Modal';
+import FormItem from 'edge-src/components/FormItem';
+import { QueryIntervalOptions, QueryTypeOptions } from 'edge-src/utils/constants';
+import { deviceList } from 'edge-src/services/device/device';
+import { createQueryInstruction } from 'edge-src/services/config/query';
+import { statusOptionFormat } from 'edge-src/utils';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });

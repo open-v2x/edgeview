@@ -1,11 +1,11 @@
 import React from 'react';
 import { history, useRequest } from 'umi';
 import ProCard from '@ant-design/pro-card';
-import BaseContainer from '@/components/BaseContainer';
-import CardList from '@/components/CardList';
-import ParameterInfo from '@/components/ParameterInfo';
-import ParameterDeviceList from '@/components/ParameterDeviceList';
-import { parameterConfigInfo } from '@/services/config/business';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import CardList from 'edge-src/components/CardList';
+import ParameterInfo from 'edge-src/components/ParameterInfo';
+import ParameterDeviceList from 'edge-src/components/ParameterDeviceList';
+import { parameterConfigInfo } from 'edge-src/services/config/business';
 
 // 基本信息
 type BasicInfoType = {

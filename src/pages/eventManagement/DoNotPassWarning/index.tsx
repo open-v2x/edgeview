@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { CoordinationInfoTypeOptions, DriveBehaviorTypeOptions } from '@/utils/constants';
-import { dataFormat, statusOptionFormat } from '@/utils';
-import { overtakingWarningList } from '@/services/event/dnpw';
-import LonLatUnit from '@/components/LonLatUnit';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { CoordinationInfoTypeOptions, DriveBehaviorTypeOptions } from 'edge-src/utils/constants';
+import { dataFormat, statusOptionFormat } from 'edge-src/utils';
+import { overtakingWarningList } from 'edge-src/services/event/dnpw';
+import LonLatUnit from 'edge-src/components/LonLatUnit';
 
 const RoadSideCoordination: React.FC = () => {
   const actionRef = useRef<ActionType>();

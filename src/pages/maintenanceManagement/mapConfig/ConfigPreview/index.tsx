@@ -2,10 +2,10 @@ import React from 'react';
 import { history, useRequest } from 'umi';
 import ProCard from '@ant-design/pro-card';
 import { Stage, Layer, Rect, Line, Group } from 'react-konva';
-import BaseContainer from '@/components/BaseContainer';
+import BaseContainer from 'edge-src/components/BaseContainer';
 
 import styles from './index.less';
-import { downloadMapConfig } from '@/services/config/map';
+import { downloadMapConfig } from 'edge-src/services/config/map';
 
 const canvasWidth = window.innerWidth - 256 - 40;
 const canvasHeight = window.innerHeight - 52 - 72 - 40;

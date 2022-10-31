@@ -1,8 +1,8 @@
 import React from 'react';
 import { history, useRequest } from 'umi';
 import ProCard from '@ant-design/pro-card';
-import BaseContainer from '@/components/BaseContainer';
-import CardList from '@/components/CardList';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import CardList from 'edge-src/components/CardList';
 import {
   Map,
   APILoader,
@@ -11,9 +11,9 @@ import {
   ControlBarControl,
   Marker,
 } from '@uiw/react-amap';
-import { EventClassOptions, EventSourceOptions, EventTypeOptions } from '@/utils/constants';
-import { eventInfoDetail } from '@/services/event/rsi';
-import { dataFormat } from '@/utils';
+import { EventClassOptions, EventSourceOptions, EventTypeOptions } from 'edge-src/utils/constants';
+import { eventInfoDetail } from 'edge-src/services/event/rsi';
+import { dataFormat } from 'edge-src/utils';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Event.RSIDetails | undefined }> = ({ basicInfo = {} }) => {

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Button, message, Modal } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import { deviceList } from '@/services/device/device';
-import ParameterDeviceList from '@/components/ParameterDeviceList';
+import { deviceList } from 'edge-src/services/device/device';
+import ParameterDeviceList from 'edge-src/components/ParameterDeviceList';
 
 type SelectDeviceProps = {
   defaultSelectedIds: number[];

@@ -1,11 +1,11 @@
 import React from 'react';
 import { history } from 'umi';
 import ProCard from '@ant-design/pro-card';
-import BaseContainer from '@/components/BaseContainer';
-import CardList from '@/components/CardList';
-import { DataSourceOptions, ParticipantTypeOptions } from '@/utils/constants';
-import { dataFormat } from '@/utils';
-import LonLatUnit from '@/components/LonLatUnit';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import CardList from 'edge-src/components/CardList';
+import { DataSourceOptions, ParticipantTypeOptions } from 'edge-src/utils/constants';
+import { dataFormat } from 'edge-src/utils';
+import LonLatUnit from 'edge-src/components/LonLatUnit';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Event.RSMListItem | undefined }> = ({ basicInfo = {} }) => {

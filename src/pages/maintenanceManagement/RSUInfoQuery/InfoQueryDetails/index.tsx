@@ -1,12 +1,16 @@
 import React from 'react';
 import { history, useRequest } from 'umi';
 import ProCard from '@ant-design/pro-card';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
 import type { ProColumns } from '@ant-design/pro-table';
-import { infoQueryDetails } from '@/services/config/query';
-import { NetworkStatusOptions, PowerStatusOptions, RunStatusOptions } from '@/utils/constants';
-import { statusOptionFormat } from '@/utils';
+import { infoQueryDetails } from 'edge-src/services/config/query';
+import {
+  NetworkStatusOptions,
+  PowerStatusOptions,
+  RunStatusOptions,
+} from 'edge-src/utils/constants';
+import { statusOptionFormat } from 'edge-src/utils';
 
 const OperatingStatus: React.FC<{ data?: Config.QueryInfoDetails[] }> = ({ data = [] }) => {
   const dataSource = data.map(({ data: d, ...item }) => ({ ...item, ...d }));

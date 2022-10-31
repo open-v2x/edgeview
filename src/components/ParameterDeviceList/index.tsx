@@ -2,10 +2,14 @@ import React, { useRef } from 'react';
 import type { ActionType, RequestData, TableProColumns } from '@ant-design/pro-table';
 import type { ToolBarProps } from '@ant-design/pro-table/lib/components/ToolBar';
 import type { TableProps } from 'antd';
-import BaseProTable from '@/components/BaseProTable';
-import OnlineStatus from '@/components/OnlineStatus';
-import { DeviceOnlineStatusOptions, RSUStatusOptions, SendStatusOptions } from '@/utils/constants';
-import { statusOptionFormat } from '@/utils';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import OnlineStatus from 'edge-src/components/OnlineStatus';
+import {
+  DeviceOnlineStatusOptions,
+  RSUStatusOptions,
+  SendStatusOptions,
+} from 'edge-src/utils/constants';
+import { statusOptionFormat } from 'edge-src/utils';
 
 type ParameterDeviceListType = {
   showDeliveryStatus?: boolean;

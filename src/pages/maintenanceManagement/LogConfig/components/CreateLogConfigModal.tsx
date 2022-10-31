@@ -1,10 +1,10 @@
 import React from 'react';
-import FormItem from '@/components/FormItem';
-import type { FormGroupType } from '@/components/typings';
-import { createLogConfig, updateLogConfig } from '@/services/config/log';
-import { deviceList } from '@/services/device/device';
-import { LogServerTypeOptions } from '@/utils/constants';
-import Modal from '@/components/Modal';
+import FormItem from 'edge-src/components/FormItem';
+import type { FormGroupType } from 'edge-src/components/typings';
+import { createLogConfig, updateLogConfig } from 'edge-src/services/config/log';
+import { deviceList } from 'edge-src/services/device/device';
+import { LogServerTypeOptions } from 'edge-src/utils/constants';
+import Modal from 'edge-src/components/Modal';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });

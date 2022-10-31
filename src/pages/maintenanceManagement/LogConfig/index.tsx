@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
 import CreateLogConfigModal from './components/CreateLogConfigModal';
-import { deleteLogConfig, logConfigList } from '@/services/config/log';
-import { confirmModal } from '@/components/ConfirmModal';
+import { deleteLogConfig, logConfigList } from 'edge-src/services/config/log';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
 
 const LogConfig: React.FC = () => {
   const actionRef = useRef<ActionType>();

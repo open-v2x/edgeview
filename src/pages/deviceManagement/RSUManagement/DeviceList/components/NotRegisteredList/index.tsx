@@ -1,10 +1,10 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
-import BaseProTable from '@/components/BaseProTable';
-import { deleteTemporaryDevice, notRegisterDeviceList } from '@/services/device/device';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { deleteTemporaryDevice, notRegisterDeviceList } from 'edge-src/services/device/device';
 import CreateDeviceModal from '../CreateDeviceModal';
 import { Divider } from 'antd';
-import { confirmModal } from '@/components/ConfirmModal';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
 
 const RegisteredList: React.FC = () => {
   const actionRef = useRef<ActionType>();

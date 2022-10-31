@@ -19,7 +19,7 @@
     "experimentalDecorators": true,
     "strict": true,
     "paths": {
-      "@/*": ["./src/*"],
+      "edge-src": ["./src/*"],
       "@@/*": ["./src/.umi/*"]
     }
   },

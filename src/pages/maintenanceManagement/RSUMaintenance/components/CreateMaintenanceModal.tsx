@@ -1,10 +1,10 @@
 import React from 'react';
-import FormItem from '@/components/FormItem';
-import type { FormGroupType } from '@/components/typings';
-import { updateMaintenanceConfig } from '@/services/config/maintenance';
-import { LogLevelOptions, RebootOptions } from '@/utils/constants';
-import Modal from '@/components/Modal';
-import { statusOptionFormat } from '@/utils';
+import FormItem from 'edge-src/components/FormItem';
+import type { FormGroupType } from 'edge-src/components/typings';
+import { updateMaintenanceConfig } from 'edge-src/services/config/maintenance';
+import { LogLevelOptions, RebootOptions } from 'edge-src/utils/constants';
+import Modal from 'edge-src/components/Modal';
+import { statusOptionFormat } from 'edge-src/utils';
 
 const CreateMaintenanceModal: React.FC<CreateModalProps> = ({ editInfo, success }) => {
   const formItems: FormGroupType[] = [
