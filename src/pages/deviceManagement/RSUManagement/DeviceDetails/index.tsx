@@ -1,16 +1,16 @@
 import React from 'react';
 import { history, useRequest } from 'umi';
 import ProCard from '@ant-design/pro-card';
-import BaseContainer from '@/components/BaseContainer';
-import CardList from '@/components/CardList';
-import ParameterInfo from '@/components/ParameterInfo';
-import { deviceInfo, runningInfo } from '@/services/device/device';
-import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import CardList from 'edge-src/components/CardList';
+import ParameterInfo from 'edge-src/components/ParameterInfo';
+import { deviceInfo, runningInfo } from 'edge-src/services/device/device';
+import { DeviceOnlineStatusOptions, DeviceStatusOptions } from 'edge-src/utils/constants';
 import CPULineChart from './components/CPULineChart';
 import MemoryLineChart from './components/MemoryLineChart';
 import DiskLineChart from './components/DiskLineChart';
 import NetworkLineChart from './components/NetworkLineChart';
-import { renderAreaFormatName } from '@/components/Country/renderHelper';
+import { renderAreaFormatName } from 'edge-src/components/Country/renderHelper';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Device.DeviceListItem | undefined }> = ({

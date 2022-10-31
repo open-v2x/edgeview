@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { DSDEquipmentTypeOptions } from '@/utils/constants';
-import { statusOptionFormat } from '@/utils';
-import { sensorDataSharingList } from '@/services/event/sds';
-import LonLatUnit from '@/components/LonLatUnit';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { DSDEquipmentTypeOptions } from 'edge-src/utils/constants';
+import { statusOptionFormat } from 'edge-src/utils';
+import { sensorDataSharingList } from 'edge-src/services/event/sds';
+import LonLatUnit from 'edge-src/components/LonLatUnit';
 
 const SensorDataSharing: React.FC = () => {
   const actionRef = useRef<ActionType>();

@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { message } from 'antd';
 import ProCard from '@ant-design/pro-card';
-import ParameterDeviceList from '@/components/ParameterDeviceList';
-import FormItem from '@/components/FormItem';
-import FormField from '@/components/FormField';
+import ParameterDeviceList from 'edge-src/components/ParameterDeviceList';
+import FormItem from 'edge-src/components/FormItem';
+import FormField from 'edge-src/components/FormField';
 import SelectDeviceModal from '../SelectDeviceModal';
-import type { FormGroupType, FormItemType } from '@/components/typings';
+import type { FormGroupType, FormItemType } from 'edge-src/components/typings';
 import {
   createParameterConfig,
   parameterConfigInfo,
   updateParameterConfig,
-} from '@/services/config/business';
-import Modal from '@/components/Modal';
-import { statusOptionFormat } from '@/utils';
-import { SampleModeOptions } from '@/utils/constants';
+} from 'edge-src/services/config/business';
+import Modal from 'edge-src/components/Modal';
+import { statusOptionFormat } from 'edge-src/utils';
+import { SampleModeOptions } from 'edge-src/utils/constants';
 
 import styles from './index.less';
 

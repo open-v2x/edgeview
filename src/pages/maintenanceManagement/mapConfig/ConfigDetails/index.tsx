@@ -3,19 +3,28 @@ import { history, useRequest } from 'umi';
 import type { ActionType, ProColumns } from '@ant-design/pro-table';
 import ProCard from '@ant-design/pro-card';
 import { Button } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import OnlineStatus from '@/components/OnlineStatus';
-import CardList from '@/components/CardList';
-import CreateSendModal from '@/components/CreateSendModal';
-import { DeviceOnlineStatusOptions, RSUStatusOptions, SendStatusOptions } from '@/utils/constants';
-import { deleteMapRSU, downloadMapConfig, mapConfigInfo, mapRSUList } from '@/services/config/map';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import OnlineStatus from 'edge-src/components/OnlineStatus';
+import CardList from 'edge-src/components/CardList';
+import CreateSendModal from 'edge-src/components/CreateSendModal';
+import {
+  DeviceOnlineStatusOptions,
+  RSUStatusOptions,
+  SendStatusOptions,
+} from 'edge-src/utils/constants';
+import {
+  deleteMapRSU,
+  downloadMapConfig,
+  mapConfigInfo,
+  mapRSUList,
+} from 'edge-src/services/config/map';
 import { FileTextOutlined } from '@ant-design/icons';
-import { confirmModal } from '@/components/ConfirmModal';
-import { downloadFile, statusOptionFormat } from '@/utils';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
+import { downloadFile, statusOptionFormat } from 'edge-src/utils';
 
 import styles from './index.less';
-import { renderAreaFormatName } from '@/components/Country/renderHelper';
+import { renderAreaFormatName } from 'edge-src/components/Country/renderHelper';
 
 // 基本信息
 const BasicInfo: React.FC<{ basicInfo: Config.MapListItem | undefined }> = ({ basicInfo = {} }) => {

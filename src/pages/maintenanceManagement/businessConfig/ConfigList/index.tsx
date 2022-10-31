@@ -2,12 +2,12 @@ import React, { useRef } from 'react';
 import { history } from 'umi';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider, Tooltip } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
 import CreateRSUConfigModal from './components/CreateRSUConfigModal';
-import { deleteParameterConfig, parameterConfigList } from '@/services/config/business';
-import { confirmModal } from '@/components/ConfirmModal';
-import { SampleModeOptions } from '@/utils/constants';
+import { deleteParameterConfig, parameterConfigList } from 'edge-src/services/config/business';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
+import { SampleModeOptions } from 'edge-src/utils/constants';
 
 type ParameterInfoType = {
   infoMap: InfoMapType[];

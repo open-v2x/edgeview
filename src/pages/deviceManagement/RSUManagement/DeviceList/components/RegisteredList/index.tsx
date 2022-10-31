@@ -2,14 +2,14 @@ import React, { useRef } from 'react';
 import { history } from 'umi';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
-import BaseProTable from '@/components/BaseProTable';
-import OnlineStatus from '@/components/OnlineStatus';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import OnlineStatus from 'edge-src/components/OnlineStatus';
 import CreateDeviceModal from '../CreateDeviceModal';
-import { DeviceOnlineStatusOptions, DeviceStatusOptions } from '@/utils/constants';
-import { deleteDevice, deviceList, updateDevice } from '@/services/device/device';
-import { confirmModal } from '@/components/ConfirmModal';
-import { statusOptionFormat } from '@/utils';
-import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
+import { DeviceOnlineStatusOptions, DeviceStatusOptions } from 'edge-src/utils/constants';
+import { deleteDevice, deviceList, updateDevice } from 'edge-src/services/device/device';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
+import { statusOptionFormat } from 'edge-src/utils';
+import { renderAreaFormatName, renderAreaFormItem } from 'edge-src/components/Country/renderHelper';
 
 const RegisteredList: React.FC = () => {
   const actionRef = useRef<ActionType>();

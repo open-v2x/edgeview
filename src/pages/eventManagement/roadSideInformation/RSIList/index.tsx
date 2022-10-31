@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import { history } from 'umi';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { eventInfoList } from '@/services/event/rsi';
-import { EventClassOptions, EventSourceOptions, EventTypeOptions } from '@/utils/constants';
-import { dataFormat, statusOptionFormat } from '@/utils';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { eventInfoList } from 'edge-src/services/event/rsi';
+import { EventClassOptions, EventSourceOptions, EventTypeOptions } from 'edge-src/utils/constants';
+import { dataFormat, statusOptionFormat } from 'edge-src/utils';
 
 const RSIList: React.FC = () => {
   const actionRef = useRef<ActionType>();

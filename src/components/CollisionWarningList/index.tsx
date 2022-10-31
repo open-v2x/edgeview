@@ -1,9 +1,9 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import BaseProTable from '../BaseProTable';
-import { statusOptionFormat } from '@/utils';
-import { ICWCollisionTypeOptions } from '@/utils/constants';
-import { intersectionCollisionWarningList } from '@/services/event/icw';
+import { statusOptionFormat } from 'edge-src/utils';
+import { ICWCollisionTypeOptions } from 'edge-src/utils/constants';
+import { intersectionCollisionWarningList } from 'edge-src/services/event/icw';
 import LonLatUnit from '../LonLatUnit';
 
 type CollisionWarningProps = {

@@ -1,8 +1,8 @@
 import React from 'react';
 import ProCard from '@ant-design/pro-card';
 import CardList from '../CardList';
-import { ICWCollisionTypeOptions } from '@/utils/constants';
-import { dataFormat } from '@/utils';
+import { ICWCollisionTypeOptions } from 'edge-src/utils/constants';
+import { dataFormat } from 'edge-src/utils';
 import LonLatUnit from '../LonLatUnit';
 
 type CollisionWarningDetailsProps = {

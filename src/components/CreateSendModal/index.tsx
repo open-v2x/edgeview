@@ -1,12 +1,12 @@
 import React from 'react';
 import { Button } from 'antd';
 import { PlusOutlined } from '@ant-design/icons';
-import type { FormGroupType } from '@/components/typings';
-import { deviceList } from '@/services/device/device';
+import type { FormGroupType } from 'edge-src/components/typings';
+import { deviceList } from 'edge-src/services/device/device';
 import FormItem from '../FormItem';
-import { createMapRSU } from '@/services/config/map';
+import { createMapRSU } from 'edge-src/services/config/map';
 import Modal from '../Modal';
-import { copyMaintenanceConfig } from '@/services/config/maintenance';
+import { copyMaintenanceConfig } from 'edge-src/services/config/maintenance';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });

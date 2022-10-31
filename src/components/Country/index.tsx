@@ -1,4 +1,4 @@
-import { countries } from '@/services/device/device';
+import { countries } from 'edge-src/services/device/device';
 import { ProFormCascader } from '@ant-design/pro-form';
 
 const Country: React.FC<any> = (props) => {

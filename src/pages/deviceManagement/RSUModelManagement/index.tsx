@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
 import CreateModelModal from './components/CreateModelModal';
-import { modelList, deleteModel } from '@/services/device/model';
-import { confirmModal } from '@/components/ConfirmModal';
+import { modelList, deleteModel } from 'edge-src/services/device/model';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
 
 const RSUModelManagement: React.FC = () => {
   const actionRef = useRef<ActionType>();

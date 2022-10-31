@@ -1,15 +1,15 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { confirmModal } from '@/components/ConfirmModal';
-import { deviceList } from '@/services/device/device';
-import { deleteLidar, enabledLidar, lidarList } from '@/services/device/lidar';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
+import { deviceList } from 'edge-src/services/device/device';
+import { deleteLidar, enabledLidar, lidarList } from 'edge-src/services/device/lidar';
 import CreateLidarModal from './components/CreateLidarModal';
-import { statusOptionFormat } from '@/utils';
-import { DeviceStatusOptions } from '@/utils/constants';
-import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
+import { statusOptionFormat } from 'edge-src/utils';
+import { DeviceStatusOptions } from 'edge-src/utils/constants';
+import { renderAreaFormatName, renderAreaFormItem } from 'edge-src/components/Country/renderHelper';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });

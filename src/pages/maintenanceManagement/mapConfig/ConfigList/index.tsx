@@ -2,12 +2,12 @@ import React, { useRef } from 'react';
 import { history } from 'umi';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
 import CreateMapConfigModal from './components/CreateMapConfigModal';
-import { deleteMapConfig, mapConfigList } from '@/services/config/map';
-import { confirmModal } from '@/components/ConfirmModal';
-import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
+import { deleteMapConfig, mapConfigList } from 'edge-src/services/config/map';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
+import { renderAreaFormatName, renderAreaFormItem } from 'edge-src/components/Country/renderHelper';
 
 const ConfigList: React.FC = () => {
   const actionRef = useRef<ActionType>();

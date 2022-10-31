@@ -1,10 +1,10 @@
 import React from 'react';
 import { history, useModel } from 'umi';
 import { ProFormText, LoginForm } from '@ant-design/pro-form';
-import { login } from '@/services/api';
+import { login } from 'edge-src/services/api';
 import classNames from 'classnames';
-import { setToken } from '@/utils/storage';
-import { SelectLang } from '@/components/SelectLang';
+import { setToken } from 'edge-src/utils/storage';
+import { SelectLang } from 'edge-src/components/SelectLang';
 
 import styles from './index.less';
 

@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import BaseContainer from '@/components/BaseContainer';
+import BaseContainer from 'edge-src/components/BaseContainer';
 import ProCard from '@ant-design/pro-card';
 import classNames from 'classnames';
 import UpdateSiteNameModal from './components/UpdateSiteNameModal';
 import UpdateSiteConfigModal from './components/UpdateSiteConfigModal';
-import { systemConfig } from '@/services/system/edge';
-import { SiteModeTypeOptions } from '@/utils/constants';
+import { systemConfig } from 'edge-src/services/system/edge';
+import { SiteModeTypeOptions } from 'edge-src/utils/constants';
 
 import styles from './index.less';
 

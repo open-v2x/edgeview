@@ -1,11 +1,11 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { CoordinationInfoTypeOptions, DriveBehaviorTypeOptions } from '@/utils/constants';
-import { dataFormat, statusOptionFormat } from '@/utils';
-import { cooperativeLaneChangeList } from '@/services/event/clc';
-import LonLatUnit from '@/components/LonLatUnit';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { CoordinationInfoTypeOptions, DriveBehaviorTypeOptions } from 'edge-src/utils/constants';
+import { dataFormat, statusOptionFormat } from 'edge-src/utils';
+import { cooperativeLaneChangeList } from 'edge-src/services/event/clc';
+import LonLatUnit from 'edge-src/components/LonLatUnit';
 
 const CooperativeLaneChange: React.FC = () => {
   const actionRef = useRef<ActionType>();

@@ -1,11 +1,11 @@
 import React from 'react';
-import FormItem from '@/components/FormItem';
-import type { FormGroupType } from '@/components/typings';
-import { deviceList } from '@/services/device/device';
-import { createCamera, updateCamera } from '@/services/device/camera';
-import { createRadar, updateRadar } from '@/services/device/radar';
+import FormItem from 'edge-src/components/FormItem';
+import type { FormGroupType } from 'edge-src/components/typings';
+import { deviceList } from 'edge-src/services/device/device';
+import { createCamera, updateCamera } from 'edge-src/services/device/camera';
+import { createRadar, updateRadar } from 'edge-src/services/device/radar';
 import Modal from '../Modal';
-import { IPReg, LatReg, LngReg } from '@/utils/constants';
+import { IPReg, LatReg, LngReg } from 'edge-src/utils/constants';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });

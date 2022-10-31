@@ -1,9 +1,9 @@
-import FormItem from '@/components/FormItem';
-import Modal from '@/components/Modal';
-import type { FormGroupType } from '@/components/typings';
-import { deviceList } from '@/services/device/device';
-import { createLidar, updateLidar } from '@/services/device/lidar';
-import { IPReg, LatReg, LngReg } from '@/utils/constants';
+import FormItem from 'edge-src/components/FormItem';
+import Modal from 'edge-src/components/Modal';
+import type { FormGroupType } from 'edge-src/components/typings';
+import { deviceList } from 'edge-src/services/device/device';
+import { createLidar, updateLidar } from 'edge-src/services/device/lidar';
+import { IPReg, LatReg, LngReg } from 'edge-src/utils/constants';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });

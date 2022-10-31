@@ -1,10 +1,10 @@
 import React from 'react';
 import { Button } from 'antd';
-import type { FormGroupType } from '@/components/typings';
-import Modal from '@/components/Modal';
-import FormItem from '@/components/FormItem';
-import { IPReg } from '@/utils/constants';
-import { updateSystemConfig } from '@/services/system/edge';
+import type { FormGroupType } from 'edge-src/components/typings';
+import Modal from 'edge-src/components/Modal';
+import FormItem from 'edge-src/components/FormItem';
+import { IPReg } from 'edge-src/utils/constants';
+import { updateSystemConfig } from 'edge-src/services/system/edge';
 
 type UpdateSiteConfigProps = CreateModalProps & {
   info?: {

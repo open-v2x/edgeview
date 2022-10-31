@@ -2,12 +2,12 @@ import React from 'react';
 import type { RcFile } from 'antd/lib/upload';
 import { Button, message, Upload } from 'antd';
 import { CloudUploadOutlined } from '@ant-design/icons';
-import { createMapConfig, mapConfigInfo, updateMapConfig } from '@/services/config/map';
-import FormItem from '@/components/FormItem';
-import Country from '@/components/Country';
-import type { FormGroupType } from '@/components/typings';
-import Modal from '@/components/Modal';
-import { downloadFile } from '@/utils';
+import { createMapConfig, mapConfigInfo, updateMapConfig } from 'edge-src/services/config/map';
+import FormItem from 'edge-src/components/FormItem';
+import Country from 'edge-src/components/Country';
+import type { FormGroupType } from 'edge-src/components/typings';
+import Modal from 'edge-src/components/Modal';
+import { downloadFile } from 'edge-src/utils';
 
 // MAP 数据文件上传组件的 label 属性
 const UploadLabel: React.FC = () => {

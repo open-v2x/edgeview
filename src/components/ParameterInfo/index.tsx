@@ -1,7 +1,7 @@
 import React from 'react';
 import ProCard from '@ant-design/pro-card';
 import { Col, Row } from 'antd';
-import { SampleModeOptions } from '@/utils/constants';
+import { SampleModeOptions } from 'edge-src/utils/constants';
 
 type ParameterType = {
   key: string;

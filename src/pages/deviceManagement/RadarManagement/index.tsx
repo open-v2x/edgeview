@@ -1,13 +1,13 @@
 import React, { useRef } from 'react';
 import type { ActionType, TableProColumns } from '@ant-design/pro-table';
 import { Divider } from 'antd';
-import BaseContainer from '@/components/BaseContainer';
-import BaseProTable from '@/components/BaseProTable';
-import { deleteRadar, radarList } from '@/services/device/radar';
-import CreateCameraModal from '@/components/CreateCameraModal';
-import { confirmModal } from '@/components/ConfirmModal';
-import { deviceList } from '@/services/device/device';
-import { renderAreaFormatName, renderAreaFormItem } from '@/components/Country/renderHelper';
+import BaseContainer from 'edge-src/components/BaseContainer';
+import BaseProTable from 'edge-src/components/BaseProTable';
+import { deleteRadar, radarList } from 'edge-src/services/device/radar';
+import CreateCameraModal from 'edge-src/components/CreateCameraModal';
+import { confirmModal } from 'edge-src/components/ConfirmModal';
+import { deviceList } from 'edge-src/services/device/device';
+import { renderAreaFormatName, renderAreaFormItem } from 'edge-src/components/Country/renderHelper';
 
 const fetchDeviceList = async () => {
   const { data } = await deviceList({ pageNum: 1, pageSize: -1 });
