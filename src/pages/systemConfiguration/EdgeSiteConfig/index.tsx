@@ -7,6 +7,10 @@ import UpdateSiteConfigModal from './components/UpdateSiteConfigModal';
 import { systemConfig } from 'edge-src/services/system/edge';
 import { SiteModeTypeOptions } from 'edge-src/utils/constants';
 
+import imgSiteConfig from 'edge-src/assets/images/site_config.png';
+import imgSiteName from 'edge-src/assets/images/site_name.png';
+import imgSiteMode from 'edge-src/assets/images/site_mode.svg';
+
 import styles from './index.less';
 
 const EdgeSiteConfig: React.FC = () => {
@@ -34,12 +38,7 @@ const EdgeSiteConfig: React.FC = () => {
     <BaseContainer>
       <ProCard className={styles.edge_site}>
         <div className={classNames('f f-a-center', styles.site)}>
-          <img
-            className={styles.site_icon}
-            src="/assets/images/site_mode.svg"
-            style={{ padding: '8px' }}
-            alt=""
-          />
+          <img className={styles.site_icon} src={imgSiteMode} style={{ padding: '8px' }} alt="" />
           <div className={styles.site_info}>
             <div className={styles.site_info_name}>{t('Site mode')}</div>
             <div className={styles.site_info_desc}>
@@ -51,7 +50,7 @@ const EdgeSiteConfig: React.FC = () => {
           </div>
         </div>
         <div className={classNames('f f-a-center', styles.site)}>
-          <img className={styles.site_icon} src="/assets/images/site_name.png" alt="" />
+          <img className={styles.site_icon} src={imgSiteName} alt="" />
           <div className={styles.site_info}>
             <div className={styles.site_info_name}>{t('Edge site name')}</div>
             <div className={styles.site_info_desc}>
@@ -63,7 +62,7 @@ const EdgeSiteConfig: React.FC = () => {
           )}
         </div>
         <div className={classNames('f f-a-center', styles.site)}>
-          <img className={styles.site_icon} src="/assets/images/site_config.png" alt="" />
+          <img className={styles.site_icon} src={imgSiteConfig} alt="" />
           <div className={styles.site_info}>
             <div className={styles.site_info_name}>
               {t('Cloud control center connection configuration')}

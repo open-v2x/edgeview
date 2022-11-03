@@ -6,6 +6,9 @@ import classNames from 'classnames';
 import { setToken } from 'edge-src/utils/storage';
 import { SelectLang } from 'edge-src/components/SelectLang';
 
+import imgUser from 'edge-src/assets/images/login_user.png';
+import imgPwd from 'edge-src/assets/images/login_password.png';
+
 import styles from './index.less';
 
 const Login: React.FC = () => {
@@ -45,7 +48,7 @@ const Login: React.FC = () => {
           name="username"
           fieldProps={{
             size: 'large',
-            prefix: <img src="/assets/images/login_user.png" />,
+            prefix: <img src={imgUser} />,
           }}
           placeholder={t('Username')}
           rules={[{ required: true, message: t('Please input your username') }]}
@@ -54,7 +57,7 @@ const Login: React.FC = () => {
           name="password"
           fieldProps={{
             size: 'large',
-            prefix: <img src="/assets/images/login_password.png" />,
+            prefix: <img src={imgPwd} />,
           }}
           placeholder={t('Password')}
           rules={[{ required: true, message: t('Please input your password') }]}
