@@ -65,10 +65,7 @@ const BaseProTable: React.FC<BaseProTableType> = (props) => {
   const getPagination = () => {
     if (pagination) {
       const newPagination = {
-        ...pagination,
-        onShowSizeChange: (_: number, size: number) => {
-          pagination.pageSize = size;
-        },
+        defaultPageSize: pagination.pageSize,
       };
       return newPagination;
     }
