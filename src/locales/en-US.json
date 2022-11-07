@@ -448,5 +448,6 @@
   "Please input an Point": "Please input an Point",
   "Please input an Pole": "Please input an Pole",
   "Please enter correct phase id": "Please enter correct phase id, the id range is 0-255",
-  "SPAT_PHASE_ID_TIP": "the range should be 0-255"
+  "SPAT_PHASE_ID_TIP": "the range should be 0-255",
+  "Lidar Connection URL": "lidar connection url"
 }

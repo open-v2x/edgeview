@@ -448,5 +448,6 @@
   "Please input an Point": "请输入点位",
   "Please input an Pole": "请输入杆位",
   "Please enter correct phase id": "请输入正确的相位灯 ID, 该 ID 应该在 0-255 之间",
-  "SPAT_PHASE_ID_TIP": "ID 范围是 0-255"
+  "SPAT_PHASE_ID_TIP": "ID 范围是 0-255",
+  "Lidar Connection URL": "激光雷达连接 url"
 }

@@ -30,7 +30,14 @@ jobs:
           node-version: 14.17.6
 
       - name: Install dependencies
-        run: yarn install --frozen-lockfile
+        run: |
+          if [ -e yarn.lock ]; then
+            yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+            npm ci
+          else
+            npm i
+          fi
 
       - name: Unit test
         run: yarn test .test.js
