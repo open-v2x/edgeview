@@ -23,15 +23,27 @@ const LidarManagement: React.FC = () => {
       title: t('Lidar Name'),
       dataIndex: 'name',
       search: true,
+      ellipsis: true,
+      width: 100,
     },
     {
       title: t('Serial Number'),
       dataIndex: 'sn',
       search: true,
+      ellipsis: true,
+      width: 100,
     },
     {
       title: t('Lidar IP'),
       dataIndex: 'lidarIP',
+      width: 100,
+      ellipsis: true,
+    },
+    {
+      title: t('Lidar Connection URL'),
+      dataIndex: 'wsUrl',
+      width: 200,
+      ellipsis: true,
     },
     {
       title: t('Installation Area'),
@@ -39,6 +51,8 @@ const LidarManagement: React.FC = () => {
       render: (_, row) => renderAreaFormatName(row),
       renderFormItem: renderAreaFormItem,
       search: true,
+      width: 150,
+      ellipsis: true,
     },
     {
       title: t('Longitude'),
@@ -87,10 +101,11 @@ const LidarManagement: React.FC = () => {
     {
       title: t('Creation Time'),
       dataIndex: 'createTime',
+      width: 150,
     },
     {
       title: t('Operate'),
-      width: 200,
+      width: 220,
       fixed: 'right',
       valueType: 'option',
       render: (_, row) => [
@@ -145,6 +160,7 @@ const LidarManagement: React.FC = () => {
         columns={columns}
         actionRef={actionRef}
         request={lidarList}
+        scroll={{ x: 1400 }}
         toolBarRender={() => [
           <CreateLidarModal key="create" success={() => actionRef.current?.reload()} />,
         ]}
