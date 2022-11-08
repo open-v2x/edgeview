@@ -46,6 +46,40 @@ npm run lint:fix
 npm test
 ```
 
+## Run e2e at local device
+
+### 1. Running all the Tests
+
+```bash
+yarn playwright:test
+```
+
+### 1.1 Running a single test file
+
+```bash
+npx playwright test ${test file name}
+```
+
+### 1.2 Running tests on a specific project
+
+View document on [playwright.dev/docs/running-tests](https://playwright.dev/docs/running-tests).
+
+```bash
+npx playwright test ${test file name} --project=chromium
+```
+
+### 1.3 Debugging all the Tests
+
+```bash
+yarn playwright:test-debug
+```
+
+### 2. View HTML Test Reports
+
+```bash
+yarn playwright:show-report
+```
+
 ## More
 
 You can view full document on our [official website](https://pro.ant.design). And welcome any
