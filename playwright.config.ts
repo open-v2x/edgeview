@@ -12,6 +12,8 @@ import { devices } from '@playwright/test';
  */
 const config: PlaywrightTestConfig = {
   testDir: './e2e',
+  // testDir: './tests-examples', // tests-examples directory
+
   /* Maximum time one test can run for. */
   timeout: 30 * 10000,
   expect: {
@@ -41,7 +43,7 @@ const config: PlaywrightTestConfig = {
     browserName: 'chromium',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'retain-on-failure',
     /**
      * 'off' - Do not capture screenshots.
      * 'on' - Capture screenshot after each test.
