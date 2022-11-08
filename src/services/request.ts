@@ -3,6 +3,7 @@ import { getToken } from 'edge-src/utils/storage';
 import { message } from 'antd';
 import { clearStorage } from './../utils/storage';
 import { history } from 'umi';
+import errorStatus from './errorStatus';
 
 const errorHandler = (error: any) => {
   const { response } = error;
@@ -12,10 +13,11 @@ const errorHandler = (error: any) => {
     return Promise.reject(error);
   } else if (response.status != 200) {
     if (response.headers.get('Content-Type').includes('application/json')) {
-      response.json().then((res: { detail: string }) => {
+      response.json().then((res: { detail: any }) => {
         const { detail } = res || {};
         if (detail) {
-          message.error(detail);
+          const { code, msg } = detail;
+          errorStatus(code, msg || detail);
         }
       });
     } else {
