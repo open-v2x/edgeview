@@ -11,7 +11,7 @@ import { devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 const config: PlaywrightTestConfig = {
-  testDir: './e2e',
+  testDir: './e2e/pages',
   // testDir: './tests-examples', // tests-examples directory
 
   /* Maximum time one test can run for. */
@@ -32,15 +32,20 @@ const config: PlaywrightTestConfig = {
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  reporter: [['html', { outputFolder: 'e2e/playwright-report' }]],
+  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
+  outputDir: 'e2e/test-results',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    // baseURL: 'http://localhost:8000',
+    baseURL: 'http://47.100.126.13',
     /* browserName - Name of the browser that will run the tests, one of chromium, firefox, or webkit. */
     browserName: 'chromium',
+    // Tell all tests to load signed-in state from 'storageState.json'.
+    storageState: 'e2e/storage/userStorageState.json',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'retain-on-failure',
@@ -56,7 +61,8 @@ const config: PlaywrightTestConfig = {
      * 'retain-on-failure' - Record video for each test, but remove all videos from successful test runs.
      * 'on-first-retry' - Record video only when retrying a test for the first time.
      */
-    video: 'retain-on-failure',
+    // video: 'retain-on-failure',
+    video: 'on',
   },
 
   /* Configure projects for major browsers */
@@ -68,19 +74,19 @@ const config: PlaywrightTestConfig = {
       },
     },
 
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox'],
-      },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: {
+    //     ...devices['Desktop Firefox'],
+    //   },
+    // },
 
-    {
-      name: 'webkit',
-      use: {
-        ...devices['Desktop Safari'],
-      },
-    },
+    // {
+    //   name: 'webkit',
+    //   use: {
+    //     ...devices['Desktop Safari'],
+    //   },
+    // },
 
     /* Test against mobile viewports. */
     // {
@@ -110,9 +116,6 @@ const config: PlaywrightTestConfig = {
     //   },
     // },
   ],
-
-  /* Folder for test artifacts such as screenshots, videos, traces, etc. */
-  // outputDir: 'test-results/',
 
   /* Run your local dev server before starting the tests */
   // webServer: {
