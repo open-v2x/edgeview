@@ -1,0 +1,14 @@
+{
+  "cookies": [],
+  "origins": [
+    {
+      "origin": "http://localhost:8000",
+      "localStorage": [
+        {
+          "name": "v2x_edgeview_token",
+          "value": "bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NjkwMjU1NTAsInN1YiI6IjEifQ.9dILzt1UkcL90vmN0fxMjbgOQ5Aar9MSmsvmZ-jM-Sw"
+        }
+      ]
+    }
+  ]
+}
