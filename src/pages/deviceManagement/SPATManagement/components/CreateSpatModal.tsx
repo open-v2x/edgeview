@@ -130,17 +130,15 @@ const CreateSpatModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fal
       modalProps={{ className: 'overflow' }}
       submitForm={async (values) => {
         if (editInfo) {
-          updateSpat(editInfo.id, values);
+          await updateSpat(editInfo.id, values);
         } else {
-          createSpat(values);
+          await createSpat(values);
         }
         success();
       }}
       editId={editInfo?.id}
       isDetails={isDetails}
-      request={async () => {
-        return editInfo;
-      }}
+      request={() => editInfo}
     >
       <FormItem items={formItems} />
     </Modal>
