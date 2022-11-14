@@ -112,6 +112,19 @@ const CreateSpatModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fal
         },
       ],
     },
+    {
+      key: 'desc',
+      children: [
+        {
+          type: 'textarea',
+          width: 912,
+          name: 'desc',
+          label: t('Describe'),
+          disabled: isDetails,
+          fieldProps: { autoSize: { minRows: 3, maxRows: 5 } },
+        },
+      ],
+    },
   ];
 
   const modalTitle = () => {
