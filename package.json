@@ -20,7 +20,7 @@
     "lint:style": "stylelint --fix \"src/**/*.less\" --syntax less",
     "openapi": "umi openapi",
     "playwright": "playwright install && playwright test",
-    "playwright:show-report": "npx playwright show-report",
+    "playwright:show-report": "npx playwright show-report e2e/playwright-report",
     "playwright:test": "npx playwright test",
     "playwright:test-debug": "npx playwright test --debug",
     "precommit": "lint-staged",
