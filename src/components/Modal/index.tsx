@@ -50,7 +50,11 @@ const Modal: React.FC<ModalProps> = ({
       title={title}
       trigger={
         trigger || (
-          <Button icon={editId ? '' : <PlusOutlined />} type={editId ? 'link' : 'primary'}>
+          <Button
+            icon={editId ? '' : <PlusOutlined />}
+            type={editId ? 'link' : 'primary'}
+            id={isDetails ? '' : editId ? 'editButton' : 'createButton'}
+          >
             {(editId ? editTrigger : createTrigger) || t('Edit')}
           </Button>
         )
@@ -65,8 +69,13 @@ const Modal: React.FC<ModalProps> = ({
           ? false
           : {
               searchConfig: { submitText: t('Submit') },
-              resetButtonProps: { icon: <CloseCircleOutlined />, type: 'primary', ghost: true },
-              submitButtonProps: { icon: <CloudUploadOutlined /> },
+              resetButtonProps: {
+                icon: <CloseCircleOutlined />,
+                type: 'primary',
+                ghost: true,
+                id: 'cancelButton',
+              },
+              submitButtonProps: { icon: <CloudUploadOutlined />, id: 'submitButton' },
             }
       }
       onFinish={async (values) => {

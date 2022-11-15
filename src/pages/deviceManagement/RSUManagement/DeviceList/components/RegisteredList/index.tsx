@@ -71,11 +71,16 @@ const RegisteredList: React.FC = () => {
           success={() => actionRef.current?.reload()}
         />,
         <Divider key="edit-divider" type="vertical" />,
-        <a key="details" onClick={() => history.push(`/device/rsu/details/${row.id}`)}>
+        <a
+          id="detailButton"
+          key="details"
+          onClick={() => history.push(`/device/rsu/details/${row.id}`)}
+        >
           {t('Details')}
         </a>,
         <Divider key="details-divider" type="vertical" />,
         <a
+          id="enableDisableButton"
           key="disabled"
           style={{ color: row.enabled ? '#E74040' : '' }}
           onClick={() =>
@@ -96,6 +101,7 @@ const RegisteredList: React.FC = () => {
         </a>,
         <Divider key="disabled-divider" type="vertical" />,
         <a
+          id="deleteButton"
           key="delete"
           onClick={() =>
             confirmModal({
