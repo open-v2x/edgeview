@@ -14,7 +14,7 @@ const BaseContainer: React.FC<BaseContainerType> = ({ children, back = false }) 
       extra={
         back
           ? [
-              <Button key="back" onClick={() => history.goBack()}>
+              <Button id="backButton" key="back" onClick={() => history.goBack()}>
                 {t('Back')}
               </Button>,
             ]

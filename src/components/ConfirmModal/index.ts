@@ -22,6 +22,8 @@ export const confirmModal = async ({
   Modal.confirm({
     title,
     content,
+    cancelButtonProps: { id: 'cancelButton' },
+    okButtonProps: { id: 'okButton' },
     onOk() {
       return new Promise(async (resolve) => {
         try {
