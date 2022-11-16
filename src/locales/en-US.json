@@ -451,5 +451,7 @@
   "SPAT_PHASE_ID_TIP": "the range should be 0-255",
   "Lidar Connection URL": "lidar data stream",
   "error.1062": "operation failed, {{msg}} repeat, please check it!",
-  "error.1406": "operation failed, {{msg}} is too long, please short-cut!"
+  "error.1406": "operation failed, {{msg}} is too long, please short-cut!",
+  "Lidar URL": "Lidar URL",
+  "Please enter lidar URL": "Please enter lidar URL"
 }
