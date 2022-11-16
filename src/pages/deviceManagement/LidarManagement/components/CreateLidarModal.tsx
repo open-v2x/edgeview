@@ -191,9 +191,9 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
       modalProps={{ className: 'overflow' }}
       submitForm={async (values) => {
         if (editInfo) {
-          updateLidar(editInfo.id, values);
+          await updateLidar(editInfo.id, values);
         } else {
-          createLidar(values);
+          await createLidar(values);
         }
         success();
       }}
