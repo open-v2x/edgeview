@@ -16,8 +16,8 @@ const errorHandler = (error: any) => {
       response.json().then((res: { detail: any }) => {
         const { detail } = res || {};
         if (detail) {
-          const { code, msg } = detail;
-          errorStatus(code, msg || detail);
+          const { code, msg, detail: d } = detail;
+          errorStatus(code, msg || detail, d);
         }
       });
     } else {
