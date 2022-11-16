@@ -143,6 +143,24 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
       ],
     },
     {
+      key: 'wsUrl',
+      children: [
+        {
+          required: true,
+          width: 912,
+          name: 'wsUrl',
+          label: t('Lidar URL'),
+          disabled: isDetails,
+          rules: [
+            {
+              required: true,
+              message: t('Please enter lidar URL'),
+            },
+          ],
+        },
+      ],
+    },
+    {
       key: 'desc',
       children: [
         {
@@ -182,9 +200,9 @@ const CreateLidarModal: React.FC<CreateModalProps> = ({ editInfo, isDetails = fa
       editId={editInfo?.id}
       isDetails={isDetails}
       request={async () => {
-        const { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc } =
+        const { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc, wsUrl } =
           editInfo!;
-        return { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc };
+        return { name, sn, lng, lat, elevation, towards, rsuId, lidarIP, point, pole, desc, wsUrl };
       }}
     >
       <FormItem items={formItems} />
