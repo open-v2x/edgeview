@@ -3,7 +3,7 @@ name: ci
 on:
   push:
     branches:
-      - 'master'
+      - 'beihai'
 
 jobs:
   docker:
@@ -58,13 +58,13 @@ jobs:
       - name: apply to all-in-one environment
         uses: appleboy/ssh-action@master
         with:
-          host: ${{ secrets.AIO_MASTER_HOST }}
-          username: ${{ secrets.AIO_MASTER_USERNAME }}
-          key: ${{ secrets.AIO_MASTER_KEY }}
-          port: ${{ secrets.AIO_MASTER_PORT }}
+          host: ${{ secrets.AIO_BEIHAI_HOST }}
+          username: ${{ secrets.AIO_BEIHAI_USERNAME }}
+          key: ${{ secrets.AIO_BEIHAI_KEY }}
+          port: ${{ secrets.AIO_BEIHAI_PORT }}
           script: |
             set -e
-            rm -rf openv2x-aio-master.tar.gz && wget https://openv2x.oss-ap-southeast-1.aliyuncs.com/deploy/master/openv2x-aio-master.tar.gz
-            rm -rf src && tar zxvf openv2x-aio-master.tar.gz
+            rm -rf openv2x-aio-beihai.tar.gz && wget https://openv2x.oss-ap-southeast-1.aliyuncs.com/deploy/beihai/openv2x-aio-beihai.tar.gz
+            rm -rf src && tar zxvf openv2x-aio-beihai.tar.gz
             cd src
             sh install.sh
