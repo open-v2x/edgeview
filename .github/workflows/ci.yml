@@ -26,7 +26,7 @@ jobs:
           context: .
           platforms: linux/amd64,linux/arm64
           push: true
-          tags: openv2x/edgeview:latest
+          tags: openv2x/edgeview:beihai
           build-args: |
             GIT_BRANCH=${{ github.ref_name }}
             REPO_URL=https://github.com/open-v2x/edgeview
@@ -47,9 +47,9 @@ jobs:
             set -e
 
             (docker images | grep none | awk '{print $3}' | xargs -I{} docker rmi -f {}) || true
-            docker pull openv2x/edgeview:latest
-            docker tag openv2x/edgeview:latest registry.cn-shanghai.aliyuncs.com/openv2x/edgeview:latest
-            docker push registry.cn-shanghai.aliyuncs.com/openv2x/edgeview:latest
+            docker pull openv2x/edgeview:beihai
+            docker tag openv2x/edgeview:beihai registry.cn-shanghai.aliyuncs.com/openv2x/edgeview:beihai
+            docker push registry.cn-shanghai.aliyuncs.com/openv2x/edgeview:beihai
 
   ssh:
     needs: acr
