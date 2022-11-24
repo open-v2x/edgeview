@@ -1,0 +1,68 @@
+# 1. build temporary image: openv2x/edgeview:temp
+# 2. use openv2x/edgeview:temp replace openv2x/edgeview:latest in docker-compose-service.yaml
+# 3. all-in-one deploy 
+# 4. run e2e test
+
+name: front-e2e-test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+# This ensures that previous jobs for the branch are canceled when the branch is updated. 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref }}
+  cancel-in-progress: true
+env:
+  OPENV2X_EXTERNAL_IP: 127.0.0.1
+  OPENV2X_REDIS_ROOT: password
+  OPENV2X_MARIADB_ROOT: password
+  OPENV2X_MARIADB_DANDELION: password
+  OPENV2X_EMQX_ROOT: password
+jobs:
+  front-e2e-test:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+        
+      - name: build temporary image
+        run: | 
+          docker build -t openv2x/edgeview:temp .
+
+      - name: deploy service
+        run: | 
+          sudo rm -rf openv2x-aio-master.tar.gz && wget https://openv2x.oss-ap-southeast-1.aliyuncs.com/deploy/master/openv2x-aio-master.tar.gz
+          sudo rm -rf src && tar zxvf openv2x-aio-master.tar.gz
+          sudo sed -i "s/8084/8085/" src/deploy/docker-compose-pre.yaml && sudo sed -i "s/8084/8085/" src/deploy/docker-compose-service.yaml
+          sed -i "s#openv2x/edgeview:latest#openv2x/edgeview:temp#" src/deploy/docker-compose-service.yaml
+          cd src && chmod +x ./install.sh && sudo -E bash ./install.sh
+
+      - name: Install dependencies
+        run: npm install
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+      - name: Run Playwright tests
+        run: npx playwright test
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: playwright-report
+          path: e2e/playwright-report
+          retention-days: 30
+      
+      - name: pass or fail 
+        run: |
+          if [ -e "e2e/test-results/*/*.png" ]; then
+          echo e2e-test fail
+          exit 110 
+          else
+          echo e2e-test successfully
+          fi
+
+          
