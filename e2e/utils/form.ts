@@ -4,10 +4,15 @@ export const formItemSelect = (page: Page, selector: string) => {
   return page.locator(`.antd-form-item-${selector}`).locator('.ant-select');
 };
 
-export const setSelectValue = async (page: Page, selector: string, nthChild: number = 0) => {
+export const setSelectValue = async (
+  page: Page,
+  selector: string,
+  detail_selector: string,
+  nthChild: number = 0,
+) => {
   await formItemSelect(page, selector).click();
   await page
-    .locator(`#rsuModelId_list + .rc-virtual-list`)
+    .locator(`${detail_selector} + .rc-virtual-list`)
     .locator('.rc-virtual-list-holder-inner')
     .nth(nthChild)
     .click();

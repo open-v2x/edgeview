@@ -1,5 +1,4 @@
 import type { Page } from '@playwright/test';
-import { expect } from '@playwright/test';
 
 export const tableRow = (page: Page, rowIndex = 0) => {
   const tbody = page.locator('.ant-table-tbody');
@@ -41,12 +40,34 @@ export const clickEnableDisableBtn = async (
 
 export const clickDetailBtn = async (
   page: Page,
-  pageUrl: string,
   selecor: string = '#detailButton',
   delay = 1000,
 ) => {
   await tableOperationBtn(page, selecor).click({ delay });
-  await expect(page).toHaveURL(new RegExp(`${pageUrl}/details`));
+};
+
+export const clickDetailTextBtn = async (
+  page: Page,
+  selecor: string = 'text="详情"',
+  delay = 1000,
+) => {
+  await page.click(selecor, { delay });
+};
+
+export const clickDeleteTextBtn = async (
+  page: Page,
+  selecor: string = 'text="删除"',
+  delay = 1000,
+) => {
+  await page.click(selecor, { delay });
+};
+
+export const clickEnableDisableTextBtn = async (
+  page: Page,
+  selecor: string = 'text="启用"',
+  delay = 1000,
+) => {
+  await page.click(selecor, { delay });
 };
 
 export const clickDeleteBtn = async (
