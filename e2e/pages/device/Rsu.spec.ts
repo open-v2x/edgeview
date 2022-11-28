@@ -1,4 +1,5 @@
 import { test } from '@playwright/test';
+import { expect } from '@playwright/test';
 import { generateIntNum, generateNumLetter, generatePureNumber } from '../../utils';
 import { gotPageAndExpectUrl, useUserStorageState, checkSuccessMsg } from '../../utils/global';
 import {
@@ -51,7 +52,7 @@ test.describe('The Rsu Page', () => {
     await setModalFormItemValue(page, '#rsuIP', rsuIPVal);
     await setModalFormItemValue(page, '#address', addressVal);
     await setModalFormItemValue(page, '#desc', descVal);
-    await setSelectValue(page, 'rsuModelId');
+    await setSelectValue(page, 'rsuModelId', '#rsuModelId_list');
     await setCascaderValue(page, 'province', provinceNameVal);
 
     await globalModalSubmitBtn(page);
@@ -68,7 +69,7 @@ test.describe('The Rsu Page', () => {
     await setModalFormItemValue(page, '#rsuIP', rsuIPVal);
     await setModalFormItemValue(page, '#address', `update ${addressVal}`);
     await setModalFormItemValue(page, '#desc', `update ${descVal}`);
-    await setSelectValue(page, 'rsuModelId');
+    await setSelectValue(page, 'rsuModelId', '#rsuModelId_list');
     await setCascaderValue(page, 'province', [0, 1, 2, 5]);
 
     await globalModalSubmitBtn(page);
@@ -77,7 +78,8 @@ test.describe('The Rsu Page', () => {
 
   test('successfully view detail', async ({ page }) => {
     await searchItemAndQuery(page, '#rsuName', rsuNameVal);
-    await clickDetailBtn(page, pageUrl);
+    await clickDetailBtn(page);
+    await expect(page).toHaveURL(new RegExp(`${pageUrl}/details`));
     await clickBackToListBtn(page);
   });
 

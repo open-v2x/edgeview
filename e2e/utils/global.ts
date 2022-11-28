@@ -25,3 +25,15 @@ export const checkSuccessMsg = async (page: Page) => {
 export const checkErrorMsg = async (page: Page) => {
   return await expect(page.locator('.ant-message .ant-message-error')).toBeVisible();
 };
+
+export const checkDetaillWindow = async (page: Page) => {
+  return await expect(page.locator('.ant-modal-content')).toBeVisible();
+};
+
+export const closePopWindow = async (page: Page) => {
+  await page.locator('.ant-modal-close-x').click();
+};
+
+export const uploadFile = async (page: Page, selector: string, file_path: string) => {
+  await page.setInputFiles(selector, file_path);
+};
