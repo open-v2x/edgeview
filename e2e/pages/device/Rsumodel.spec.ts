@@ -1,6 +1,6 @@
 import { test } from '@playwright/test';
 import { generateNumLetter } from '../../utils';
-import { gotPageAndExpectUrl, useUserStorageState, checkSuccessMsg } from '../../utils/global';
+import { gotoPageAndExpectUrl, useUserStorageState, checkSuccessMsg } from '../../utils/global';
 import { setModalFormItemValue, globalModalSubmitBtn } from '../../utils/form';
 import {
   clickCreateBtn,
@@ -21,7 +21,7 @@ test.describe('The RsuModel Page', () => {
   useUserStorageState();
 
   test.beforeEach(async ({ page }) => {
-    await gotPageAndExpectUrl(page, pageUrl);
+    await gotoPageAndExpectUrl(page, pageUrl);
   });
 
   test('successfully create rsumodel', async ({ page }) => {

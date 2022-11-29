@@ -70,11 +70,23 @@ export const clickEnableDisableTextBtn = async (
   await page.click(selecor, { delay });
 };
 
+export const clickDownTextBtn = async (
+  page: Page,
+  selecor: string = 'text="下发"',
+  delay = 1000,
+) => {
+  await page.click(selecor, { delay });
+};
+
 export const clickDeleteBtn = async (
   page: Page,
   selecor: string = '#deleteButton',
   delay = 1000,
 ) => {
+  await tableOperationBtn(page, selecor).click({ delay });
+};
+
+export const clickCopyBtn = async (page: Page, selecor: string = '#sendRSU', delay = 1000) => {
   await tableOperationBtn(page, selecor).click({ delay });
 };
 
