@@ -1,7 +1,11 @@
 import { test } from '@playwright/test';
-import { expect } from '@playwright/test';
 import { generateIntNum, generateNumLetter, generatePureNumber } from '../../utils';
-import { gotPageAndExpectUrl, useUserStorageState, checkSuccessMsg } from '../../utils/global';
+import {
+  gotoPageAndExpectUrl,
+  useUserStorageState,
+  checkSuccessMsg,
+  checkDetailUrl,
+} from '../../utils/global';
 import {
   setModalFormItemValue,
   setSelectValue,
@@ -40,7 +44,7 @@ test.describe('The Rsu Page', () => {
   useUserStorageState();
 
   test.beforeEach(async ({ page }) => {
-    await gotPageAndExpectUrl(page, pageUrl);
+    await gotoPageAndExpectUrl(page, pageUrl);
   });
 
   test('successfully create rsu', async ({ page }) => {
@@ -79,7 +83,7 @@ test.describe('The Rsu Page', () => {
   test('successfully view detail', async ({ page }) => {
     await searchItemAndQuery(page, '#rsuName', rsuNameVal);
     await clickDetailBtn(page);
-    await expect(page).toHaveURL(new RegExp(`${pageUrl}/details`));
+    await checkDetailUrl(page, pageUrl);
     await clickBackToListBtn(page);
   });
 

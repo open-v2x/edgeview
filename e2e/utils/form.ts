@@ -8,16 +8,20 @@ export const setSelectValue = async (
   page: Page,
   selector: string,
   detail_selector: string,
-  nthChild: number = 0,
+  nthChild: number = 1,
 ) => {
+  // 创建和编辑时选择的下拉框
   await formItemSelect(page, selector).click();
   await page
     .locator(`${detail_selector} + .rc-virtual-list`)
-    .locator('.rc-virtual-list-holder-inner')
-    .nth(nthChild)
+    .locator(`.rc-virtual-list-holder-inner > div:nth-child(${nthChild})`)
     .click();
 };
-
+export const setQuerySelectValue = async (page: Page, selector: string, nthchild: number = 1) => {
+  // 查询时选择的下拉框
+  await page.click(selector);
+  await page.locator(`.rc-virtual-list-holder-inner > div:nth-child(${nthchild})`).click();
+};
 export const formItemCascader = (page: Page, selector: string) => {
   return page.locator(`.antd-form-item-${selector}`).locator('.ant-cascader');
 };

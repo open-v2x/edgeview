@@ -2,7 +2,7 @@ import type { Page } from '@playwright/test';
 import { test, expect } from '@playwright/test';
 import Login from '../pages/login.spec';
 
-export const gotPageAndExpectUrl = async (page: Page, url: string) => {
+export const gotoPageAndExpectUrl = async (page: Page, url: string) => {
   await Login;
   await page.goto(url);
   await expect(page).toHaveURL(new RegExp(url));
@@ -36,4 +36,8 @@ export const closePopWindow = async (page: Page) => {
 
 export const uploadFile = async (page: Page, selector: string, file_path: string) => {
   await page.setInputFiles(selector, file_path);
+};
+
+export const checkDetailUrl = async (page: Page, pageUrl: string) => {
+  await expect(page).toHaveURL(new RegExp(`${pageUrl}/details`));
 };

@@ -1,7 +1,7 @@
 import { test } from '@playwright/test';
 import { generateIntNum, generateNumLetter, generatePureNumber } from '../../utils';
 import {
-  gotPageAndExpectUrl,
+  gotoPageAndExpectUrl,
   useUserStorageState,
   checkSuccessMsg,
   checkDetaillWindow,
@@ -32,7 +32,7 @@ test.describe('The Camera Page', () => {
   useUserStorageState();
 
   test.beforeEach(async ({ page }) => {
-    await gotPageAndExpectUrl(page, pageUrl);
+    await gotoPageAndExpectUrl(page, pageUrl);
   });
 
   test('successfully create camera', async ({ page }) => {
