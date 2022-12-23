@@ -1,17 +1,17 @@
 import { test } from '@playwright/test';
+import { clickBackToListBtn } from '../../utils/detail';
+import { globalModalSubmitBtn, setQuerySelectValue, setSelectValue } from '../../utils/form';
 import {
+  checkDetailUrl,
+  checkSuccessMsg,
   gotoPageAndExpectUrl,
   useUserStorageState,
-  checkSuccessMsg,
-  checkDetailUrl,
 } from '../../utils/global';
-import { setSelectValue, setQuerySelectValue, globalModalSubmitBtn } from '../../utils/form';
-import { clickBackToListBtn } from '../../utils/detail';
 import {
-  clickDetailTextBtn,
+  clickConfirmModalOkBtn,
   clickCreateBtn,
   clickDeleteTextBtn,
-  clickConfirmModalOkBtn,
+  clickDetailTextBtn,
 } from '../../utils/table';
 
 test.describe('The Query Page', () => {

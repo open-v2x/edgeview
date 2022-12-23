@@ -1,17 +1,20 @@
 import { test } from '@playwright/test';
 import { generatePureNumber } from '../../utils';
-import { gotoPageAndExpectUrl, useUserStorageState, checkSuccessMsg } from '../../utils/global';
-import { setModalFormItemValue, globalModalSubmitBtn, setSelectValue } from '../../utils/form';
+import { globalModalSubmitBtn, setModalFormItemValue, setSelectValue } from '../../utils/form';
+import { checkSuccessMsg, gotoPageAndExpectUrl, useUserStorageState } from '../../utils/global';
 
 import {
-  clickEditBtn,
-  clickDownTextBtn,
+  checkTableItemContainValue,
+  checkTableItemEqualValue,
   clickCopyBtn,
+  clickDownTextBtn,
+  clickEditBtn,
   searchItemAndQuery,
 } from '../../utils/table';
 
 test.describe('The Maintenance Page', () => {
   const M_NameVal = 'RSU01';
+  const M_rsuEsn = 'R328328';
   const randomNum = generatePureNumber();
   const pageUrl = '/maintenance/maintenance';
 
@@ -47,5 +50,15 @@ test.describe('The Maintenance Page', () => {
     await setSelectValue(page, 'rsus', '#rsus_list');
     await globalModalSubmitBtn(page);
     await checkSuccessMsg(page);
+  });
+
+  test('successfully query via rsuEsn', async ({ page }) => {
+    await searchItemAndQuery(page, '#rsuEsn', M_rsuEsn);
+    await checkTableItemEqualValue(page, M_rsuEsn, 2);
+  });
+
+  test('successfully query via rsuName', async ({ page }) => {
+    await searchItemAndQuery(page, '#rsuName', M_NameVal);
+    await checkTableItemContainValue(page, M_NameVal, 1);
   });
 });

@@ -1,32 +1,35 @@
 import { test } from '@playwright/test';
 import { generateIntNum, generateNumLetter, generatePureNumber } from '../../utils';
+import { clickBackToListBtn } from '../../utils/detail';
 import {
-  gotoPageAndExpectUrl,
-  useUserStorageState,
-  checkSuccessMsg,
-  checkDetailUrl,
-} from '../../utils/global';
-import {
-  setModalFormItemValue,
-  setSelectValue,
-  setCascaderValue,
   globalModalSubmitBtn,
+  setCascaderValue,
+  setModalFormItemValue,
+  setQuerySelectValue,
+  setSelectValue,
 } from '../../utils/form';
 import {
+  checkDetailUrl,
+  checkSuccessMsg,
+  gotoPageAndExpectUrl,
+  useUserStorageState,
+} from '../../utils/global';
+import {
+  checkTableItemContainValue,
+  clickConfirmModalOkBtn,
   clickCreateBtn,
+  clickDeleteBtn,
+  clickDetailBtn,
   clickEditBtn,
   clickEnableDisableBtn,
-  clickDetailBtn,
-  clickDeleteBtn,
-  clickConfirmModalOkBtn,
   searchItemAndQuery,
 } from '../../utils/table';
-import { clickBackToListBtn } from '../../utils/detail';
 
 test.describe('The Rsu Page', () => {
   const randomNumLetter = generateNumLetter();
   const randomNum = generatePureNumber();
   const rsuNameVal = `rsu_name_${1}`;
+  const queryRsuEsn = 'R328328';
   const rsuEsnVal = `R_${randomNumLetter}`;
   const rsuIdVal = `${randomNum}`;
   const rsuIPVal = [
@@ -61,6 +64,22 @@ test.describe('The Rsu Page', () => {
 
     await globalModalSubmitBtn(page);
     await checkSuccessMsg(page);
+  });
+
+  test('successfully query via rsuName', async ({ page }) => {
+    await searchItemAndQuery(page, '#rsuName', rsuNameVal);
+    await checkTableItemContainValue(page, rsuNameVal, 2);
+  });
+
+  test('successfully query via rsuEsn', async ({ page }) => {
+    await searchItemAndQuery(page, '#rsuEsn', queryRsuEsn);
+    await checkTableItemContainValue(page, queryRsuEsn, 3);
+  });
+
+  test('successfully query via status', async ({ page }) => {
+    await page.click('.ant-pro-form-collapse-button'); // 点击展开
+    await setQuerySelectValue(page, '#enabled');
+    await checkTableItemContainValue(page, '启用', 7);
   });
 
   test('successfully edit rsu', async ({ page }) => {

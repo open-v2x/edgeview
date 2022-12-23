@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test';
-import { saveUserStorageState, checkErrorMsg } from '../utils/global';
+import { expect, test } from '@playwright/test';
+import { checkErrorMsg, saveUserStorageState } from '../utils/global';
 
 const username = 'admin';
 const password = 'dandelion';

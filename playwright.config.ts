@@ -40,7 +40,7 @@ const config: PlaywrightTestConfig = {
     /* Maximum time each action such as `click()` can take. Defaults to 0 (no limit). */
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'http://localhost:80',
+    baseURL: 'http://localhost',
     // baseURL: 'http://47.100.126.13',
     /* browserName - Name of the browser that will run the tests, one of chromium, firefox, or webkit. */
     browserName: 'chromium',

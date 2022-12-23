@@ -1,18 +1,19 @@
 import { test } from '@playwright/test';
 import { generateNumLetter } from '../../utils';
-import { gotoPageAndExpectUrl, useUserStorageState, checkSuccessMsg } from '../../utils/global';
-import { setModalFormItemValue, globalModalSubmitBtn } from '../../utils/form';
+import { globalModalSubmitBtn, setModalFormItemValue } from '../../utils/form';
+import { checkSuccessMsg, gotoPageAndExpectUrl, useUserStorageState } from '../../utils/global';
 import {
-  clickCreateBtn,
-  clickEditBtn,
+  checkTableItemContainValue,
   clickConfirmModalOkBtn,
+  clickCreateBtn,
   clickDeleteTextBtn,
+  clickEditBtn,
   searchItemAndQuery,
 } from '../../utils/table';
 
 test.describe('The RsuModel Page', () => {
   const randomNumLetter = generateNumLetter();
-  const rsumodelNameVal = `spat_name_${1}`;
+  const rsumodelNameVal = `model_name_${1}`;
   const manufacturerVal = `C_${randomNumLetter}`;
   const descVal = 'test description info';
   const pageUrl = '/device/model';
@@ -33,6 +34,16 @@ test.describe('The RsuModel Page', () => {
 
     await globalModalSubmitBtn(page);
     await checkSuccessMsg(page);
+  });
+
+  test('successfully query via rsuModelName', async ({ page }) => {
+    await searchItemAndQuery(page, '#name', rsumodelNameVal);
+    await checkTableItemContainValue(page, rsumodelNameVal, 1);
+  });
+
+  test('successfully query via manufacturer', async ({ page }) => {
+    await searchItemAndQuery(page, '#manufacturer', manufacturerVal);
+    await checkTableItemContainValue(page, manufacturerVal, 2);
   });
 
   test('successfully edit rsumodel', async ({ page }) => {

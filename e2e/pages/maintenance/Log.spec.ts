@@ -1,13 +1,13 @@
 import { test } from '@playwright/test';
 import { generateNumLetter } from '../../utils';
-import { gotoPageAndExpectUrl, useUserStorageState, checkSuccessMsg } from '../../utils/global';
-import { setModalFormItemValue, setSelectValue, globalModalSubmitBtn } from '../../utils/form';
+import { globalModalSubmitBtn, setModalFormItemValue, setSelectValue } from '../../utils/form';
+import { checkSuccessMsg, gotoPageAndExpectUrl, useUserStorageState } from '../../utils/global';
 
 import {
-  clickCreateBtn,
-  clickEditBtn,
-  clickDeleteTextBtn,
   clickConfirmModalOkBtn,
+  clickCreateBtn,
+  clickDeleteTextBtn,
+  clickEditBtn,
 } from '../../utils/table';
 
 test.describe('The Log Page', () => {
