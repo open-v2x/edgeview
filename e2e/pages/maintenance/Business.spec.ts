@@ -1,22 +1,22 @@
 import { test } from '@playwright/test';
 import { generatePureNumber } from '../../utils';
+import { globalModalSubmitBtn, setModalFormItemValue } from '../../utils/form';
 import {
+  checkDetailUrl,
+  checkSuccessMsg,
   gotoPageAndExpectUrl,
   useUserStorageState,
-  checkSuccessMsg,
-  checkDetailUrl,
 } from '../../utils/global';
-import { setModalFormItemValue, globalModalSubmitBtn } from '../../utils/form';
 
+import { clickBackToListBtn } from '../../utils/detail';
 import {
-  clickCreateBtn,
-  clickEditBtn,
-  clickDetailTextBtn,
-  clickDeleteTextBtn,
   clickConfirmModalOkBtn,
+  clickCreateBtn,
+  clickDeleteTextBtn,
+  clickDetailTextBtn,
+  clickEditBtn,
   searchItemAndQuery,
 } from '../../utils/table';
-import { clickBackToListBtn } from '../../utils/detail';
 
 test.describe('The Business Page', () => {
   const randomNum = generatePureNumber();

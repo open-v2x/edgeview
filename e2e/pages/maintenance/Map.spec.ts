@@ -1,23 +1,23 @@
 import { test } from '@playwright/test';
 import { generateNumLetter } from '../../utils';
+import { globalModalSubmitBtn, setCascaderValue, setModalFormItemValue } from '../../utils/form';
 import {
-  gotoPageAndExpectUrl,
-  useUserStorageState,
-  checkSuccessMsg,
-  uploadFile,
   checkDetailUrl,
+  checkSuccessMsg,
+  gotoPageAndExpectUrl,
+  uploadFile,
+  useUserStorageState,
 } from '../../utils/global';
-import { setModalFormItemValue, setCascaderValue, globalModalSubmitBtn } from '../../utils/form';
 
+import { clickBackToListBtn } from '../../utils/detail';
 import {
-  clickCreateBtn,
-  clickEditBtn,
-  clickDetailTextBtn,
-  clickDeleteTextBtn,
   clickConfirmModalOkBtn,
+  clickCreateBtn,
+  clickDeleteTextBtn,
+  clickDetailTextBtn,
+  clickEditBtn,
   searchItemAndQuery,
 } from '../../utils/table';
-import { clickBackToListBtn } from '../../utils/detail';
 
 test.describe('The MAP Page', () => {
   const randomNumLetter = generateNumLetter();

@@ -1,19 +1,19 @@
 import { test } from '@playwright/test';
 import { generateIntNum, generateNumLetter, generatePureNumber } from '../../utils';
+import { globalModalSubmitBtn, setModalFormItemValue, setSelectValue } from '../../utils/form';
 import {
+  checkDetaillWindow,
+  checkSuccessMsg,
+  closePopWindow,
   gotoPageAndExpectUrl,
   useUserStorageState,
-  checkSuccessMsg,
-  checkDetaillWindow,
-  closePopWindow,
 } from '../../utils/global';
-import { setModalFormItemValue, setSelectValue, globalModalSubmitBtn } from '../../utils/form';
 import {
-  clickCreateBtn,
-  clickEditBtn,
   clickConfirmModalOkBtn,
-  clickDetailTextBtn,
+  clickCreateBtn,
   clickDeleteTextBtn,
+  clickDetailTextBtn,
+  clickEditBtn,
   searchItemAndQuery,
 } from '../../utils/table';
 

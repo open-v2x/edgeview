@@ -1,16 +1,27 @@
 import type { Page } from '@playwright/test';
-import { test, expect } from '@playwright/test';
-import Login from '../pages/login.spec';
-
-export const gotoPageAndExpectUrl = async (page: Page, url: string) => {
-  await Login;
-  await page.goto(url);
-  await expect(page).toHaveURL(new RegExp(url));
-};
+import { expect, test } from '@playwright/test';
+const username = 'admin';
+const password = 'dandelion';
 
 // Save signed-in state to 'userStorageState.json'.
 export const saveUserStorageState = async (page: Page) => {
   await page.context().storageState({ path: 'e2e/storage/userStorageState.json' });
+};
+export const Login = async (page: Page) => {
+  await page.goto('/user/login');
+  await page.fill('#username', username);
+  await page.fill('#password', password);
+  const submitBtn = page.locator('.ant-form button.ant-btn');
+  await submitBtn.click();
+  await expect(page).toHaveURL('/device/rsu');
+
+  // Save signed-in state to 'userStorageState.json'.
+  await saveUserStorageState(page);
+};
+export const gotoPageAndExpectUrl = async (page: Page, url: string) => {
+  await Login(page);
+  await page.goto(url);
+  await expect(page).toHaveURL(new RegExp(url));
 };
 
 // Use signed-in state of 'userStorageState.json'.

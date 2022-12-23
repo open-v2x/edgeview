@@ -45,21 +45,12 @@ jobs:
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx playwright test
+        run: npx playwright test -g event
       - uses: actions/upload-artifact@v3
         if: always()
         with:
           name: playwright-report
           path: e2e/playwright-report
           retention-days: 30
-      
-      - name: pass or fail 
-        run: |
-          if [ -e "e2e/test-results/*/*.png" ]; then
-          echo e2e-test fail
-          exit 110 
-          else
-          echo e2e-test successfully
-          fi
 
           

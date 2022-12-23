@@ -1,27 +1,32 @@
 import type { Page } from '@playwright/test';
+import { clickQuerySearchBtn } from './table';
 
 export const formItemSelect = (page: Page, selector: string) => {
   return page.locator(`.antd-form-item-${selector}`).locator('.ant-select');
 };
 
+// 创建和编辑时选择的下拉框
 export const setSelectValue = async (
   page: Page,
   selector: string,
   detail_selector: string,
   nthChild: number = 1,
 ) => {
-  // 创建和编辑时选择的下拉框
   await formItemSelect(page, selector).click();
   await page
     .locator(`${detail_selector} + .rc-virtual-list`)
     .locator(`.rc-virtual-list-holder-inner > div:nth-child(${nthChild})`)
     .click();
 };
+
+// 查询时选择的下拉框
 export const setQuerySelectValue = async (page: Page, selector: string, nthchild: number = 1) => {
-  // 查询时选择的下拉框
   await page.click(selector);
   await page.locator(`.rc-virtual-list-holder-inner > div:nth-child(${nthchild})`).click();
+  await clickQuerySearchBtn(page);
+  await page.waitForTimeout(1000);
 };
+
 export const formItemCascader = (page: Page, selector: string) => {
   return page.locator(`.antd-form-item-${selector}`).locator('.ant-cascader');
 };
