@@ -1,3 +1,5 @@
+# [Deprecated] Move to https://github.com/open-v2x/omega
+
 # edgeview
 
 ## Environment Prepare
